@@ -192,9 +192,11 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         /// <param name="key">The resource key</param>
         /// <param name="control">The current control</param>
-        /// <returns>Localized text for the given <paramref name="key"/></returns>
+        /// <returns>
+        /// Localized text for the given <paramref name="key"/>
+        /// </returns>
         /// <history>
-        /// [cnurse]	9/8/2004	Created
+        /// [cnurse]    9/8/2004    Created
         /// [bdukes]    6/13/2008   Adapted for new ModuleMessage control
         /// </history>
         protected static string GetLocalizedText(string key, Control control)

@@ -11,6 +11,7 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using System;
     using System.Web.Services;
     using DotNetNuke.Common;
     using DotNetNuke.Services.Localization;
@@ -28,7 +29,6 @@ namespace Engage.Dnn.TellAFriend
         /// Sends the email.
         /// </summary>
         /// <param name="localResourceFile">The local resource file.</param>
-        /// <param name="useSiteUrl">if set to <c>true</c> [use site URL].</param>
         /// <param name="siteUrl">The site URL.</param>
         /// <param name="tabId">The tab id.</param>
         /// <param name="portalName">Name of the portal.</param>
@@ -39,12 +39,12 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="message">The message.</param>
         /// <returns>The result of the SendEmail method.</returns>
         [WebMethod]
-        public string SendEmail(string localResourceFile, bool useSiteUrl, string siteUrl, int tabId, string portalName, string senderEmail, string friendsEmail, string firstName, string lastName, string message)
+        public string SendEmail(string localResourceFile, string siteUrl, int tabId, string portalName, string senderEmail, string friendsEmail, string firstName, string lastName, string message)
         {
             string localizedMessage = Localization.GetString("EmailAFriend", localResourceFile);
             localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendsEmail);
 
-            if (useSiteUrl)
+            if (!String.IsNullOrEmpty(siteUrl))
             {
                 localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
             }
@@ -59,7 +59,7 @@ namespace Engage.Dnn.TellAFriend
             string subject = Localization.GetString("EmailAFriendSubject", localResourceFile);
             subject = subject.Replace("[Engage:Portal]", portalName);
 
-            return Mail.SendMail(senderEmail, friendsEmail, "", subject, localizedMessage, "", "HTML", "", "", "", "");
+            return Mail.SendMail(senderEmail, friendsEmail, String.Empty, subject, localizedMessage, String.Empty, "HTML", String.Empty, String.Empty, String.Empty, String.Empty);
         }
     }
 }

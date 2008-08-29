@@ -19,12 +19,6 @@ namespace Engage.Dnn.TellAFriend
     public class CurrentContext
     {
         /// <summary>
-        /// Backing field for <see cref="UseSiteUrl" />
-        /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private bool useSiteUrl;
-
-        /// <summary>
         /// Backing field for <see cref="SiteUrl" />
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -61,29 +55,22 @@ namespace Engage.Dnn.TellAFriend
         private string webMethodUrl;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Object" /> class.
+        /// Initializes a new instance of the CurrentContext class.
         /// </summary>
-        public CurrentContext(bool useSiteUrl, string siteUrl, int tabId, string localResourceFile, int portalId, string portalName, string webMethodUrl)
+        /// <param name="siteUrl">The site URL.</param>
+        /// <param name="tabId">The tab id.</param>
+        /// <param name="localResourceFile">The local resource file.</param>
+        /// <param name="portalId">The portal id.</param>
+        /// <param name="portalName">Name of the portal.</param>
+        /// <param name="webMethodUrl">The web method URL.</param>
+        public CurrentContext(string siteUrl, int tabId, string localResourceFile, int portalId, string portalName, string webMethodUrl)
         {
-            this.useSiteUrl = useSiteUrl;
             this.siteUrl = siteUrl;
             this.tabId = tabId;
             this.localResourceFile = localResourceFile;
             this.portalId = portalId;
             this.portalName = portalName;
             this.webMethodUrl = webMethodUrl;
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether [use site URL].
-        /// </summary>
-        /// <value><c>true</c> if [use site URL]; otherwise, <c>false</c>.</value>
-        public bool UseSiteUrl
-        {
-            [DebuggerStepThrough]
-            get { return this.useSiteUrl; }
-            [DebuggerStepThrough]
-            set { this.useSiteUrl = value; }
         }
 
         /// <summary>

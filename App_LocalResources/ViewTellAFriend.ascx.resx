@@ -124,23 +124,23 @@
     <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient]&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
   </data>
   <data name="EmailAFriendSubject.Text" xml:space="preserve">
-    <value>[Engage:Portal] - A Friend has sent you a link to an Article</value>
+    <value>[Engage:Portal] - A Friend has sent you a link</value>
   </data>
   <data name="EmailSuccess.Text" xml:space="preserve">
     <value>Your email has been sent successfully!</value>
   </data>
   <data name="FirstName.Text" xml:space="preserve">
-    <value>First Name *</value>
+    <value>Your First Name *</value>
   </data>
   <data name="Introduction.Text" xml:space="preserve">
-    <value>&lt;p&gt;Please use this form to tell your friends about this new site. Remember you can also register, submit, and showcase your work here in front of many professional developers, designers as well as potential business partners.&lt;/p&gt;
+    <value>&lt;p&gt;Please use this form to tell your friends.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fields with asterisks (*) indicate required inputs.&lt;/strong&gt;&lt;/p&gt;</value>
   </data>
   <data name="LastName.Text" xml:space="preserve">
-    <value>Last Name *</value>
+    <value>Your Last Name *</value>
   </data>
   <data name="Message.Text" xml:space="preserve">
-    <value>Please Include a Message (optional)</value>
+    <value>Message to Recipient (optional)</value>
   </data>
   <data name="RecipientEmailAddress.Text" xml:space="preserve">
     <value>Recipient's Email Address *</value>
@@ -151,16 +151,19 @@
   <data name="SubmitButtonToolTip.Text" xml:space="preserve">
     <value>Click to send this message to your friend.</value>
   </data>
-  <data name="EmailError.Text" xml:space="preserve">
-    <value>Please double check the fields above that are marked with an asterisk (*)</value>
-  </data>
-  <data name="AdminModuleMessage.Text" xml:space="preserve">
-    <value>Please visit the module settings and configure the Tell A Friend options found there.</value>
+  <data name="ValidationError.Text" xml:space="preserve">
+    <value>Please review the fields above that are marked with a red asterisk (*)</value>
   </data>
   <data name="RequiredFieldValidator.Text" xml:space="preserve">
     <value>*</value>
   </data>
   <data name="InvalidEmailAddress.Text" xml:space="preserve">
     <value>* invalid</value>
+  </data>
+  <data name="EmailError.Text" xml:space="preserve">
+    <value>There was a problem sending your email. If the problem continues, please contact the site administrator.</value>
+  </data>
+  <data name="SendAnother.Text" xml:space="preserve">
+    <value>Send to another friend?</value>
   </data>
 </root>

@@ -4,9 +4,7 @@
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
-<asp:Panel ID="ContentPanel" runat="server">
-
-    <%= Localization.GetString("Introduction", LocalResourceFile) %>
+<%= Localization.GetString("Introduction", LocalResourceFile) %>
 
 <div id="dnnGalleryTellAFriend" class="content">
     
@@ -40,11 +38,15 @@
         <asp:TextBox runat="server" TextMode="MultiLine" Width="65%"  Rows="6" CssClass="MessageTextBox" />
     </p>
 
-    <div class="ErrorModuleMessage" runat="server" id="ErrorModuleMessageDiv" style="display: none;">
+    <div class="ValidationErrorModuleMessage" style="display: none;">
+	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="ValidationError" CssClass="EmailErrorMessage" />
+    </div>
+    
+    <div class="ErrorModuleMessage" style="display: none;">
 	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="EmailError" CssClass="EmailErrorMessage" />
     </div>
 
-    <div class="SuccessModuleMessage" runat="server" id="SuccessModuleMessageDiv" style="display: none;">
+    <div class="SuccessModuleMessage" style="display: none;">
         <engage:ModuleMessage runat="server" MessageType="Success" TextResourceKey="EmailSuccess" CssClass="EmailSuccessMessage" />
     </div>
 
@@ -55,15 +57,8 @@
     
 </div>
     
-</asp:Panel>
-
-<asp:Panel ID="AdminMessagePanel" runat="server">
-    <engage:ModuleMessage ID="AdminModuleMessage" runat="server" MessageType="Warning" TextResourceKey="AdminModuleMessage" CssClass="AdminModuleMessage" />
-</asp:Panel>
-
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
-<script type="text/javascript">jQuery.noConflict();</script>
-<script type="text/javascript" src="http://www.digitalbush.com/files/jquery/watermarkinput/beta1/jquery.watermarkinput.js"></script>
+<script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.watermarkinput.js") %>'></script>
 
 <script type="text/javascript">
    
@@ -86,35 +81,53 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(msg){
-                        jQuery(".AjaxLoader").hide();
-                        jQuery(".FriendsEmailTextBox").val("");
-                        jQuery(".FriendsEmailTextBox").Watermark("Send to another friend?");
-                        displaySuccess();
+                        if(msg == "")
+                        {
+                            displaySuccess();
+                        }
+                        else
+                        {
+                            displayError();
+                        }
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown){
+                        displayError();
                     }
                     });
             }
             else {
-                displayError();
+                displayValidationError();
             }
         }
     }
     
+    function displayValidationError(){
+        jQuery(".ValidationErrorModuleMessage").slideDown("slow");
+        jQuery(".SuccessModuleMessage").slideUp("slow");
+        jQuery(".ErrorModuleMessage").slideUp("slow");
+    }
+    
     function displayError(){
+        jQuery(".AjaxLoader").hide();
         jQuery(".ErrorModuleMessage").slideDown("slow");
         jQuery(".SuccessModuleMessage").slideUp("slow");
+        jQuery(".ValidationErrorModuleMessage").slideUp("slow");
     }
     
     function displaySuccess(){
+        jQuery(".AjaxLoader").hide();
+        jQuery(".FriendsEmailTextBox").val("").Watermark('<%= Localization.GetString("SendAnother", LocalResourceFile) %>');
         jQuery(".SuccessModuleMessage").slideDown("slow");
+        jQuery(".ValidationErrorModuleMessage").slideUp("slow"); 
         jQuery(".ErrorModuleMessage").slideUp("slow"); 
     }
     
     jQuery(document).ready(function(){
+        jQuery.noConflict();
         jQuery('.content input, .content textarea, .content select').focus(function(){
             jQuery(this).parents('.row').addClass("over");
         }).blur(function(){
             jQuery(this).parents('.row').removeClass("over");
         });
     });
-
 </script>

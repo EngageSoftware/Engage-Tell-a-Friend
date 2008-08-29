@@ -12,8 +12,8 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
-    using DotNetNuke.Services.Exceptions;
     using DotNetNuke.Entities.Modules;
+    using DotNetNuke.Services.Exceptions;
 
     /// -----------------------------------------------------------------------------
     /// <summary>
@@ -33,17 +33,7 @@ namespace Engage.Dnn.TellAFriend
             {
                 if (Page.IsPostBack == false)
                 {
-                    UseSiteUrlCheckBox.Checked = Utility.GetBoolSetting(Settings, "UseSiteUrl", false);
-                    SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
-
-                    // if (UseSiteUrlCheckBox.Checked)
-                    // {
-                    //    SiteUrlDiv.Style.Add(HtmlTextWriterStyle.Display, "");
-                    // }
-                    // else
-                    // {
-                    //    SiteUrlDiv.Style.Add(HtmlTextWriterStyle.Display, "none");
-                    // }
+                    this.SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
                 }
             }
             catch (Exception exc)
@@ -63,9 +53,11 @@ namespace Engage.Dnn.TellAFriend
             {
                 if (Page.IsValid)
                 {
+                    bool useSiteUrl = !String.IsNullOrEmpty(this.SiteUrlTextBox.Text);
+
                     ModuleController modules = new ModuleController();
-                    modules.UpdateModuleSetting(this.ModuleId, "UseSiteUrl", UseSiteUrlCheckBox.Checked.ToString());
-                    modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", SiteUrlTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "UseSiteUrl", useSiteUrl.ToString());
+                    modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
                 }
             }
             catch (Exception exc)

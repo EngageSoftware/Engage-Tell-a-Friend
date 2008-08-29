@@ -49,11 +49,10 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                if (Utility.GetBoolSetting(Settings, "UseSiteUrl", false))
-                {
-                    var currentContextInfo = new CurrentContext(
-                        Utility.GetBoolSetting(this.Settings, "UseSiteUrl", false),
-                        Utility.GetStringSetting(this.Settings, "SiteUrl"),
+                string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
+
+                var currentContextInfo = new CurrentContext(
+                        String.IsNullOrEmpty(siteUrl) ? null : siteUrl,
                         this.TabId,
                         this.LocalResourceFile,
                         this.PortalId,
@@ -63,15 +62,6 @@ namespace Engage.Dnn.TellAFriend
                     var serializer = new JavaScriptSerializer();
                     string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
                     Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
-
-                    AdminMessagePanel.Visible = false;
-                    ContentPanel.Visible = true;
-                }
-                else
-                {
-                    AdminMessagePanel.Visible = true;
-                    ContentPanel.Visible = false;
-                }
             }
             catch (Exception exc)
             {
