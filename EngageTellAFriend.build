@@ -95,7 +95,7 @@
         <include name="**/images/*" />
         <include name="**/Resources/**/*" />
         <include name="**/Docs/*.pdf" />
-        <include name="**/js/**/*" />
+        <include name="**/JavaScript/**/*" />
         <include name="**/${localresource.dir}/*.resx" />
         <include name="**/${globalresource.dir}/*.resx" />
         <include name="**/${globalresource.dir}/*.xml" />
@@ -146,7 +146,7 @@
         <include name="**/Components/**" />
         <include name="**/Providers/DataProviders/SqlDataProvider/**" />
         <include name="**/Data/**" />
-        <include name="**/js/**/*" />
+        <include name="**/JavaScript/**/*" />
         <include name="**/${localresource.dir}/*.resx" />
         <include name="**/${globalresource.dir}/*.resx" />
         <include name="**/${globalresource.dir}/*.xml" />
