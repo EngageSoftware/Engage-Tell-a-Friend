@@ -44,7 +44,7 @@ namespace Engage.Dnn.TellAFriend
             string localizedMessage = Localization.GetString("EmailAFriend", localResourceFile);
             localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendsEmail);
 
-            if (!String.IsNullOrEmpty(siteUrl))
+            if (!String.IsNullOrEmpty(siteUrl) && siteUrl != "null")
             {
                 localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
             }
