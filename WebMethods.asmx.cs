@@ -30,7 +30,6 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         /// <param name="localResourceFile">The local resource file.</param>
         /// <param name="siteUrl">The site URL.</param>
-        /// <param name="tabId">The tab id.</param>
         /// <param name="portalName">Name of the portal.</param>
         /// <param name="senderEmail">The sender email.</param>
         /// <param name="friendsEmail">The friends email.</param>
@@ -39,20 +38,11 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="message">The message.</param>
         /// <returns>The result of the SendEmail method.</returns>
         [WebMethod]
-        public string SendEmail(string localResourceFile, string siteUrl, int tabId, string portalName, string senderEmail, string friendsEmail, string firstName, string lastName, string message)
+        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string firstName, string lastName, string message)
         {
             string localizedMessage = Localization.GetString("EmailAFriend", localResourceFile);
             localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendsEmail);
-
-            if (!String.IsNullOrEmpty(siteUrl) && siteUrl != "null")
-            {
-                localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
-            }
-            else
-            {
-                localizedMessage = localizedMessage.Replace("[Engage:Url]", Globals.NavigateURL(tabId));
-            }
-
+            localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
             localizedMessage = localizedMessage.Replace("[Engage:From]", firstName + " " + lastName);
             localizedMessage = localizedMessage.Replace("[Engage:Message]", message);
 

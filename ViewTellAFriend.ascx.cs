@@ -13,6 +13,7 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Web.Script.Serialization;
+    using DotNetNuke.Common;
     using DotNetNuke.Services.Exceptions;
     
     /// -----------------------------------------------------------------------------
@@ -52,8 +53,7 @@ namespace Engage.Dnn.TellAFriend
                 string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
 
                 var currentContextInfo = new CurrentContext(
-                        String.IsNullOrEmpty(siteUrl) ? null : siteUrl,
-                        this.TabId,
+                        String.IsNullOrEmpty(siteUrl) ? Globals.NavigateURL(this.TabId) : siteUrl,
                         this.LocalResourceFile,
                         this.PortalId,
                         this.PortalSettings.PortalName,

@@ -25,12 +25,6 @@ namespace Engage.Dnn.TellAFriend
         private string siteUrl;
 
         /// <summary>
-        /// Backing field for <see cref="TabId" />
-        /// </summary>
-        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-        private int tabId;
-
-        /// <summary>
         /// Backing field for <see cref="LocalResourceFile" />
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -58,15 +52,13 @@ namespace Engage.Dnn.TellAFriend
         /// Initializes a new instance of the CurrentContext class.
         /// </summary>
         /// <param name="siteUrl">The site URL.</param>
-        /// <param name="tabId">The tab id.</param>
         /// <param name="localResourceFile">The local resource file.</param>
         /// <param name="portalId">The portal id.</param>
         /// <param name="portalName">Name of the portal.</param>
         /// <param name="webMethodUrl">The web method URL.</param>
-        public CurrentContext(string siteUrl, int tabId, string localResourceFile, int portalId, string portalName, string webMethodUrl)
+        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl)
         {
             this.siteUrl = siteUrl;
-            this.tabId = tabId;
             this.localResourceFile = localResourceFile;
             this.portalId = portalId;
             this.portalName = portalName;
@@ -83,18 +75,6 @@ namespace Engage.Dnn.TellAFriend
             get { return this.siteUrl; }
             [DebuggerStepThrough]
             set { this.siteUrl = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the tab id.
-        /// </summary>
-        /// <value>The tab id.</value>
-        public int TabId
-        {
-            [DebuggerStepThrough]
-            get { return this.tabId; }
-            [DebuggerStepThrough]
-            set { this.tabId = value; }
         }
 
         /// <summary>

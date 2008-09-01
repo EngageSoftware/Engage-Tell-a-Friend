@@ -77,7 +77,7 @@
                 jQuery.ajax ({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
-                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","tabId":"' + CurrentContextInfo.TabId + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"'+ jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"'+ jQuery('.FriendsEmailTextBox').val() + '","firstName":"'+ jQuery('.FirstNameTextBox').val() + '","lastName":"'+ jQuery('.LastNameTextBox').val() + '","message":"' + jQuery('.MessageTextBox').val() + '"}',
+                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"'+ jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"'+ jQuery('.FriendsEmailTextBox').val() + '","firstName":"'+ jQuery('.FirstNameTextBox').val() + '","lastName":"'+ jQuery('.LastNameTextBox').val() + '","message":"' + jQuery('.MessageTextBox').val() + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(msg){
