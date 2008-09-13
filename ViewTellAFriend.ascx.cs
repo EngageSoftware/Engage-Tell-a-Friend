@@ -15,7 +15,7 @@ namespace Engage.Dnn.TellAFriend
     using System.Web.Script.Serialization;
     using DotNetNuke.Common;
     using DotNetNuke.Services.Exceptions;
-    
+
     /// -----------------------------------------------------------------------------
     /// <summary>
     /// The ViewTellAFriend class displays the content
@@ -51,22 +51,46 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
-
                 var currentContextInfo = new CurrentContext(
-                        String.IsNullOrEmpty(siteUrl) ? Globals.NavigateURL(this.TabId) : siteUrl,
+                        String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
                         this.LocalResourceFile,
                         this.PortalId,
                         this.PortalSettings.PortalName,
                         (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"));
 
-                    var serializer = new JavaScriptSerializer();
-                    string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
-                    Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
+                var serializer = new JavaScriptSerializer();
+                string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
+                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
             }
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        /// <summary>
+        /// Gets the current URL.
+        /// </summary>
+        /// <returns>The fully qualified current URL.</returns>
+        private string GetCurrentUrl()
+        {
+            string currentUrl = Globals.NavigateURL(this.TabId);
+            if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
+            {
+                string urlGlue = Request.Url.Scheme;
+                if (Request.Url.ToString().Contains("://www.") && PortalSettings.PortalAlias.HTTPAlias.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
+                {
+                    urlGlue += "://";
+                }
+                else
+                {
+                    urlGlue += "://www.";
+                }
+                
+               currentUrl = urlGlue + PortalSettings.PortalAlias.HTTPAlias + currentUrl;
+            }
+
+            return currentUrl;
         }
     }
 }

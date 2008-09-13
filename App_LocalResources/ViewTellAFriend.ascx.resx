@@ -121,7 +121,7 @@
     <value>Your Email Address *</value>
   </data>
   <data name="EmailAFriend.Text" xml:space="preserve">
-    <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient]&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient],&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
   </data>
   <data name="EmailAFriendSubject.Text" xml:space="preserve">
     <value>[Engage:Portal] - A Friend has sent you a link</value>
@@ -129,15 +129,15 @@
   <data name="EmailSuccess.Text" xml:space="preserve">
     <value>Your email has been sent successfully!</value>
   </data>
-  <data name="FirstName.Text" xml:space="preserve">
-    <value>Your First Name *</value>
+  <data name="SenderName.Text" xml:space="preserve">
+    <value>Your Name *</value>
   </data>
   <data name="Introduction.Text" xml:space="preserve">
     <value>&lt;p&gt;Please use this form to tell your friends.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Fields with asterisks (*) indicate required inputs.&lt;/strong&gt;&lt;/p&gt;</value>
   </data>
-  <data name="LastName.Text" xml:space="preserve">
-    <value>Your Last Name *</value>
+  <data name="FriendName.Text" xml:space="preserve">
+    <value>Friend's Name</value>
   </data>
   <data name="Message.Text" xml:space="preserve">
     <value>Message to Recipient (optional)</value>

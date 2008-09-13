@@ -14,22 +14,22 @@ namespace Engage.Dnn.TellAFriend {
     public partial class ViewTellAFriend {
         
         /// <summary>
-        /// FirstNameTextBox control.
+        /// SenderNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FirstNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox SenderNameTextBox;
         
         /// <summary>
-        /// LastNameTextBox control.
+        /// FriendNameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LastNameTextBox;
+        protected global::System.Web.UI.WebControls.TextBox FriendNameTextBox;
         
         /// <summary>
         /// SenderEmailTextBox control.

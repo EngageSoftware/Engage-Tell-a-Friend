@@ -10,14 +10,13 @@
     
     <div class="tafName">
 
-	    <p class="tafFirst row"><%= Localization.GetString("FirstName", LocalResourceFile) %><br />
-	    <asp:TextBox ID="FirstNameTextBox" runat="server" Width="80%" CssClass="FirstNameTextBox"></asp:TextBox>
-	    <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstNameTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
+	    <p class="tafFirst row"><%= Localization.GetString("SenderName", LocalResourceFile) %><br />
+	    <asp:TextBox ID="SenderNameTextBox" runat="server" Width="80%" CssClass="SenderNameTextBox"></asp:TextBox>
+	    <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
 	    </p>
     	
-	    <p class="tafLast row"><%= Localization.GetString("LastName", LocalResourceFile) %><br />
-        <asp:TextBox ID="LastNameTextBox" runat="server" Width="80%" CssClass="LastNameTextBox"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" ControlToValidate="LastNameTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
+	    <p class="tafLast row"><%= Localization.GetString("FriendName", LocalResourceFile) %><br />
+        <asp:TextBox ID="FriendNameTextBox" runat="server" Width="80%" CssClass="FriendNameTextBox"></asp:TextBox>
         </p>
         
     </div>
@@ -37,6 +36,11 @@
     <p class="row"><%= Localization.GetString("Message", LocalResourceFile) %> <br />
         <asp:TextBox runat="server" TextMode="MultiLine" Width="65%"  Rows="6" CssClass="MessageTextBox" />
     </p>
+    
+    <div>
+        <input type="button" onclick="ExpressValidate();" causesvalidation="false" class="SubmitButton" value="<%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %>" />
+        <p class="AjaxLoader" />
+    </div>
 
     <div class="ValidationErrorModuleMessage" style="display: none;">
 	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="ValidationError" CssClass="EmailErrorMessage" />
@@ -49,12 +53,7 @@
     <div class="SuccessModuleMessage" style="display: none;">
         <engage:ModuleMessage runat="server" MessageType="Success" TextResourceKey="EmailSuccess" CssClass="EmailSuccessMessage" />
     </div>
-
-    <div>
-        <input type="button" onclick="ExpressValidate();" causesvalidation="false" class="SubmitButton" value="<%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %>" />
-        <p class="AjaxLoader" />
-    </div>
-    
+ 
 </div>
     
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
@@ -77,7 +76,7 @@
                 jQuery.ajax ({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
-                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"'+ jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"'+ jQuery('.FriendsEmailTextBox').val() + '","firstName":"'+ jQuery('.FirstNameTextBox').val() + '","lastName":"'+ jQuery('.LastNameTextBox').val() + '","message":"' + jQuery('.MessageTextBox').val() + '"}',
+                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"'+ jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"'+ jQuery('.FriendsEmailTextBox').val() + '","senderName":"'+ jQuery('.SenderNameTextBox').val() + '","friendName":"'+ jQuery('.FriendNameTextBox').val() + '","message":"' + jQuery('.MessageTextBox').val() + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(msg){

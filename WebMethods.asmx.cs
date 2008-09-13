@@ -13,7 +13,6 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Web.Services;
-    using DotNetNuke.Common;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
 
@@ -33,17 +32,17 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalName">Name of the portal.</param>
         /// <param name="senderEmail">The sender email.</param>
         /// <param name="friendsEmail">The friends email.</param>
-        /// <param name="firstName">The first name.</param>
-        /// <param name="lastName">The last name.</param>
+        /// <param name="senderName">Name of the sender.</param>
+        /// <param name="friendName">Name of the friend.</param>
         /// <param name="message">The message.</param>
         /// <returns>The result of the SendEmail method.</returns>
         [WebMethod]
-        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string firstName, string lastName, string message)
+        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message)
         {
             string localizedMessage = Localization.GetString("EmailAFriend", localResourceFile);
-            localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendsEmail);
+            localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendName);
             localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
-            localizedMessage = localizedMessage.Replace("[Engage:From]", firstName + " " + lastName);
+            localizedMessage = localizedMessage.Replace("[Engage:From]", senderName);
             localizedMessage = localizedMessage.Replace("[Engage:Message]", message);
 
             string subject = Localization.GetString("EmailAFriendSubject", localResourceFile);
