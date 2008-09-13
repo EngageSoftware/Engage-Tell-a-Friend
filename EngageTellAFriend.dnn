@@ -5,13 +5,13 @@
       <friendlyname>Engage: Tell A Friend</friendlyname>
       <foldername>EngageTellAFriend</foldername>
       <modulename>Engage.TellAFriend</modulename>
-      <description>A simple and flexible module for sharing DNN websites. Brought to you by Ian Robinson of Engage Software.</description>
+      <description>A module for sharing DotNetNuke websites.</description>
       <version>01.00.00</version>
       <resourcefile>Resources.zip</resourcefile>
       <businesscontrollerclass></businesscontrollerclass>
       <modules>
         <module>
-          <friendlyname>TellAFriend</friendlyname>
+          <friendlyname>EngageTellAFriend</friendlyname>
           <cachetime>0</cachetime>
           <controls>
             <control>
