@@ -77,17 +77,7 @@ namespace Engage.Dnn.TellAFriend
             string currentUrl = Globals.NavigateURL(this.TabId);
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
-                string urlGlue = Request.Url.Scheme;
-                if (Request.Url.ToString().Contains("://www.") && PortalSettings.PortalAlias.HTTPAlias.StartsWith("www.", StringComparison.OrdinalIgnoreCase))
-                {
-                    urlGlue += "://";
-                }
-                else
-                {
-                    urlGlue += "://www.";
-                }
-                
-               currentUrl = urlGlue + PortalSettings.PortalAlias.HTTPAlias + currentUrl;
+                currentUrl = this.Request.Url.Scheme + ":\\" + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
             }
 
             return currentUrl;
