@@ -50,5 +50,17 @@ namespace Engage.Dnn.TellAFriend
 
             return Mail.SendMail(senderEmail, friendsEmail, String.Empty, subject, localizedMessage, String.Empty, "HTML", String.Empty, String.Empty, String.Empty, String.Empty);
         }
+
+
+        [WebMethod]
+        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public string HelloWorld(string something)
+        {
+            if (something == "Hello")
+            {
+                return "Hello World";
+            }
+            return "";
+        }
     }
 }
