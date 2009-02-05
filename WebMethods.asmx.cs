@@ -12,6 +12,7 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
+    using System.Text;
     using System.Web.Services;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
@@ -39,16 +40,31 @@ namespace Engage.Dnn.TellAFriend
         [WebMethod]
         public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message)
         {
-            string localizedMessage = Localization.GetString("EmailAFriend", localResourceFile);
-            localizedMessage = localizedMessage.Replace("[Engage:Recipient]", friendName);
-            localizedMessage = localizedMessage.Replace("[Engage:Url]", siteUrl);
-            localizedMessage = localizedMessage.Replace("[Engage:From]", senderName);
-            localizedMessage = localizedMessage.Replace("[Engage:Message]", message);
+            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName);
+            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName);
 
-            string subject = Localization.GetString("EmailAFriendSubject", localResourceFile);
-            subject = subject.Replace("[Engage:Portal]", portalName);
+            return Mail.SendMail(senderEmail, friendsEmail, String.Empty, subject, body, String.Empty, "HTML", String.Empty, String.Empty, String.Empty, String.Empty);
+        }
 
-            return Mail.SendMail(senderEmail, friendsEmail, String.Empty, subject, localizedMessage, String.Empty, "HTML", String.Empty, String.Empty, String.Empty, String.Empty);
+        /// <summary>
+        /// Replaces the tokens in the given <paramref name="tokenizedText"/>.
+        /// </summary>
+        /// <param name="tokenizedText">Text with tokens to be replaced</param>
+        /// <param name="friendName">Name of the friend, replaces <c>[Engage:Recipient]</c>.</param>
+        /// <param name="siteUrl">The site URL, replaces <c>[Engage:Url]</c>.</param>
+        /// <param name="senderName">Name of the sender, replaces <c>[Engage:From]</c>.</param>
+        /// <param name="message">The message, replaces <c>[Engage:Message]</c>.</param>
+        /// <param name="portalName">Name of the portal, replaces <c>[Engage:Portal]</c>.</param>
+        /// <returns>The string with the given tokens replaced</returns>
+        private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName)
+        {
+            StringBuilder textBuilder = new StringBuilder(tokenizedText);
+            textBuilder = textBuilder.Replace("[Engage:Recipient]", friendName);
+            textBuilder = textBuilder.Replace("[Engage:Url]", siteUrl);
+            textBuilder = textBuilder.Replace("[Engage:From]", senderName);
+            textBuilder = textBuilder.Replace("[Engage:Message]", message);
+            textBuilder = textBuilder.Replace("[Engage:Portal]", portalName);
+            return textBuilder.ToString();
         }
 
 
