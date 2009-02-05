@@ -14,6 +14,7 @@ namespace Engage.Dnn.TellAFriend
     using System;
     using System.Web.Script.Serialization;
     using DotNetNuke.Common;
+    using DotNetNuke.Common.Utilities;
     using DotNetNuke.Services.Exceptions;
 
     /// -----------------------------------------------------------------------------
@@ -51,23 +52,43 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 AddJQueryReference(this.Page);
-
-                string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
-                var currentContextInfo = new CurrentContext(
-                        String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
-                        this.LocalResourceFile,
-                        this.PortalId,
-                        this.PortalSettings.PortalName,
-                        (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"));
-
-                var serializer = new JavaScriptSerializer();
-                string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
-                Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
+                this.RegisterCurrentContext();
+                this.PopulateUserInfo();
             }
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        /// <summary>
+        /// Populates the .
+        /// </summary>
+        private void PopulateUserInfo()
+        {
+            if (!Null.IsNull(this.UserId))
+            {
+                this.SenderNameTextBox.Text = this.UserInfo.DisplayName;
+                this.SenderEmailTextBox.Text = this.UserInfo.Email;
+            }
+        }
+
+        /// <summary>
+        /// Registers the JSON current context object on the client side.
+        /// </summary>
+        private void RegisterCurrentContext()
+        {
+            string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
+            var currentContextInfo = new CurrentContext(
+                String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
+                this.LocalResourceFile,
+                this.PortalId,
+                this.PortalSettings.PortalName,
+                (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"));
+
+            var serializer = new JavaScriptSerializer();
+            string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
+            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
         }
 
         /// <summary>
