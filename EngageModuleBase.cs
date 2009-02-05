@@ -11,6 +11,8 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using System.Web.UI;
+
     /// <summary>
     /// Base class for user controls within the TellAFriend module
     /// </summary>
@@ -20,5 +22,14 @@ namespace Engage.Dnn.TellAFriend
         /// The relative path of the root module folder
         /// </summary>
         protected const string DesktopModuleFolderName = "/DesktopModules/EngageTellAFriend/";
+
+        /// <summary>
+        /// Adds the a reference to jQuery 1.2.6.
+        /// </summary>
+        /// <param name="page">The page. Used to generate a key when registering the client script.</param>
+        protected static void AddJQueryReference(Page page)
+        {
+            Utility.AddJQueryReference(page);
+        }
     }
 }

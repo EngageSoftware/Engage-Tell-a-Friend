@@ -58,25 +58,13 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The string with the given tokens replaced</returns>
         private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName)
         {
-            StringBuilder textBuilder = new StringBuilder(tokenizedText);
+            var textBuilder = new StringBuilder(tokenizedText);
             textBuilder = textBuilder.Replace("[Engage:Recipient]", friendName);
             textBuilder = textBuilder.Replace("[Engage:Url]", siteUrl);
             textBuilder = textBuilder.Replace("[Engage:From]", senderName);
             textBuilder = textBuilder.Replace("[Engage:Message]", message);
             textBuilder = textBuilder.Replace("[Engage:Portal]", portalName);
             return textBuilder.ToString();
-        }
-
-
-        [WebMethod]
-        //[ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public string HelloWorld(string something)
-        {
-            if (something == "Hello")
-            {
-                return "Hello World";
-            }
-            return "";
         }
     }
 }

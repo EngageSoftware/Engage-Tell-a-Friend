@@ -50,6 +50,8 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
+                AddJQueryReference(this.Page);
+
                 string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
                 var currentContextInfo = new CurrentContext(
                         String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,

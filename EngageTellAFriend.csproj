@@ -42,7 +42,7 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Engage.Dnn.Utility, Version=1.4.0.16840, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Engage.Dnn.Framework, Version=1.0.1.27560, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -144,7 +144,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="JavaScript\jquery.watermarkinput.js" />
     <Content Include="References\DotNetNuke.dll" />
-    <Content Include="References\Engage.Dnn.Utility.dll" />
+    <Content Include="References\Engage.Dnn.Framework.dll" />
     <Content Include="WebMethods.asmx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
