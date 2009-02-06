@@ -33,7 +33,7 @@
         <asp:RegularExpressionValidator runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="InvalidEmailAddress" ValidationGroup="EngageTellAFriend" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
     </p>
 
-    <p class="row"><%= Localization.GetString("Message", LocalResourceFile) %> <br />
+    <p class="row" runat="server" id="MessageRow"><%= Localization.GetString("Message", LocalResourceFile) %> <br />
         <asp:TextBox runat="server" TextMode="MultiLine" Width="65%"  Rows="6" CssClass="MessageTextBox" />
     </p>
     
@@ -57,6 +57,7 @@
 </div>
     
 <script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.watermarkinput.js") %>'></script>
+<script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
 
 <script type="text/javascript">
    
@@ -75,7 +76,7 @@
                 jQuery.ajax ({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
-                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"'+ jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"'+ jQuery('.FriendsEmailTextBox').val() + '","senderName":"'+ jQuery('.SenderNameTextBox').val() + '","friendName":"'+ jQuery('.FriendNameTextBox').val() + '","message":"' + jQuery('.MessageTextBox').val() + '"}',
+                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"' + jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"' + jQuery('.FriendsEmailTextBox').val() + '","senderName":"' + jQuery('.SenderNameTextBox').val() + '","friendName":"' + jQuery('.FriendNameTextBox').val() + '","message":"' + ((jQuery('.MessageTextBox').length > 0) ? jQuery('.MessageTextBox').val() : '') + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(msg){

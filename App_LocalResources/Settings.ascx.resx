@@ -120,6 +120,15 @@
   <data name="SettingError.Text" xml:space="preserve">
     <value>Please enter a URL above. Alternatively, you can uncheck the "Use a specific URL?" checkbox to use the module's current page as the URL.</value>
   </data>
+  <data name="ShowMessageCheckBox.Help" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ShowMessageLabel.Help" xml:space="preserve">
+    <value>Optionally, you can choose to allow users to send a custom message to their friends. Check this box if you would like to allow the addition of custom messages to the Tell A Friend module.</value>
+  </data>
+  <data name="ShowMessageLabel.Text" xml:space="preserve">
+    <value>Show Message Label?</value>
+  </data>
   <data name="SiteUrlLabel.Help" xml:space="preserve">
     <value>Enter the URL that you would like this module to use.  (e.g. http://www.yoursite.com). When a user sends their friend an email they will be directed to visit this URL.</value>
   </data>

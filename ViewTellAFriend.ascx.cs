@@ -54,6 +54,7 @@ namespace Engage.Dnn.TellAFriend
                 AddJQueryReference(this.Page);
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
+                MessageRow.Visible = Utility.GetBoolSetting(Settings, "ShowMessage", false);
             }
             catch (Exception exc)
             {

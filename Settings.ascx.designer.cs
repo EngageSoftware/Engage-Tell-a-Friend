@@ -14,15 +14,6 @@ namespace Engage.Dnn.TellAFriend {
     public partial class Settings {
         
         /// <summary>
-        /// SiteUrlDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteUrlDiv;
-        
-        /// <summary>
         /// SiteUrlTextBox control.
         /// </summary>
         /// <remarks>
@@ -30,5 +21,14 @@ namespace Engage.Dnn.TellAFriend {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SiteUrlTextBox;
+        
+        /// <summary>
+        /// ShowMessageCheckBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ShowMessageCheckBox;
     }
 }

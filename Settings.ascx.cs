@@ -34,6 +34,7 @@ namespace Engage.Dnn.TellAFriend
                 if (Page.IsPostBack == false)
                 {
                     this.SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
+                    this.ShowMessageCheckBox.Checked = Utility.GetBoolSetting(Settings, "ShowMessage", false);
                 }
             }
             catch (Exception exc)
@@ -55,9 +56,10 @@ namespace Engage.Dnn.TellAFriend
                 {
                     bool useSiteUrl = !String.IsNullOrEmpty(this.SiteUrlTextBox.Text);
 
-                    ModuleController modules = new ModuleController();
+                    var modules = new ModuleController();
                     modules.UpdateModuleSetting(this.ModuleId, "UseSiteUrl", useSiteUrl.ToString());
                     modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString());
                 }
             }
             catch (Exception exc)
