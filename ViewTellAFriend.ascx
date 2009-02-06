@@ -4,9 +4,13 @@
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
-<%= Localization.GetString("Introduction", LocalResourceFile) %>
+<div>
+    <img alt="Tell A Friend!" src='<%= ResolveUrl("Images/ajax-loader.gif") %>' style="border: solid 0px black; cursor: pointer;" onclick="ShowForm();" />
+</div>
 
-<div id="dnnGalleryTellAFriend" class="content">
+<div id="dnnGalleryTellAFriend" class="content" style="display: none;">
+
+    <%= Localization.GetString("Introduction", LocalResourceFile) %>
     
     <div class="tafName">
 
@@ -60,39 +64,40 @@
 <script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
 
 <script type="text/javascript">
-   
+  
     jQuery(function(){
         jQuery(".FriendsEmailTextBox").focus(function (){
             jQuery(".SuccessModuleMessage").slideUp("slow");
         });
     });
 
-    function ExpressValidate()
-    {
-        if (typeof(Page_ClientValidate) == 'function'){
-            var validationResult = Page_ClientValidate('EngageTellAFriend'); 
-            if (validationResult){
-                jQuery(".AjaxLoader").show();  
-                jQuery.ajax ({
+    function ShowForm() {
+        jQuery('#dnnGalleryTellAFriend').modal();
+    }
+
+    function ExpressValidate() {
+        if (typeof (Page_ClientValidate) == 'function') {
+            var validationResult = Page_ClientValidate('EngageTellAFriend');
+            if (validationResult) {
+                jQuery(".AjaxLoader").show();
+                jQuery.ajax({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
                     data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"' + jQuery('.SenderEmailTextBox').val() + '","friendsEmail":"' + jQuery('.FriendsEmailTextBox').val() + '","senderName":"' + jQuery('.SenderNameTextBox').val() + '","friendName":"' + jQuery('.FriendNameTextBox').val() + '","message":"' + ((jQuery('.MessageTextBox').length > 0) ? jQuery('.MessageTextBox').val() : '') + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function(msg){
-                        if(msg == "")
-                        {
+                    success: function(msg) {
+                        if (msg == "") {
                             displaySuccess();
                         }
-                        else
-                        {
+                        else {
                             displayError();
                         }
                     },
-                    error: function(XMLHttpRequest, textStatus, errorThrown){
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
                         displayError();
                     }
-                    });
+                });
             }
             else {
                 displayValidationError();
@@ -123,10 +128,10 @@
     
     jQuery(document).ready(function(){
         jQuery.noConflict();
-        jQuery('.content input, .content textarea, .content select').focus(function(){
-            jQuery(this).parents('.row').addClass("over");
-        }).blur(function(){
-            jQuery(this).parents('.row').removeClass("over");
-        });
+//        jQuery('.content input, .content textarea, .content select').focus(function(){
+//            jQuery(this).parents('.row').addClass("over");
+//        }).blur(function(){
+//            jQuery(this).parents('.row').removeClass("over");
+//        });
     });
 </script>

@@ -133,7 +133,7 @@
     <Content Include="images\redBt.gif" />
     <Content Include="images\redTop.gif" />
     <Content Include="images\successSmallIcon.png" />
-    <Content Include="module.css" />
+    <Content Include="Module.css" />
     <Content Include="Settings.ascx" />
     <Content Include="ViewTellAFriend.ascx" />
   </ItemGroup>
@@ -142,6 +142,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\box-bg.png" />
+    <Content Include="images\bt_next.gif" />
+    <Content Include="images\x.png" />
     <Content Include="JavaScript\jquery.simplemodal.js" />
     <Content Include="JavaScript\jquery.watermarkinput.js" />
     <Content Include="References\DotNetNuke.dll" />
