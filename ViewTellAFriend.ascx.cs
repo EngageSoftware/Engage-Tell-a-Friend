@@ -13,6 +13,7 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Web.Script.Serialization;
+    using System.Web.UI;
     using DotNetNuke.Common;
     using DotNetNuke.Common.Utilities;
     using DotNetNuke.Services.Exceptions;
@@ -35,6 +36,18 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
+        /// Sends server control content to a provided <see cref="T:System.Web.UI.HtmlTextWriter"/> object, which writes the content to be rendered on the client.
+        /// </summary>
+        /// <param name="writer">The <see cref="T:System.Web.UI.HtmlTextWriter"/> object that receives the server control content.</param>
+        protected override void Render(HtmlTextWriter writer)
+        {
+            string url = this.ResolveUrl("~" + DesktopModuleFolderName + "/JavaScript/validators.js");
+            string validatorOverrideScripts = "<script src=\"" + url + "\" type=\"text/javascript\"></script>";
+            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ValidatorOverrideScripts", validatorOverrideScripts, false);
+            base.Render(writer);
+        }
+
+        /// <summary>
         /// Initializes the component.
         /// </summary>
         private void InitializeComponent()
@@ -54,7 +67,7 @@ namespace Engage.Dnn.TellAFriend
                 AddJQueryReference(this.Page);
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
-                MessageRow.Visible = Utility.GetBoolSetting(Settings, "ShowMessage", false);
+                this.MessageRow.Visible = Utility.GetBoolSetting(this.Settings, "ShowMessage", false);
             }
             catch (Exception exc)
             {

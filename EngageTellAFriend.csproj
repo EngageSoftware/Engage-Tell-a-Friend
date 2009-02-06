@@ -147,6 +147,7 @@
     <Content Include="images\x.png" />
     <Content Include="JavaScript\jquery.simplemodal.js" />
     <Content Include="JavaScript\jquery.watermarkinput.js" />
+    <Content Include="JavaScript\validators.js" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="References\Engage.Dnn.Framework.dll" />
     <Content Include="WebMethods.asmx" />

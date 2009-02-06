@@ -1,46 +1,32 @@
-﻿/*=================== Validation ===========================*/
-
-.SuccessModuleMessage, .ErrorModuleMessage { width:65%; padding: 1em 0; text-align:left; }
+﻿.SuccessModuleMessage, .ErrorModuleMessage { width:65%; padding: 1em 0; text-align:left; }
 .mmBody { height: 100%; padding: 10px 10px 25px;  margin:0 auto; overflow: hidden; background-color:transparent; background-repeat: repeat-y; background-attachment: scroll; background-position: left bottom;}
 .mmBody .mmIcon { float:left; width: 20%; height:32px; text-indent:-9999px; background-color:transparent; background-repeat: no-repeat; background-attachment: scroll; background-position: left bottom;}
 .mmBody h3 { margin: 0;}
 .mmText { float: left; width: 78%; }
-
-/*=================== Error On Page ===========================*/
 
 .ErrorTop { background-image: url(images/redTop.gif); }
 .ErrorBody { background: #FDE0E0; border: 2px #FF0000 solid; }
 .ErrorBody .ErrorIcon { background-image: url(images/errorSmallIcon.png); }
 .ErrorBt { background-image: url(images/redBt.gif); }
 
-/*=================== Success ===========================*/
-
 .SuccessBody { background: #F2FFF3; border: 2px #5CD800 solid; }
 .SuccessBody .SuccessIcon { background-image: url(images/successSmallIcon.png); }
-
-/*=================== Notification ===========================*/
 
 .WarningTop { background-image: url(images/blueTop.gif); }
 .WarningBody { background-image: url(images/blueBody.gif); }
 .WarningBody .WarningIcon { background-image: url(images/successSmallIcon.png); }
 .WarningBt { background-image: url(images/blueBt.gif); }
 
-/*=================== General ===========================*/
-
-#dnnGalleryTellAFriend p { margin-top: 0.5em; margin-bottom:0; }
+#tafWrap { padding: 15px 15px; }
+#tafWrap p { margin-top: 0.5em; margin-bottom:0; }
 .tafName { width: 100%; overflow: hidden; }
-	.tafFirst, .tafLast { width: 30%; float: left; }
-	.tafLast { margin-left: 5%; }
+.tafIntroduction { float: left; width: 20%; }
+.tafForm { float: right; width: 80%; }
 	
-/*=================== Ajaxy Stuff ===========================*/
-
 .over { background-color: #F0F0F0; }
 .AjaxLoader { display: none; background-image: url(images/ajax-loader.gif); height: 32px; width: 32px; }
 
-/* Overlay */
 #simplemodal-overlay {background-color:#000; cursor:wait;}
-
-/* Container */
-#simplemodal-container {height:150px; width:611px; background:#fff url(Images/box-bg.png) no-repeat; border:3px solid #ccc;}
+#simplemodal-container {height:260px; width:611px; background-color:#fff; /* url(Images/box-bg.png) no-repeat; */ border:3px solid #ccc;}
 #simplemodal-container a.modalCloseImg {background:url(Images/x.png) no-repeat; width:34px; height:34px; display:inline; z-index:3200; position:absolute; top:-15px; left:-18px; cursor:pointer;}
 #simplemodal-container .RegistrationSuccess, #simplemodal-container .RegistrationError {padding:10px;}

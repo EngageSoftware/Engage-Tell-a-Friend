@@ -5,51 +5,50 @@
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
 <div>
-    <img alt="Tell A Friend!" src='<%= ResolveUrl("Images/ajax-loader.gif") %>' style="border: solid 0px black; cursor: pointer;" onclick="ShowForm();" />
+    <a href="#" onclick="ShowForm();" class="tafLink"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
 </div>
 
-<div id="dnnGalleryTellAFriend" class="content" style="display: none;">
+<div id="tafWrap" class="content" style="display: none;">
 
-    <%= Localization.GetString("Introduction", LocalResourceFile) %>
+    <div class="tafIntroduction">
+        <%= Localization.GetString("Introduction", LocalResourceFile) %>
+    </div>
     
-    <div class="tafName">
+    <div class="tafForm">
+           
+	    <div class="tafLast row"><%= Localization.GetString("FriendName", LocalResourceFile) %><br />
+            <asp:TextBox ID="FriendNameTextBox" runat="server" Width="80%" CssClass="FriendNameTextBox"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendNameTextBox" Display="Dynamic" ResourceKey="FriendNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
+        </div>
+        
+        <div class="row"><%= Localization.GetString("RecipientEmailAddress", LocalResourceFile) %><br />
+            <asp:TextBox ID="FriendsEmailTextBox" runat="server" Width="65%" CssClass="FriendsEmailTextBox"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailRequired" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-mgs-rt" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+        </div>
+        
+        <div class="tafFirst row"><%= Localization.GetString("SenderName", LocalResourceFile) %><br />
+	        <asp:TextBox ID="SenderNameTextBox" runat="server" Width="80%" CssClass="SenderNameTextBox"></asp:TextBox>
+	        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="SenderNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
+	    </div>
+        
+        <div class="row"><%= Localization.GetString("EmailAddress", LocalResourceFile) %><br />
+	        <asp:TextBox ID="SenderEmailTextBox" runat="server" Width="65%" CssClass="SenderEmailTextBox"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-mgs-rt" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+        </div>
 
-	    <p class="tafFirst row"><%= Localization.GetString("SenderName", LocalResourceFile) %><br />
-	    <asp:TextBox ID="SenderNameTextBox" runat="server" Width="80%" CssClass="SenderNameTextBox"></asp:TextBox>
-	    <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
-	    </p>
-    	
-	    <p class="tafLast row"><%= Localization.GetString("FriendName", LocalResourceFile) %><br />
-        <asp:TextBox ID="FriendNameTextBox" runat="server" Width="80%" CssClass="FriendNameTextBox"></asp:TextBox>
-        </p>
+        <div class="row" runat="server" id="MessageRow"><%= Localization.GetString("Message", LocalResourceFile) %> <br />
+            <asp:TextBox runat="server" TextMode="MultiLine" Width="65%"  Rows="6" CssClass="MessageTextBox" />
+        </div>
+        
+        <div>
+            <a href="#" onclick="SubmitTAF();" class="tafSubmitLink"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
+            <p class="AjaxLoader" />
+        </div>
         
     </div>
-
-    <p class="row"><%= Localization.GetString("EmailAddress", LocalResourceFile) %><br />
-	    <asp:TextBox ID="SenderEmailTextBox" runat="server" Width="65%" CssClass="SenderEmailTextBox"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="InvalidEmailAddress" ValidationGroup="EngageTellAFriend" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
-    </p>
-
-    <p class="row"><%= Localization.GetString("RecipientEmailAddress", LocalResourceFile) %><br />
-        <asp:TextBox ID="FriendsEmailTextBox" runat="server" Width="65%" CssClass="FriendsEmailTextBox"></asp:TextBox>
-        <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="RequiredFieldValidator" ValidationGroup="EngageTellAFriend"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="InvalidEmailAddress" ValidationGroup="EngageTellAFriend" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
-    </p>
-
-    <p class="row" runat="server" id="MessageRow"><%= Localization.GetString("Message", LocalResourceFile) %> <br />
-        <asp:TextBox runat="server" TextMode="MultiLine" Width="65%"  Rows="6" CssClass="MessageTextBox" />
-    </p>
-    
-    <div>
-        <input type="button" onclick="ExpressValidate();" causesvalidation="false" class="SubmitButton" value="<%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %>" />
-        <p class="AjaxLoader" />
-    </div>
-
-    <div class="ValidationErrorModuleMessage" style="display: none;">
-	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="ValidationError" CssClass="EmailErrorMessage" />
-    </div>
-    
+   
     <div class="ErrorModuleMessage" style="display: none;">
 	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="EmailError" CssClass="EmailErrorMessage" />
     </div>
@@ -60,10 +59,13 @@
  
 </div>
     
-<script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.watermarkinput.js") %>'></script>
 <script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
 
 <script type="text/javascript">
+
+    jQuery(document).ready(function() {
+        jQuery.noConflict();
+    });
   
     jQuery(function(){
         jQuery(".FriendsEmailTextBox").focus(function (){
@@ -72,10 +74,10 @@
     });
 
     function ShowForm() {
-        jQuery('#dnnGalleryTellAFriend').modal();
+        jQuery('#tafWrap').modal();
     }
 
-    function ExpressValidate() {
+    function SubmitTAF() {
         if (typeof (Page_ClientValidate) == 'function') {
             var validationResult = Page_ClientValidate('EngageTellAFriend');
             if (validationResult) {
@@ -99,39 +101,21 @@
                     }
                 });
             }
-            else {
-                displayValidationError();
-            }
         }
     }
     
-    function displayValidationError(){
-        jQuery(".ValidationErrorModuleMessage").slideDown("slow");
-        jQuery(".SuccessModuleMessage").slideUp("slow");
-        jQuery(".ErrorModuleMessage").slideUp("slow");
-    }
-    
-    function displayError(){
+    function displayError() {
+        jQuery(".tafForm").hide();
         jQuery(".AjaxLoader").hide();
-        jQuery(".ErrorModuleMessage").slideDown("slow");
-        jQuery(".SuccessModuleMessage").slideUp("slow");
-        jQuery(".ValidationErrorModuleMessage").slideUp("slow");
+        jQuery(".ErrorModuleMessage").show();
+        jQuery(".SuccessModuleMessage").hide();
     }
-    
-    function displaySuccess(){
+
+    function displaySuccess() {
+        jQuery(".tafForm").hide();
         jQuery(".AjaxLoader").hide();
-        jQuery(".FriendsEmailTextBox").val("").Watermark('<%= Localization.GetString("SendAnother", LocalResourceFile) %>');
-        jQuery(".SuccessModuleMessage").slideDown("slow");
-        jQuery(".ValidationErrorModuleMessage").slideUp("slow"); 
-        jQuery(".ErrorModuleMessage").slideUp("slow"); 
+        jQuery(".SuccessModuleMessage").show();
+        jQuery(".ErrorModuleMessage").hide();
     }
-    
-    jQuery(document).ready(function(){
-        jQuery.noConflict();
-//        jQuery('.content input, .content textarea, .content select').focus(function(){
-//            jQuery(this).parents('.row').addClass("over");
-//        }).blur(function(){
-//            jQuery(this).parents('.row').removeClass("over");
-//        });
-    });
+        
 </script>

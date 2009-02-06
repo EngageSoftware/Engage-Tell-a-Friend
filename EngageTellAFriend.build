@@ -26,8 +26,7 @@
     <property name="ModuleName" value="TellAFriend"  overwrite="false"  />
     <property name="subproject.name" value="${ModuleName}"/>
     <property name="module.dll" value="${bin.dir}/Engage${ModuleName}.dll" />
-    <property name="utility.dll" value="${bin.dir}/Engage.Utility.dll" />
-    <property name="dnn.utility.dll" value="${bin.dir}/Engage.Dnn.Utility.dll" />
+    <property name="engage.dnn.framework.dll" value="${bin.dir}/Engage.Dnn.Framework.dll" />
 
     <property name="debug" value="false" overwrite="false" />
     <property name="config" value="debug" if="${debug}" />
@@ -195,8 +194,7 @@
       <fileset>
         <include name="**${resourcezip.dir}/Resources.zip" />
         <include name="${module.dll}" />
-        <!-- <include name="${utility.dll}" /> -->
-        <include name="${dnn.utility.dll}" />
+        <include name="${engage.dnn.framework.dll}" />
         <include name="**/*.sqldataprovider" />
         <include name="**/*.dnn" />
         <include name="**/JobGroupAdmin.ascx" />
@@ -224,8 +222,7 @@
       <fileset>
         <include name="**${resourcezip.dir}/Resources.zip" />
         <include name="${module.dll}" />
-        <!-- <include name="${utility.dll}" /> -->
-        <include name="${dnn.utility.dll}" />
+        <include name="${engage.dnn.framework.dll}" />
         <include name="**/*.sqldataprovider" />
         <include name="**/*.dnn" />
         <include name="**/JobGroupAdmin.ascx" />
@@ -253,8 +250,7 @@
       <fileset>
         <include name="**${resourcezip.dir}/Resources.zip" />
         <include name="${module.dll}" />
-        <!-- <include name="${utility.dll}" /> -->
-        <include name="${dnn.utility.dll}" />
+        <include name="${engage.dnn.framework.dll}" />
         <include name="**/*.sqldataprovider" />
         <include name="**/*.dnn" />
         <include name="**/JobGroupAdmin.ascx" />
@@ -285,7 +281,7 @@
         <include name="**${resourcezip.dir}/Resources.zip" />
         <include name="${module.dll}" />
         <!-- <include name="${utility.dll}" /> -->
-        <include name="${dnn.utility.dll}" />
+        <include name="${engage.dnn.framework.dll}" />
         <include name="**/*.sqldataprovider" />
         <include name="**/*.dnn" />
         <include name="**/JobGroupAdmin.ascx" />
