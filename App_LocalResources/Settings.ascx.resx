@@ -127,7 +127,13 @@
     <value>Optionally, you can choose to allow users to send a custom message to their friends. Check this box if you would like to allow the addition of custom messages to the Tell A Friend module.</value>
   </data>
   <data name="ShowMessageLabel.Text" xml:space="preserve">
-    <value>Show Message Label?</value>
+    <value>Show Message?</value>
+  </data>
+  <data name="ShowModalLabel.Help" xml:space="preserve">
+    <value>Tell A Friend allows you to display the form in either a modal popup or as a normal contact form. Check this option to display the form in a modal popup.</value>
+  </data>
+  <data name="ShowModalLabel.Text" xml:space="preserve">
+    <value>Show in Modal Window?</value>
   </data>
   <data name="SiteUrlLabel.Help" xml:space="preserve">
     <value>Enter the URL that you would like this module to use.  (e.g. http://www.yoursite.com). When a user sends their friend an email they will be directed to visit this URL.</value>

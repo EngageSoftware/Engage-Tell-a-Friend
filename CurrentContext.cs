@@ -49,6 +49,12 @@ namespace Engage.Dnn.TellAFriend
         private string webMethodUrl;
 
         /// <summary>
+        /// Backing field for <see cref="ShowModal" />
+        /// </summary>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private bool showModal;
+
+        /// <summary>
         /// Initializes a new instance of the CurrentContext class.
         /// </summary>
         /// <param name="siteUrl">The site URL.</param>
@@ -56,13 +62,15 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalId">The portal id.</param>
         /// <param name="portalName">Name of the portal.</param>
         /// <param name="webMethodUrl">The web method URL.</param>
-        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl)
+        /// <param name="showModalPopup">if set to <c>true</c> the form is shown in a modal popup.</param>
+        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, bool showModalPopup)
         {
             this.siteUrl = siteUrl;
             this.localResourceFile = localResourceFile;
             this.portalId = portalId;
             this.portalName = portalName;
             this.webMethodUrl = webMethodUrl;
+            this.showModal = showModalPopup;
         }
 
         /// <summary>
@@ -123,6 +131,18 @@ namespace Engage.Dnn.TellAFriend
             get { return this.webMethodUrl; }
             [DebuggerStepThrough]
             set { this.webMethodUrl = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to [show modal].
+        /// </summary>
+        /// <value><c>true</c> if [show modal]; otherwise, <c>false</c>.</value>
+        public bool ShowModal
+        {
+            [DebuggerStepThrough]
+            get { return this.showModal; }
+            [DebuggerStepThrough]
+            set { this.showModal = value; }
         }
     }
 }

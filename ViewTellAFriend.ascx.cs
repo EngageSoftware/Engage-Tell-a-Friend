@@ -98,7 +98,8 @@ namespace Engage.Dnn.TellAFriend
                 this.LocalResourceFile,
                 this.PortalId,
                 this.PortalSettings.PortalName,
-                (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"));
+                (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"),
+                Utility.GetBoolSetting(Settings, "ShowModal", false));
 
             var serializer = new JavaScriptSerializer();
             string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);

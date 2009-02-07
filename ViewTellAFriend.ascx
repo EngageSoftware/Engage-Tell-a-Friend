@@ -4,11 +4,11 @@
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
-<div>
+<div class="tafModalAnchor" style="display: none;">
     <a href="#" onclick="ShowForm();" class="tafLink"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
 </div>
 
-<div id="tafWrap" class="content" style="display: none;">
+<div id="tafWrap" class="content">
 
     <div class="tafIntroduction">
         <%= Localization.GetString("Introduction", LocalResourceFile) %>
@@ -58,13 +58,16 @@
     </div>
  
 </div>
-    
+
 <script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
 
 <script type="text/javascript">
 
     jQuery(document).ready(function() {
-        jQuery.noConflict();
+        if (CurrentContextInfo.ShowModal) {
+            jQuery('.tafModalAnchor').show();
+            jQuery('#tafWrap').hide();
+        }
     });
   
     jQuery(function(){

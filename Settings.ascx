@@ -10,4 +10,8 @@
         <dnn:help runat="server" ControlName="ShowMessageCheckBox" CssClass="Normal" ResourceKey="ShowMessageLabel" />
         <asp:CheckBox id="ShowMessageCheckBox" runat="server" />
     </div>
+    <div class="tafs-modal">
+        <dnn:help runat="server" ControlName="ShowModalCheckBox" CssClass="Normal" ResourceKey="ShowModalLabel" />
+        <asp:CheckBox ID="ShowModalCheckBox" runat="server" />
+    </div>
 </div>
