@@ -44,16 +44,16 @@
         
         <div>
             <a href="#" onclick="SubmitTAF(); return false;" class="tafSubmitLink"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
-            <p class="AjaxLoader" />
+            <p class="tafAjaxLoader" />
         </div>
         
     </div>
    
-    <div class="ErrorModuleMessage" style="display: none;">
+    <div class="tafErrorModuleMessage" style="display: none;">
 	    <engage:ModuleMessage runat="server" MessageType="Error" TextResourceKey="EmailError" CssClass="EmailErrorMessage" />
     </div>
 
-    <div class="SuccessModuleMessage" style="display: none;">
+    <div class="tafSuccessModuleMessage" style="display: none;">
         <engage:ModuleMessage runat="server" MessageType="Success" TextResourceKey="EmailSuccess" CssClass="EmailSuccessMessage" />
     </div>
  
@@ -77,7 +77,7 @@
         if (typeof (Page_ClientValidate) == 'function') {
             var validationResult = Page_ClientValidate('EngageTellAFriend');
             if (validationResult) {
-                jQuery(".AjaxLoader").show();
+                jQuery(".tafAjaxLoader").show();
                 jQuery.ajax({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
@@ -101,17 +101,17 @@
     }
     
     function displayError() {
-        jQuery("<%= FormWrapDiv.ClientID %>").hide();
-        jQuery(".AjaxLoader").hide();
-        jQuery(".ErrorModuleMessage").show();
-        jQuery(".SuccessModuleMessage").hide();
+        jQuery("#<%= FormWrapDiv.ClientID %>").hide();
+        jQuery(".tafAjaxLoader").hide();
+        jQuery(".tafErrorModuleMessage").show();
+        jQuery(".tafSuccessModuleMessage").hide();
     }
 
     function displaySuccess() {
-        jQuery("<%= FormWrapDiv.ClientID %>").hide();
-        jQuery(".AjaxLoader").hide();
-        jQuery(".SuccessModuleMessage").show();
-        jQuery(".ErrorModuleMessage").hide();
+        jQuery("#<%= FormWrapDiv.ClientID %>").hide();
+        jQuery(".tafAjaxLoader").hide();
+        jQuery(".tafSuccessModuleMessage").show();
+        jQuery(".tafErrorModuleMessage").hide();
     }
         
 </script>
