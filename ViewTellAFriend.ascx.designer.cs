@@ -14,6 +14,24 @@ namespace Engage.Dnn.TellAFriend {
     public partial class ViewTellAFriend {
         
         /// <summary>
+        /// ModalAnchorDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModalAnchorDiv;
+        
+        /// <summary>
+        /// FormWrapDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FormWrapDiv;
+        
+        /// <summary>
         /// FriendNameTextBox control.
         /// </summary>
         /// <remarks>

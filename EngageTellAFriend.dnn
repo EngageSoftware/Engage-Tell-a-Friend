@@ -32,7 +32,7 @@
       </modules>
       <files>
         <file>
-          <name>Engage.Dnn.Utility.dll</name>
+          <name>Engage.Dnn.Framework.dll</name>
         </file>
         <file>
 	        <name>EngageTellAFriend.dll</name>

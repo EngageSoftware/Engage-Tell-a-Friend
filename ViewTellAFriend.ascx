@@ -4,11 +4,11 @@
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
-<div class="tafModalAnchor" style="display: none;">
-    <a href="#" onclick="ShowForm();" class="tafLink"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
+<div id="ModalAnchorDiv" class="ModalAnchorDiv" runat="server">
+    <a href="#" onclick="ShowForm(); return false;" class="tafLink"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
 </div>
 
-<div id="tafWrap" class="content">
+<div id="FormWrapDiv" runat="server" class="tafWrap">
 
     <div class="tafIntroduction">
         <%= Localization.GetString("Introduction", LocalResourceFile) %>
@@ -43,7 +43,7 @@
         </div>
         
         <div>
-            <a href="#" onclick="SubmitTAF();" class="tafSubmitLink"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
+            <a href="#" onclick="SubmitTAF(); return false;" class="tafSubmitLink"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
             <p class="AjaxLoader" />
         </div>
         
@@ -62,14 +62,7 @@
 <script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
 
 <script type="text/javascript">
-
-    jQuery(document).ready(function() {
-        if (CurrentContextInfo.ShowModal) {
-            jQuery('.tafModalAnchor').show();
-            jQuery('#tafWrap').hide();
-        }
-    });
-  
+ 
     jQuery(function(){
         jQuery(".FriendsEmailTextBox").focus(function (){
             jQuery(".SuccessModuleMessage").slideUp("slow");
@@ -77,7 +70,7 @@
     });
 
     function ShowForm() {
-        jQuery('#tafWrap').modal();
+        jQuery('#<%= FormWrapDiv.ClientID %>').modal();
     }
 
     function SubmitTAF() {
@@ -108,14 +101,14 @@
     }
     
     function displayError() {
-        jQuery(".tafForm").hide();
+        jQuery("<%= FormWrapDiv.ClientID %>").hide();
         jQuery(".AjaxLoader").hide();
         jQuery(".ErrorModuleMessage").show();
         jQuery(".SuccessModuleMessage").hide();
     }
 
     function displaySuccess() {
-        jQuery(".tafForm").hide();
+        jQuery("<%= FormWrapDiv.ClientID %>").hide();
         jQuery(".AjaxLoader").hide();
         jQuery(".SuccessModuleMessage").show();
         jQuery(".ErrorModuleMessage").hide();

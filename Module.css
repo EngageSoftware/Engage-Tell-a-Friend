@@ -17,8 +17,8 @@
 .WarningBody .WarningIcon { background-image: url(images/successSmallIcon.png); }
 .WarningBt { background-image: url(images/blueBt.gif); }
 
-#tafWrap { padding: 15px 15px; }
-#tafWrap p { margin-top: 0.5em; margin-bottom:0; }
+.tafWrap { padding: 15px 15px; }
+.tafWrap p { margin-top: 0.5em; margin-bottom:0; }
 .tafName { width: 100%; overflow: hidden; }
 .tafIntroduction { float: left; width: 20%; }
 .tafForm { float: right; width: 80%; }

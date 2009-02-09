@@ -68,6 +68,10 @@ namespace Engage.Dnn.TellAFriend
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = Utility.GetBoolSetting(this.Settings, "ShowMessage", false);
+                bool showModal = Utility.GetBoolSetting(this.Settings, "ShowModal", false);
+
+                this.FormWrapDiv.Style["display"] = showModal ? "none" : "block";
+                this.ModalAnchorDiv.Style["display"] = showModal ? "block" : "none";
             }
             catch (Exception exc)
             {
