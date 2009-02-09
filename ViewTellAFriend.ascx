@@ -101,14 +101,14 @@
     }
     
     function displayError() {
-        jQuery("#<%= FormWrapDiv.ClientID %>").hide();
+        jQuery(".tafForm").hide();
         jQuery(".tafAjaxLoader").hide();
         jQuery(".tafErrorModuleMessage").show();
         jQuery(".tafSuccessModuleMessage").hide();
     }
 
     function displaySuccess() {
-        jQuery("#<%= FormWrapDiv.ClientID %>").hide();
+        jQuery(".tafForm").hide();
         jQuery(".tafAjaxLoader").hide();
         jQuery(".tafSuccessModuleMessage").show();
         jQuery(".tafErrorModuleMessage").hide();
