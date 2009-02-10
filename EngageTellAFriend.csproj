@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -144,6 +144,10 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\box-bg.png" />
     <Content Include="images\bt_next.gif" />
+    <Content Include="images\main-bg.png" />
+    <Content Include="images\ride-w-friends-hd.gif" />
+    <Content Include="images\submit-bt.gif" />
+    <Content Include="images\validation-bg-left.png" />
     <Content Include="images\x.png" />
     <Content Include="JavaScript\jquery.simplemodal.js" />
     <Content Include="JavaScript\jquery.watermarkinput.js" />
