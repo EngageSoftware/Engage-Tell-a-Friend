@@ -1,5 +1,5 @@
 ﻿// <copyright file="WebMethods.asmx.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagemodules.com
+// Engage: TellAFriend - http://www.engagesoftware.com
 // Copyright (c) 2004-2008
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>

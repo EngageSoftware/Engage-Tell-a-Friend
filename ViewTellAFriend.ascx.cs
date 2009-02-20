@@ -1,5 +1,5 @@
 // <copyright file="ViewTellAFriend.ascx.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagemodules.com
+// Engage: TellAFriend - http://www.engagesoftware.com
 // Copyright (c) 2004-2008
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
@@ -16,6 +16,7 @@ namespace Engage.Dnn.TellAFriend
     using System.Web.UI;
     using DotNetNuke.Common;
     using DotNetNuke.Common.Utilities;
+    using DotNetNuke.Framework;
     using DotNetNuke.Services.Exceptions;
 
     /// -----------------------------------------------------------------------------
@@ -26,11 +27,31 @@ namespace Engage.Dnn.TellAFriend
     public partial class ViewTellAFriend : EngageModuleBase
     {
         /// <summary>
+        /// Gets or sets a value indicating whether the message textbox should be shown.
+        /// </summary>
+        /// <value><c>true</c> if [show message]; otherwise, <c>false</c>.</value>
+        public bool ShowMessage { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the module should be displayed as a modal popup or inline.
+        /// </summary>
+        /// <value><c>true</c> if [show in modal]; otherwise, <c>false</c>.</value>
+        public bool ShowInModal { get; set; }
+
+        /// <summary>
+        /// Gets or sets the URL.
+        /// </summary>
+        /// <value>The URL to be used.</value>
+        public string Url { get; set; }
+        
+        /// <summary>
         /// Raises the <see cref="E:System.Web.UI.Control.Init"/> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs"/> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
+            this.LoadSettings();
+            this.LocalResourceFile = this.ResolveUrl("App_LocalResources/ViewTellAFriend.ascx.resx");
             this.InitializeComponent();
             base.OnInit(e);
         }
@@ -45,6 +66,16 @@ namespace Engage.Dnn.TellAFriend
             string validatorOverrideScripts = "<script src=\"" + url + "\" type=\"text/javascript\"></script>";
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ValidatorOverrideScripts", validatorOverrideScripts, false);
             base.Render(writer);
+        }
+
+        /// <summary>
+        /// Loads the settings.
+        /// </summary>
+        private void LoadSettings()
+        {
+            this.ShowInModal = Utility.GetBoolSetting(Settings, "ShowModal", false);
+            this.Url = Utility.GetStringSetting(Settings, "SiteUrl", string.Empty);
+            this.ShowMessage = Utility.GetBoolSetting(Settings, "ShowMessage", true);
         }
 
         /// <summary>
@@ -65,13 +96,13 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 AddJQueryReference(this.Page);
+                this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
-                this.MessageRow.Visible = Utility.GetBoolSetting(this.Settings, "ShowMessage", false);
-                bool showModal = Utility.GetBoolSetting(this.Settings, "ShowModal", false);
-
-                this.FormWrapDiv.Style["display"] = showModal ? "none" : "block";
-                this.ModalAnchorDiv.Style["display"] = showModal ? "block" : "none";
+                this.MessageRow.Visible = this.ShowMessage;
+                
+                this.FormWrapDiv.Style["display"] = this.ShowInModal ? "none" : "block";
+                this.ModalAnchorDiv.Style["display"] = this.ShowInModal ? "block" : "none";
             }
             catch (Exception exc)
             {
@@ -80,7 +111,19 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Populates the .
+        /// Adds the CSS file.
+        /// </summary>
+        private void AddCssFile()
+        {
+            var basePage = this.Page as CDefault;
+            if (basePage != null)
+            {
+                basePage.AddStyleSheet("TellAFriend", this.ResolveUrl("TellAFriend.css"), true);
+            }
+        }
+
+        /// <summary>
+        /// Populates the "from" fields with the current DNN user's display name and email address.
         /// </summary>
         private void PopulateUserInfo()
         {

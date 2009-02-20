@@ -12,24 +12,24 @@
 	    <div class="tafLast row">
 	        <p><%= Localization.GetString("FriendName", LocalResourceFile) %></p>
             <asp:TextBox ID="FriendNameTextBox" runat="server" CssClass="FriendNameTextBox"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendNameTextBox" Display="Dynamic" ResourceKey="FriendNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendNameTextBox" Display="Dynamic" ResourceKey="FriendNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
         </div>
         <div class="row">
             <p><%= Localization.GetString("RecipientEmailAddress", LocalResourceFile) %></p>
             <asp:TextBox ID="FriendsEmailTextBox" runat="server" CssClass="FriendsEmailTextBox"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-email"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-mgs-rt" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-email"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-rt" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
         </div>
         <div class="tafFirst row">
             <p><%= Localization.GetString("SenderName", LocalResourceFile) %></p>
 	        <asp:TextBox ID="SenderNameTextBox" runat="server" CssClass="SenderNameTextBox"></asp:TextBox>
-	        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="SenderNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
+	        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="SenderNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
 	    </div>
         <div class="row">
             <p><%= Localization.GetString("EmailAddress", LocalResourceFile) %></p>
-	        <asp:TextBox ID="SenderEmailTextBox" runat="server" Width="65%" CssClass="SenderEmailTextBox"></asp:TextBox>
-            <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-mgs-rt"></asp:RequiredFieldValidator>
-            <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-mgs-last" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+	        <asp:TextBox ID="SenderEmailTextBox" runat="server" CssClass="SenderEmailTextBox"></asp:TextBox>
+            <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-last" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
         </div>
         <div class="row" runat="server" id="MessageRow">
             <p><%= Localization.GetString("Message", LocalResourceFile) %></p>
