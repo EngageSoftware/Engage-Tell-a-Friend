@@ -5,39 +5,39 @@
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 <div class="tafOuterWrap">
     <div id="ModalAnchorDiv" class="ModalAnchorDiv" runat="server">
-        <a href="#" class="tafLink"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
+        <a href="#" class="tafLink CommandButton"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
     </div>
-    <div id="FormWrapDiv" runat="server" class="tafWrap">
+    <div id="FormWrapDiv" runat="server" class="tafWrap Normal">
         <div class="tafIntroduction"><%= Localization.GetString("Introduction", LocalResourceFile) %></div>
         <div class="tafForm">
 	        <div class="tafLast row">
 	            <p><%= Localization.GetString("FriendName", LocalResourceFile) %></p>
-                <asp:TextBox ID="FriendNameTextBox" runat="server" CssClass="FriendNameTextBox"></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendNameTextBox" Display="Dynamic" ResourceKey="FriendNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
+                <asp:TextBox ID="FriendNameTextBox" runat="server" CssClass="FriendNameTextBox NormalTextBox"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="FriendNameTextBox" Display="Dynamic" ResourceKey="FriendNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt NormalRed"/>
             </div>
             <div class="row">
                 <p><%= Localization.GetString("RecipientEmailAddress", LocalResourceFile) %></p>
-                <asp:TextBox ID="FriendsEmailTextBox" runat="server" CssClass="FriendsEmailTextBox"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-email"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-rt" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+                <asp:TextBox ID="FriendsEmailTextBox" runat="server" CssClass="FriendsEmailTextBox NormalTextBox"/>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-email NormalRed"/>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="FriendsEmailTextBox" Display="Dynamic" ResourceKey="FriendEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-rt NormalRed" ValidationExpression="^[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])$"/>
             </div>
             <div class="tafFirst row">
                 <p><%= Localization.GetString("SenderName", LocalResourceFile) %></p>
-	            <asp:TextBox ID="SenderNameTextBox" runat="server" CssClass="SenderNameTextBox"></asp:TextBox>
-	            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="SenderNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
+	            <asp:TextBox ID="SenderNameTextBox" runat="server" CssClass="SenderNameTextBox NormalTextBox"/>
+	            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="SenderNameTextBox" Display="Dynamic" ResourceKey="SenderNameRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt NormalRed"/>
 	        </div>
             <div class="row">
                 <p><%= Localization.GetString("EmailAddress", LocalResourceFile) %></p>
-	            <asp:TextBox ID="SenderEmailTextBox" runat="server" CssClass="SenderEmailTextBox"></asp:TextBox>
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-last" ValidationExpression="^[+_a-zA-Z0-9-]+(\.[+_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.(([0-9]{1,3})|([a-zA-Z]{2,3})|(aero|coop|info|museum|name))$"></asp:RegularExpressionValidator>
+	            <asp:TextBox ID="SenderEmailTextBox" runat="server" CssClass="SenderEmailTextBox NormalTextBox"/>
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailRequired" ValidationGroup="EngageTellAFriend" CssClass="error-msg-rt NormalRed"/>
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="SenderEmailTextBox" Display="Dynamic" ResourceKey="SenderEmailInvalid" ValidationGroup="EngageTellAFriend"  CssClass="error-msg-last NormalRed" ValidationExpression="^[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])$"/>
             </div>
             <div class="row" runat="server" id="MessageRow">
                 <p><%= Localization.GetString("Message", LocalResourceFile) %></p>
-                <asp:TextBox runat="server" TextMode="MultiLine" Rows="6" CssClass="MessageTextBox" />
+                <asp:TextBox runat="server" TextMode="MultiLine" Rows="6" CssClass="MessageTextBox NormalTextBox" />
             </div>
             <div>
-                <a href="#" class="tafSubmitLink"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
+                <a href="#" class="tafSubmitLink CommandButton"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
                 <span class="tafAjaxLoader"></span>
             </div>
         </div>
