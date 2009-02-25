@@ -34,7 +34,7 @@ namespace Engage.Dnn.TellAFriend
                 if (Page.IsPostBack == false)
                 {
                     this.SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
-                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowMessage", false);
+                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowMessage", true);
                     this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowModal", false);
                 }
             }
