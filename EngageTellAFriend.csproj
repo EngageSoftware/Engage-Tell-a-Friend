@@ -42,7 +42,6 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Engage.Dnn.Framework, Version=1.0.1.27560, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -103,6 +102,7 @@
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Utility.cs" />
     <Compile Include="WebMethods.asmx.cs">
       <DependentUpon>WebMethods.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -149,11 +149,11 @@
     <Content Include="images\submit-bt.gif" />
     <Content Include="images\validation-bg-left.png" />
     <Content Include="images\x.png" />
+    <EmbeddedResource Include="JavaScript\jquery-1.2.6.min.js" />
     <Content Include="JavaScript\jquery.simplemodal.js" />
     <Content Include="JavaScript\jquery.watermarkinput.js" />
     <Content Include="JavaScript\validators.js" />
     <Content Include="References\DotNetNuke.dll" />
-    <Content Include="References\Engage.Dnn.Framework.dll" />
     <Content Include="WebMethods.asmx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

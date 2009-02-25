@@ -1,6 +1,6 @@
 // <copyright file="ViewTellAFriend.ascx.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2008
+// Copyright (c) 2004-2009
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -73,9 +73,9 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void LoadSettings()
         {
-            this.ShowInModal = Utility.GetBoolSetting(Settings, "ShowModal", false);
+            this.ShowInModal = Utility.GetBooleanSetting(Settings, "ShowModal", false);
             this.Url = Utility.GetStringSetting(Settings, "SiteUrl", string.Empty);
-            this.ShowMessage = Utility.GetBoolSetting(Settings, "ShowMessage", true);
+            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", true);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                AddJQueryReference(this.Page);
+                Utility.AddJQueryReference(this.Page);
                 this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
@@ -139,14 +139,14 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void RegisterCurrentContext()
         {
-            string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl");
+            string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
             var currentContextInfo = new CurrentContext(
                 String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
                 this.LocalResourceFile,
                 this.PortalId,
                 this.PortalSettings.PortalName,
                 (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"),
-                Utility.GetBoolSetting(Settings, "ShowModal", false));
+                Utility.GetBooleanSetting(Settings, "ShowModal", false));
 
             var serializer = new JavaScriptSerializer();
             string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);

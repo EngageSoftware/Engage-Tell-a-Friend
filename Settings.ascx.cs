@@ -1,6 +1,6 @@
 // <copyright file="Settings.ascx.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2008
+// Copyright (c) 2004-2009
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -34,8 +34,8 @@ namespace Engage.Dnn.TellAFriend
                 if (Page.IsPostBack == false)
                 {
                     this.SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
-                    this.ShowMessageCheckBox.Checked = Utility.GetBoolSetting(Settings, "ShowMessage", false);
-                    this.ShowModalCheckBox.Checked = Utility.GetBoolSetting(Settings, "ShowModal", false);
+                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowMessage", false);
+                    this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowModal", false);
                 }
             }
             catch (Exception exc)

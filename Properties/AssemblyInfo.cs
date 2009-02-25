@@ -1,6 +1,6 @@
 // <copyright file="AssemblyInfo.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2008
+// Copyright (c) 2004-2009
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -12,6 +12,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Web.UI;
 
 [assembly: AssemblyTitle("EngageTellAFriend")]
 [assembly: AssemblyDescription("A simple and flexible module for sharing DNN websites. Brought to you by Ian Robinson of Engage Software.")]
@@ -28,3 +29,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js", "text/javascript")]
