@@ -34,7 +34,7 @@
                     <controlKey/>
                     <controlSrc>DesktopModules/EngageTellAFriend/ViewTellAFriend.ascx</controlSrc>
                     <controlType>View</controlType>
-                    <supportspartialrendering>true</supportspartialrendering>
+                    <supportsPartialRendering>True</supportsPartialRendering>
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>

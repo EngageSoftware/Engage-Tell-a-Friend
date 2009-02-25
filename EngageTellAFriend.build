@@ -22,6 +22,7 @@
     <include name="**/*.pdf" />
     <include name="**/*.xml"/>
     <include name="**/*.xsd"/>
+    <exclude name="Licenses/EULA-*.htm"/>
     <exclude name="ReleaseNotes_*.htm"/>
     <exclude name="??.??.??.txt" />
     <exclude name="_ReSharper.*/**"/>

@@ -152,7 +152,7 @@
              <Properties>Property1=Value1;Property2=Value2</Properties>
          </SolutionToBuild>
     -->
-    <SolutionToBuild Include="$(BuildProjectFolderPath)/../../TellAFriend.sln">
+    <SolutionToBuild Include="$(BuildProjectFolderPath)/../../EngageTellAFriend.sln">
         <Targets></Targets>
         <Properties></Properties>
     </SolutionToBuild>
