@@ -30,3 +30,5 @@ using System.Web.UI;
 [assembly: AssemblyKeyName("")]
 
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.validators.js", "text/javascript")]

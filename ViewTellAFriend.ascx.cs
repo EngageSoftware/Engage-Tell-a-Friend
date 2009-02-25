@@ -62,7 +62,7 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="writer">The <see cref="T:System.Web.UI.HtmlTextWriter"/> object that receives the server control content.</param>
         protected override void Render(HtmlTextWriter writer)
         {
-            string url = this.ResolveUrl("~" + DesktopModuleFolderName + "/JavaScript/validators.js");
+            string url = this.Page.ClientScript.GetWebResourceUrl(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.validators.js");
             string validatorOverrideScripts = "<script src=\"" + url + "\" type=\"text/javascript\"></script>";
             this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ValidatorOverrideScripts", validatorOverrideScripts, false);
             base.Render(writer);

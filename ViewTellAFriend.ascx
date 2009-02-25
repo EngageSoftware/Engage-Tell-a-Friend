@@ -47,7 +47,7 @@
         <engage:ModuleMessage runat="server" MessageType="Success" TextResourceKey="EmailSuccess" CssClass="EmailSuccessMessage" />
     </div>
 </div>
-<script type="text/javascript" src='<%= ResolveUrl("JavaScript/jquery.simplemodal.js") %>'></script>
+<script type="text/javascript" src='<%= this.Page.ClientScript.GetWebResourceUrl(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js") %>'></script>
 <script type="text/javascript">
     jQuery(function(){
         jQuery(".FriendsEmailTextBox").focus(function (){
