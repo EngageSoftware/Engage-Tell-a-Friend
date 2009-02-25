@@ -5,10 +5,12 @@
       <friendlyname>Engage: Tell A Friend</friendlyname>
       <foldername>EngageTellAFriend</foldername>
       <modulename>Engage.TellAFriend</modulename>
-      <description>A module for sharing DotNetNuke websites.</description>
-      <version>01.00.00</version>
+      <description>
+        A simple and flexible module for sharing DNN websites from Engage Software (http://www.engagesoftware.com/).
+      </description>
+      <version>REPLACED BY NANT</version>
+      <businesscontrollerclass>Engage.Dnn.TellAFriend.FeaturesController</businesscontrollerclass>
       <resourcefile>Resources.zip</resourcefile>
-      <businesscontrollerclass></businesscontrollerclass>
       <modules>
         <module>
           <friendlyname>EngageTellAFriend</friendlyname>
@@ -32,8 +34,8 @@
       </modules>
       <files>
         <file>
-	        <name>EngageTellAFriend.dll</name>
-      	</file>
+          <name>EngageTellAFriend.dll</name>
+        </file>
       </files>
     </folder>
   </folders>

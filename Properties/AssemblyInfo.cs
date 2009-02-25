@@ -19,7 +19,7 @@ using System.Web.UI;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("2008 Engage Software")]
+[assembly: AssemblyCopyright("2009 Engage Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

@@ -1,0 +1,60 @@
+﻿<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Engage: Tell A Friend" type="Module" version="REPLACED BY NANT">
+      <friendlyName>Engage: Tell A Friend</friendlyName>
+      <description>A simple and flexible module for sharing DNN websites from Engage Software (http://www.engagesoftware.com/).</description>
+      <owner>
+        <name>Engage Software</name>
+        <organization>Engage Software</organization>
+        <url><![CDATA[<a href="http://www.engagesoftware.com/">http://www.engagesoftware.com/</a>]]></url>
+        <email><![CDATA[<a href="mailto:support@engagemodules.com">support@engagemodules.com</a>]]></email>
+      </owner>
+      <license src="REPLACED BY NANT"/>
+      <releaseNotes src="REPLACED BY NANT" />
+      <components>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/EngageTellAFriend</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Module">
+          <desktopModule>
+            <moduleName>Engage.TellAFriend</moduleName>
+            <foldername>EngageTellAFriend</foldername>
+            <businessControllerClass>Engage.Dnn.TellAFriend.FeaturesController</businessControllerClass>
+            <moduleDefinitions>
+              <moduleDefinition>
+                <friendlyName>EngageTellAFriend</friendlyName>
+                <defaultCacheTime>0</defaultCacheTime>
+                <moduleControls>
+                  <moduleControl>
+                    <controlKey/>
+                    <controlSrc>DesktopModules/EngageTellAFriend/ViewTellAFriend.ascx</controlSrc>
+                    <controlType>View</controlType>
+                    <supportspartialrendering>true</supportspartialrendering>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Settings</controlKey>
+                    <controlSrc>DesktopModules/EngageTellAFriend/Settings.ascx</controlSrc>
+                    <controlType>Edit</controlType>
+                  </moduleControl>
+                </moduleControls>
+              </moduleDefinition>
+            </moduleDefinitions>
+          </desktopModule>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>EngageTellAFriend.dll</name>
+              <version>REPLACED BY NANT</version>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
