@@ -1,4 +1,4 @@
-// <copyright file="EngageModuleBase.cs" company="Engage Software">
+// <copyright file="ModuleBase.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
 // Copyright (c) 2004-2009
 // by Engage Software ( http://www.engagesoftware.com )
@@ -11,10 +11,12 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using DotNetNuke.Entities.Modules;
+
     /// <summary>
     /// Base class for user controls within the TellAFriend module
     /// </summary>
-    public class EngageModuleBase : DotNetNuke.Entities.Modules.PortalModuleBase
+    public class ModuleBase : PortalModuleBase
     {
         /// <summary>
         /// The relative path of the root module folder

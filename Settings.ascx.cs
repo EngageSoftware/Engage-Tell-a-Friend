@@ -12,6 +12,7 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
+    using System.Globalization;
     using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Exceptions;
 
@@ -31,11 +32,11 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                if (Page.IsPostBack == false)
+                if (!this.IsPostBack)
                 {
-                    this.SiteUrlTextBox.Text = Utility.GetStringSetting(Settings, "SiteUrl", String.Empty);
-                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowMessage", true);
-                    this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(Settings, "ShowModal", false);
+                    this.SiteUrlTextBox.Text = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
+                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowMessage", true);
+                    this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowModal", false);
                 }
             }
             catch (Exception exc)
@@ -53,15 +54,12 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                if (Page.IsValid)
+                if (this.Page.IsValid)
                 {
-                    bool useSiteUrl = !String.IsNullOrEmpty(this.SiteUrlTextBox.Text);
-
                     var modules = new ModuleController();
-                    modules.UpdateModuleSetting(this.ModuleId, "UseSiteUrl", useSiteUrl.ToString());
                     modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString());
-                    modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString());
+                    modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                    modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
                 }
             }
             catch (Exception exc)

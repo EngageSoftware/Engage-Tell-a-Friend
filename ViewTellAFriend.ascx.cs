@@ -24,7 +24,7 @@ namespace Engage.Dnn.TellAFriend
     /// The ViewTellAFriend class displays the content
     /// </summary>
     /// -----------------------------------------------------------------------------
-    public partial class ViewTellAFriend : EngageModuleBase
+    public partial class ViewTellAFriend : ModuleBase
     {
         /// <summary>
         /// Gets or sets a value indicating whether the message textbox should be shown.
@@ -52,7 +52,7 @@ namespace Engage.Dnn.TellAFriend
         {
             this.LoadSettings();
             this.LocalResourceFile = this.ResolveUrl("App_LocalResources/ViewTellAFriend.ascx.resx");
-            this.InitializeComponent();
+            this.Load += this.Page_Load;
             base.OnInit(e);
         }
 
@@ -64,7 +64,7 @@ namespace Engage.Dnn.TellAFriend
         {
             string url = this.Page.ClientScript.GetWebResourceUrl(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.validators.js");
             string validatorOverrideScripts = "<script src=\"" + url + "\" type=\"text/javascript\"></script>";
-            this.Page.ClientScript.RegisterStartupScript(this.GetType(), "ValidatorOverrideScripts", validatorOverrideScripts, false);
+            this.Page.ClientScript.RegisterStartupScript(typeof(ViewTellAFriend), "ValidatorOverrideScripts", validatorOverrideScripts, false);
             base.Render(writer);
         }
 
@@ -79,14 +79,6 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Initializes the component.
-        /// </summary>
-        private void InitializeComponent()
-        {
-            this.Load += this.Page_Load;
-        }
-
-        /// <summary>
         /// Handles the Load event of the Page control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -96,13 +88,14 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 Utility.AddJQueryReference(this.Page);
+                this.Page.ClientScript.RegisterClientScriptResource(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js");
                 this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
                 
-                this.FormWrapDiv.Style["display"] = this.ShowInModal ? "none" : "block";
-                this.ModalAnchorDiv.Style["display"] = this.ShowInModal ? "block" : "none";
+                this.FormWrapDiv.Style[HtmlTextWriterStyle.Display] = this.ShowInModal ? "none" : "block";
+                this.ModalAnchorDiv.Style[HtmlTextWriterStyle.Display] = this.ShowInModal ? "block" : "none";
             }
             catch (Exception exc)
             {
@@ -111,7 +104,7 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Adds the CSS file.
+        /// Adds the CSS file if this is loaded as a skin object rather than a regular module.
         /// </summary>
         private void AddCssFile()
         {
@@ -141,16 +134,16 @@ namespace Engage.Dnn.TellAFriend
         {
             string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
             var currentContextInfo = new CurrentContext(
-                String.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
+                string.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
                 this.LocalResourceFile,
                 this.PortalId,
                 this.PortalSettings.PortalName,
-                (this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail"),
+                this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail",
                 Utility.GetBooleanSetting(Settings, "ShowModal", false));
 
             var serializer = new JavaScriptSerializer();
             string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
-            this.Page.ClientScript.RegisterClientScriptBlock(this.GetType(), "CurrentContext", scriptBlock, true);
+            this.Page.ClientScript.RegisterClientScriptBlock(typeof(ViewTellAFriend), "CurrentContext", scriptBlock, true);
         }
 
         /// <summary>

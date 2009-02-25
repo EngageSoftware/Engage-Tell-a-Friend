@@ -28,7 +28,7 @@
     .error-msg-last{left:275px;}
         .error-msg-last span.error, .error-msg-email span.error{padding:10px 20px 20px 40px;}
 .over {background-color:#F0F0F0;}
-.AjaxLoader {display:none;background-image:url(images/ajax-loader.gif);height:32px;width:32px;}
+.tafAjaxLoader {background-image:url(images/ajax-loader.gif);height:32px;width:32px;}
 #simplemodal-overlay {background-color:#000;}
 #simplemodal-container {height:260px;width:611px;top:125px !important;}
 #simplemodal-container a.modalCloseImg {background:url(Images/x.png) no-repeat; width:34px;height:34px;display:inline;z-index:3200;position:absolute;top:40px; left:40px; cursor:pointer;}

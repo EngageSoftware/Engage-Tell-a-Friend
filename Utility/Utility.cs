@@ -28,11 +28,11 @@ namespace Engage.Dnn.TellAFriend
         {
             const string JavaScriptReferenceFormat = @"<script src='{0}' type='text/javascript'></script>";
             const string JQueryRegistrationKey = "jQueryTAF";
-            if (!page.ClientScript.IsClientScriptBlockRegistered(typeof(EngageModuleBase), JQueryRegistrationKey))
+            if (!page.ClientScript.IsClientScriptBlockRegistered(typeof(ModuleBase), JQueryRegistrationKey))
             {
-                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(EngageModuleBase), "Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js"));
+                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), "Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js"));
                 page.Header.Controls.Add(new LiteralControl(scriptReference));
-                page.ClientScript.RegisterClientScriptBlock(typeof(EngageModuleBase), JQueryRegistrationKey, "jQuery(function($){$.noConflict();});", true);
+                page.ClientScript.RegisterClientScriptBlock(typeof(ModuleBase), JQueryRegistrationKey, "jQuery(function($){$.noConflict();});", true);
             }
         }
 

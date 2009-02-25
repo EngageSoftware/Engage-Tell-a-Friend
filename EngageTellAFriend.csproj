@@ -90,7 +90,7 @@
       <DependentUpon>ModuleMessage.ascx</DependentUpon>
     </Compile>
     <Compile Include="CurrentContext.cs" />
-    <Compile Include="EngageModuleBase.cs">
+    <Compile Include="ModuleBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="FeaturesController.cs" />
@@ -123,7 +123,6 @@
     <None Include="Docs\Engage Tell A Friend - Read Me.docx" />
     <None Include="EngageTellAFriend.4.dnn" />
     <None Include="EngageTellAFriend.5.dnn" />
-    <None Include="EngageTellAFriend.dnn" />
     <None Include="EngageTellAFriend.build" />
   </ItemGroup>
   <ItemGroup>
