@@ -11,8 +11,8 @@
 
 namespace Engage.Dnn.TellAFriend
 {
-    using System;
     using System.Text;
+    using System.Web.Script.Services;
     using System.Web.Services;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
@@ -22,7 +22,7 @@ namespace Engage.Dnn.TellAFriend
     /// </summary>
     [WebService(Namespace = "http://www.engagesoftware.com")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [System.Web.Script.Services.ScriptService()]
+    [ScriptService]
     public class WebMethods : WebService
     {
         /// <summary>
@@ -43,7 +43,7 @@ namespace Engage.Dnn.TellAFriend
             string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName);
             string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName);
 
-            return Mail.SendMail(senderEmail, friendsEmail, String.Empty, subject, body, String.Empty, "HTML", String.Empty, String.Empty, String.Empty, String.Empty);
+            return Mail.SendMail(senderEmail, friendsEmail, string.Empty, subject, body, string.Empty, "HTML", string.Empty, string.Empty, string.Empty, string.Empty);
         }
 
         /// <summary>
