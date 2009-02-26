@@ -153,7 +153,6 @@
     <Content Include="images\x.png" />
     <EmbeddedResource Include="JavaScript\jquery-1.2.6.min.js" />
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
-    <EmbeddedResource Include="JavaScript\validators.js" />
     <Content Include="Licenses\EULA-OSS.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.0.0.htm" />

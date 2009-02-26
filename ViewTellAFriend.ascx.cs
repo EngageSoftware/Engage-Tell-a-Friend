@@ -29,19 +29,19 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>
         /// Gets or sets a value indicating whether the message textbox should be shown.
         /// </summary>
-        /// <value><c>true</c> if [show message]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if the message textbox should be shown; otherwise, <c>false</c>.</value>
         public bool ShowMessage { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the module should be displayed as a modal popup or inline.
         /// </summary>
-        /// <value><c>true</c> if [show in modal]; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if the module should be displayed as a modal popup; otherwise, <c>false</c>.</value>
         public bool ShowInModal { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL.
+        /// Gets or sets the URL to use in the email, or <see cref="string.Empty"/> to use the current URL.
         /// </summary>
-        /// <value>The URL to be used.</value>
+        /// <value>The URL to be used, or <see cref="string.Empty"/> to use the current URL.</value>
         public string Url { get; set; }
         
         /// <summary>
@@ -50,22 +50,12 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="e">An <see cref="T:System.EventArgs"/> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
-            this.LoadSettings();
+            // If this control is loaded as a Skin Object, we need to set the LocalResourceFile manually
             this.LocalResourceFile = this.ResolveUrl("App_LocalResources/ViewTellAFriend.ascx.resx");
+
+            this.LoadSettings();
             this.Load += this.Page_Load;
             base.OnInit(e);
-        }
-
-        /// <summary>
-        /// Sends server control content to a provided <see cref="T:System.Web.UI.HtmlTextWriter"/> object, which writes the content to be rendered on the client.
-        /// </summary>
-        /// <param name="writer">The <see cref="T:System.Web.UI.HtmlTextWriter"/> object that receives the server control content.</param>
-        protected override void Render(HtmlTextWriter writer)
-        {
-            string url = this.Page.ClientScript.GetWebResourceUrl(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.validators.js");
-            string validatorOverrideScripts = "<script src=\"" + url + "\" type=\"text/javascript\"></script>";
-            this.Page.ClientScript.RegisterStartupScript(typeof(ViewTellAFriend), "ValidatorOverrideScripts", validatorOverrideScripts, false);
-            base.Render(writer);
         }
 
         /// <summary>
@@ -94,8 +84,8 @@ namespace Engage.Dnn.TellAFriend
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
                 
-                this.FormWrapDiv.Style[HtmlTextWriterStyle.Display] = this.ShowInModal ? "none" : "block";
-                this.ModalAnchorDiv.Style[HtmlTextWriterStyle.Display] = this.ShowInModal ? "block" : "none";
+                this.ModalAnchorDiv.Visible = this.ShowInModal;
+                this.FormWrapDiv.Style[HtmlTextWriterStyle.Display] = this.ModalAnchorDiv.Visible ? "none" : "block";
             }
             catch (Exception exc)
             {
