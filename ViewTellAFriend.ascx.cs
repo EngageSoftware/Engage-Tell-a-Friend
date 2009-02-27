@@ -65,7 +65,7 @@ namespace Engage.Dnn.TellAFriend
         {
             this.ShowInModal = Utility.GetBooleanSetting(Settings, "ShowModal", false);
             this.Url = Utility.GetStringSetting(Settings, "SiteUrl", string.Empty);
-            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", true);
+            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", false);
         }
 
         /// <summary>
