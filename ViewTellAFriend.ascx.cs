@@ -78,8 +78,8 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 Utility.AddJQueryReference(this.Page);
-                this.Page.ClientScript.RegisterClientScriptResource(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js");
-                this.Page.ClientScript.RegisterClientScriptResource(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.taf.js");
+                Utility.AddJavaScriptResource(this.Page, "jquery.simplemodal");
+                Utility.AddJavaScriptResource(this.Page, "taf");
                 this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();

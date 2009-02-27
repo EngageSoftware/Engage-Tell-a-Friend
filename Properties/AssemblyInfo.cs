@@ -29,6 +29,11 @@ using System.Web.UI;
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.js", "text/javascript")]
+#if DEBUG
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.debug.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.debug.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.debug.js", "text/javascript")]
+#endif

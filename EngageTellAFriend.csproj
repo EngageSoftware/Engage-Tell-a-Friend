@@ -126,9 +126,9 @@
   <Choose>
     <When Condition=" '$(Configuration)' == 'Debug' ">
       <ItemGroup>
-        <EmbeddedResource Include="JavaScript\jquery-1.2.6.js" />
-        <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
-        <EmbeddedResource Include="JavaScript\taf.js" />
+        <EmbeddedResource Include="JavaScript\jquery-1.2.6.debug.js" />
+        <EmbeddedResource Include="JavaScript\jquery.simplemodal.debug.js" />
+        <EmbeddedResource Include="JavaScript\taf.debug.js" />
       </ItemGroup>
     </When>
     <Otherwise>
@@ -145,9 +145,9 @@
     </Content>
     <Content Include="images\progress.gif" />
     <Content Include="images\x.png" />
-    <EmbeddedResource Include="JavaScript\jquery-1.2.6.min.js" />
-    <EmbeddedResource Include="JavaScript\jquery.simplemodal.min.js" />
-    <EmbeddedResource Include="JavaScript\taf.min.js" />
+    <EmbeddedResource Include="JavaScript\jquery-1.2.6.js" />
+    <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
+    <EmbeddedResource Include="JavaScript\taf.js" />
     <Content Include="Licenses\EULA-OSS.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.0.0.htm" />

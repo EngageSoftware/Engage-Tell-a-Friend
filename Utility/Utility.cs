@@ -11,6 +11,7 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using System;
     using System.Collections;
     using System.Globalization;
     using System.Web.UI;
@@ -21,6 +22,26 @@ namespace Engage.Dnn.TellAFriend
     public static class Utility
     {
         /// <summary>
+        /// The resource namespace for JavaScript files in this module
+        /// </summary>
+        private const string JavaScriptNamespace = "Engage.Dnn.TellAFriend.JavaScript.";
+
+        /// <summary>
+        /// The extension to use for JavaScript files
+        /// </summary>
+        private const string JavaScriptExtension = ".js";
+
+        /// <summary>
+        /// Adds a reference to the  JavaScript (embedded) resource with the given <paramref name="scriptName"/> to the given <paramref name="page"/>.
+        /// </summary>
+        /// <param name="page">The page to which the reference needs to be added.</param>
+        /// <param name="scriptName">Name of the script (without file extension).</param>
+        public static void AddJavaScriptResource(Page page, string scriptName)
+        {
+            page.ClientScript.RegisterClientScriptResource(typeof(ModuleBase), GetJavaScriptResourceName(scriptName));
+        }
+
+        /// <summary>
         /// Adds the a reference to jQuery 1.2.6.
         /// </summary>
         /// <param name="page">The page. Used to generate a key when registering the client script.</param>
@@ -30,7 +51,7 @@ namespace Engage.Dnn.TellAFriend
             const string JQueryRegistrationKey = "jQueryTAF";
             if (!page.ClientScript.IsClientScriptBlockRegistered(typeof(ModuleBase), JQueryRegistrationKey))
             {
-                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), "Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.min.js"));
+                string scriptReference = String.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.2.6")));
                 page.Header.Controls.Add(new LiteralControl(scriptReference));
                 page.ClientScript.RegisterClientScriptBlock(typeof(ModuleBase), JQueryRegistrationKey, "jQuery(function($){$.noConflict();});", true);
             }
@@ -49,7 +70,7 @@ namespace Engage.Dnn.TellAFriend
             if (o != null)
             {
                 bool value;
-                if (bool.TryParse(o.ToString(), out value))
+                if (Boolean.TryParse(o.ToString(), out value))
                 {
                     return value;
                 }
@@ -73,6 +94,19 @@ namespace Engage.Dnn.TellAFriend
             }
 
             return defaultValue;
+        }
+
+        /// <summary>
+        /// Gets the full name of the JavaScript (embedded) resource with the given name, providing a debug version if compiled in Debug mode, and a minified version in Release mode.
+        /// </summary>
+        /// <param name="scriptName">Name of the script (without file extension).</param>
+        /// <returns>The full name of the JavaScript embedded resource</returns>
+        private static string GetJavaScriptResourceName(string scriptName)
+        {
+#if DEBUG
+            scriptName += ".debug";
+#endif
+            return JavaScriptNamespace + scriptName + JavaScriptExtension;
         }
     }
 }
