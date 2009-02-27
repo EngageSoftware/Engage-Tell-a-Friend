@@ -3,7 +3,7 @@
         .taf-intro h2{font-family:Arial, Helvetica, Sans-Serif;font-size:24px;font-style:normal;font-variant:normal;letter-spacing:-1px;margin:0;}
     .taf-form{float:right;width:280px;padding:20px 10px 0 20px;}
         .taf-form p{margin:0;padding-top:10px;}  
-        .NormalTextBox{background:#eee;border:none;width:260px;padding:5px;}
+        .taf-form .NormalTextBox{background:#eee;border:none;width:260px;padding:5px;}
     .taf-progress-icon{background:url(images/progress.gif) no-repeat;height:32px;width:32px;margin-left:-210px;margin-top:-32px;float:left;display:none;}
     .taf-submit{padding:10px 0 0 0;font-size:15px;}
     #simplemodal-overlay{background-color:#000;}
