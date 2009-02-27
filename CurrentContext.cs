@@ -43,6 +43,12 @@ namespace Engage.Dnn.TellAFriend
         private string portalName;
 
         /// <summary>
+        /// Backing field for <see cref="PortalEmail" />
+        /// </summary>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string portalEmail;
+
+        /// <summary>
         /// Backing field for <see cref="WebMethodUrl" />
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -63,7 +69,8 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalName">Name of the portal.</param>
         /// <param name="webMethodUrl">The web method URL.</param>
         /// <param name="showModalPopup">if set to <c>true</c> the form is shown in a modal popup.</param>
-        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, bool showModalPopup)
+        /// <param name="portalEmail">The portal administrator's email.</param>
+        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, bool showModalPopup, string portalEmail)
         {
             this.siteUrl = siteUrl;
             this.localResourceFile = localResourceFile;
@@ -71,6 +78,7 @@ namespace Engage.Dnn.TellAFriend
             this.portalName = portalName;
             this.webMethodUrl = webMethodUrl;
             this.showModal = showModalPopup;
+            this.portalEmail = portalEmail;
         }
 
         /// <summary>
@@ -119,6 +127,18 @@ namespace Engage.Dnn.TellAFriend
             get { return this.portalName; }
             [DebuggerStepThrough]
             set { this.portalName = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the portal email.
+        /// </summary>
+        /// <value>The email address of the portal administrator.</value>
+        public string PortalEmail
+        {
+            [DebuggerStepThrough]
+            get { return this.portalEmail; }
+            [DebuggerStepThrough]
+            set { this.portalEmail = value; }
         }
 
         /// <summary>

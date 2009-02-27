@@ -19,7 +19,7 @@ jQuery(function () {
                 jQuery.ajax({
                     type: "POST",
                     url: CurrentContextInfo.WebMethodUrl,
-                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"' + jQuery('.taf-form input:eq(3)').val() + '","friendsEmail":"' + jQuery('.taf-form input:eq(1)').val() + '","senderName":"' + jQuery('.taf-form input:eq(2)').val() + '","friendName":"' + jQuery('.taf-form input:eq(0)').val() + '","message":"' + ((jQuery('.taf-form input:eq(4)').length > 0) ? jQuery('.taf-form input:eq(4)').val() : '') + '"}',
+                    data: '{"localResourceFile":"' + CurrentContextInfo.LocalResourceFile + '","siteUrl":"' + CurrentContextInfo.SiteUrl + '","portalName":"' + CurrentContextInfo.PortalName + '","senderEmail":"' + jQuery('.taf-form input:eq(3)').val() + '","friendsEmail":"' + jQuery('.taf-form input:eq(1)').val() + '","senderName":"' + jQuery('.taf-form input:eq(2)').val() + '","friendName":"' + jQuery('.taf-form input:eq(0)').val() + '","message":"' + ((jQuery('.taf-form input:eq(4)').length > 0) ? jQuery('.taf-form input:eq(4)').val() : '') + '","portalEmail":"' + CurrentContextInfo.PortalEmail + '"}',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (msg) { taf_displayMessage(msg === ''); },
