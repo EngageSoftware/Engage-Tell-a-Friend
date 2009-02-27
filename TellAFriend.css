@@ -4,7 +4,7 @@
     .taf-form{float:right;width:280px;padding:20px 10px 0 20px;}
         .taf-form p{margin:0;padding-top:10px;}  
         .NormalTextBox{background:#eee;border:none;width:260px;padding:5px;}
-    .taf-progress-icon{background:url(images/progress.gif) no-repeat;height:32px;width:32px;}
+    .taf-progress-icon{background:url(images/progress.gif) no-repeat;height:32px;width:32px;margin-left:-210px;margin-top:-32px;float:left;display:none;}
     .taf-submit{padding:10px 0 0 0;font-size:15px;}
     #simplemodal-overlay{background-color:#000;}
     #simplemodal-container a.modalCloseImg{background:url(Images/x.png) no-repeat;width:34px;height:34px;display:inline;z-index:3200;position:absolute;top:-18px;right:-18px;cursor:pointer;}

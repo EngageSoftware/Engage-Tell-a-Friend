@@ -79,11 +79,11 @@ namespace Engage.Dnn.TellAFriend
             {
                 Utility.AddJQueryReference(this.Page);
                 this.Page.ClientScript.RegisterClientScriptResource(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js");
+                this.Page.ClientScript.RegisterClientScriptResource(typeof(ViewTellAFriend), "Engage.Dnn.TellAFriend.JavaScript.taf.js");
                 this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
-                
                 this.ModalAnchorDiv.Visible = this.ShowInModal;
                 this.FormWrapDiv.Style[HtmlTextWriterStyle.Display] = this.ModalAnchorDiv.Visible ? "none" : "block";
             }

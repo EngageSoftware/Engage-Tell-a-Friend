@@ -154,10 +154,10 @@
     <value>There was a problem sending your email. If the problem continues, please contact the site administrator.</value>
   </data>
   <data name="FriendEmailInvalid.Text" xml:space="preserve">
-    <value>&lt;span class='error'&gt;Please enter your friend's email.&lt;/span&gt;</value>
+    <value>&lt;span class='error'&gt;Please enter a valid e-mail address for your friend.&lt;/span&gt;</value>
   </data>
   <data name="FriendEmailRequired.Text" xml:space="preserve">
-    <value>&lt;span class='error'&gt;Please enter a valid e-mail address for your friend.&lt;/span&gt;</value>
+    <value>&lt;span class='error'&gt;Please enter your friend's email.&lt;/span&gt;</value>
   </data>
   <data name="FriendNameRequired.Text" xml:space="preserve">
     <value>&lt;span class='error'&gt;Please enter your friend's name.&lt;/span&gt;</value>
