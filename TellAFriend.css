@@ -1,35 +1,12 @@
-﻿.SuccessModuleMessage, .ErrorModuleMessage {width:65%;padding: 1em 0;text-align:left;}
-.mmBody { height: 100%; padding: 10px 10px 25px;  margin:0 auto; overflow: hidden; background-color:transparent; background-repeat: repeat-y; background-attachment: scroll; background-position: left bottom;}
-.mmBody .mmIcon { float:left; width: 20%; height:32px; text-indent:-9999px; background-color:transparent; background-repeat: no-repeat; background-attachment: scroll; background-position: left bottom;}
-.mmBody h3 { margin: 0;}
-.mmText {float:left;width:78%;}
-.ErrorTop { background-image: url(images/redTop.gif); }
-.ErrorBody { background: #FDE0E0; border: 2px #FF0000 solid; }
-.ErrorBody .ErrorIcon { background-image: url(images/errorSmallIcon.png); }
-.ErrorBt { background-image: url(images/redBt.gif); }
-.SuccessBody { background: #F2FFF3; border: 2px #5CD800 solid; }
-.SuccessBody .SuccessIcon { background-image: url(images/successSmallIcon.png); }
-.WarningTop { background-image: url(images/blueTop.gif); }
-.WarningBody { background-image: url(images/blueBody.gif); }
-.WarningBody .WarningIcon { background-image: url(images/successSmallIcon.png); }
-.WarningBt { background-image: url(images/blueBt.gif); }
-.row{position:relative;}
-.tafWrap{padding:85px 0 140px 85px;overflow:hidden;}
-.tafName{width:100%;overflow:hidden;}
-.tafIntroduction{float:left;width:160px;padding-right:25px;text-align:right;}
-    h2.rwf-hd{background:url(images/ride-w-friends-hd.gif) no-repeat right bottom;width:160px;height:44px;margin:0;padding:55px 0 0 0;}
-    .tafIntroduction p{color:#2a5660;text-align:right;font-weight:bold;margin:0;padding-top:12px;font-size:0.75em}
-.tafForm{float:left;width:286px;}
+﻿.taf-intro{width:160px;padding-right:25px;text-align:right;}
+    .taf-intro p{color:#2a5660;text-align:right;font-weight:bold;margin:0;font-size:0.75em}
+    
+.tafForm{float:left;width:286px;} 
     .tafForm p{margin:5px 0;font-size:0.875em;color:#89a0b1;text-transform:uppercase;font-weight:bold;}  
     .FriendNameTextBox, .FriendsEmailTextBox, .SenderNameTextBox, .SenderEmailTextBox{height:30px;background:#eef2f5;border:none;width:280px;padding:5px;color:#385686;font-size:1.6em;}
-    .tafSubmitLink{background:url(images/submit-bt.gif) no-repeat;width:121px;height:55px;display:block;position:absolute;left:465px;top:447px;}
-    .error-msg-rt, .error-msg-last, .error-msg-email{position:absolute;left:275px;top:11px;width:233px;font-weight:bold;background:url(images/validation-bg-left.png) no-repeat left;height:71px;z-index:1;}
-        .error-msg-rt span.error, .error-msg-last span.error, .error-msg-email span.error{display:block;margin:0;font-size:0.8em;color:#4c3007;padding:20px 20px 20px 40px;line-height:1.2}
-    .error-msg-last{left:275px;}
-        .error-msg-last span.error, .error-msg-email span.error{padding:10px 20px 20px 40px;}
-.over {background-color:#F0F0F0;}
-.tafAjaxLoader {background-image:url(images/ajax-loader.gif);height:32px;width:32px;}
-#simplemodal-overlay {background-color:#000;}
-#simplemodal-container {height:260px;width:611px;top:125px !important;}
-#simplemodal-container a.modalCloseImg {background:url(Images/x.png) no-repeat; width:34px;height:34px;display:inline;z-index:3200;position:absolute;top:40px; left:40px; cursor:pointer;}
-#simplemodal-container .tafWrap{background:transparent url(images/main-bg.png) no-repeat;height:280px;width:690px;left:0px;position:relative;}
+
+.taf-progress-icon{background:url(images/progress.gif) no-repeat;height:32px;width:32px;}
+
+#simplemodal-overlay{background-color:#000;}
+#simplemodal-container a.modalCloseImg {background:url(Images/x.png) no-repeat; width:34px;height:34px;display:inline;z-index:3200;position:absolute;top:-18px;right:3px;cursor:pointer;}
+#simplemodal-container{background-color:#fff;border:solid 1px black;height:250px;width:500px;left:0px;position:relative;overflow:visible;}

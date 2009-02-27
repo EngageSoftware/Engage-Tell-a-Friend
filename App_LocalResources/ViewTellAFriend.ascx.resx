@@ -133,7 +133,7 @@
     <value>Your Name</value>
   </data>
   <data name="Introduction.Text" xml:space="preserve">
-    <value>&lt;h2 class="rwf-hd"&gt;&lt;/h2&gt;&lt;p&gt;Use this form to tell your friends.&lt;/p&gt;</value>
+    <value>&lt;h2&gt;Tell A Friend&lt;/h2&gt;&lt;p&gt;Use this form to tell your friends.&lt;/p&gt;</value>
   </data>
   <data name="FriendName.Text" xml:space="preserve">
     <value>Your Friend's Name</value>
@@ -145,7 +145,7 @@
     <value>Your Friend's Email</value>
   </data>
   <data name="SubmitButton.Text" xml:space="preserve">
-    <value />
+    <value>Send Email</value>
   </data>
   <data name="SubmitButtonToolTip.Text" xml:space="preserve">
     <value>Click to send this message to your friend.</value>
