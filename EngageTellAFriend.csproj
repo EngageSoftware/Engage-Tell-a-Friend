@@ -123,6 +123,22 @@
     <Content Include="Settings.ascx" />
     <Content Include="ViewTellAFriend.ascx" />
   </ItemGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)' == 'Debug' ">
+      <ItemGroup>
+        <EmbeddedResource Include="JavaScript\jquery-1.2.6.js" />
+        <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
+        <EmbeddedResource Include="JavaScript\taf.js" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <None Include="JavaScript\jquery-1.2.6.js" />
+        <None Include="JavaScript\jquery.simplemodal.js" />
+        <None Include="JavaScript\taf.js" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
   <ItemGroup>
     <Content Include="App_LocalResources\Settings.ascx.resx">
       <SubType>Designer</SubType>
@@ -130,8 +146,8 @@
     <Content Include="images\progress.gif" />
     <Content Include="images\x.png" />
     <EmbeddedResource Include="JavaScript\jquery-1.2.6.min.js" />
-    <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
-    <EmbeddedResource Include="JavaScript\taf.js" />
+    <EmbeddedResource Include="JavaScript\jquery.simplemodal.min.js" />
+    <EmbeddedResource Include="JavaScript\taf.min.js" />
     <Content Include="Licenses\EULA-OSS.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.0.0.htm" />
@@ -139,7 +155,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" Condition="" />
-  <Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets" />
+  <Import Project="$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets" Condition="Exists('$(ProgramFiles)\MSBuild\Microsoft\StyleCop\v4.3\Microsoft.StyleCop.Targets')" />
   <ProjectExtensions>
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
