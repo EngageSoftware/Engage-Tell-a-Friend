@@ -146,7 +146,7 @@ namespace Engage.Dnn.TellAFriend
             string currentUrl = Globals.NavigateURL(this.TabId);
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
-                currentUrl = this.Request.Url.Scheme + ":\\" + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
+                currentUrl = this.Request.Url.Scheme + "://" + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
             }
 
             return currentUrl;
