@@ -1,0 +1,9 @@
+﻿delete from {databaseOwner}{objectQualifier}SkinControls 
+where ControlKey = 'EngageTellAFriend'
+and ControlSrc like '%EngageTellAFriend%'
+GO
+
+delete from {databaseOwner}{objectQualifier}Packages
+where Name = 'EngageTellAFriend'
+and PackageType = 'SkinObject'
+GO

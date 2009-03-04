@@ -53,6 +53,15 @@
             </assembly>
           </assemblies>
         </component>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules/EngageTellAFriend</basePath>
+            <script type="UnInstall">
+              <name>UnInstall.SqlDataProvider</name>
+              <version>REPLACED BY NANT</version>
+            </script>
+          </scripts>
+        </component>
       </components>
     </package>
     <package name="EngageTellAFriend" type="SkinObject" version="1.0.0">
@@ -66,9 +75,6 @@
       </owner>
       <license src="REPLACED BY NANT"/>
       <releaseNotes src="REPLACED BY NANT" />
-      <dependencies>
-        <dependency type="package">Engage: Tell A Friend</dependency>
-      </dependencies>
       <components>
         <component type="SkinObject">
           <moduleControl>

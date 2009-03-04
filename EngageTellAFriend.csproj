@@ -138,6 +138,7 @@
         <None Include="JavaScript\jquery-1.2.6.js" />
         <None Include="JavaScript\jquery.simplemodal.js" />
         <None Include="JavaScript\taf.js" />
+        <None Include="UnInstall.SqlDataProvider" />
       </ItemGroup>
     </Otherwise>
   </Choose>
