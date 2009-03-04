@@ -41,8 +41,8 @@ namespace Engage.Dnn.TellAFriend
         [WebMethod]
         public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail)
         {
-            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName);
-            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName);
+            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
+            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
 
             return Mail.SendMail(portalEmail, friendsEmail, string.Empty, subject, body, string.Empty, "HTML", string.Empty, string.Empty, string.Empty, string.Empty);
         }
@@ -56,8 +56,11 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="senderName">Name of the sender, replaces <c>[Engage:From]</c>.</param>
         /// <param name="message">The message, replaces <c>[Engage:Message]</c>.</param>
         /// <param name="portalName">Name of the portal, replaces <c>[Engage:Portal]</c>.</param>
-        /// <returns>The string with the given tokens replaced</returns>
-        private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName)
+        /// <param name="senderEmail">The sender's email.</param>
+        /// <returns>
+        /// The string with the given tokens replaced
+        /// </returns>
+        private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail)
         {
             var textBuilder = new StringBuilder(tokenizedText);
             textBuilder = textBuilder.Replace("[Engage:Recipient]", friendName);
@@ -65,6 +68,7 @@ namespace Engage.Dnn.TellAFriend
             textBuilder = textBuilder.Replace("[Engage:From]", senderName);
             textBuilder = textBuilder.Replace("[Engage:Message]", message);
             textBuilder = textBuilder.Replace("[Engage:Portal]", portalName);
+            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", senderEmail);
             return textBuilder.ToString();
         }
     }
