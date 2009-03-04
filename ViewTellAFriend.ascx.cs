@@ -27,6 +27,16 @@ namespace Engage.Dnn.TellAFriend
     public partial class ViewTellAFriend : ModuleBase
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ViewTellAFriend"/> class.
+        /// </summary>
+        public ViewTellAFriend()
+        {
+            this.ShowMessage = true;
+            this.ShowInModal = true;
+            this.Url = string.Empty;
+        }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the message textbox should be shown.
         /// </summary>
         /// <value><c>true</c> if the message textbox should be shown; otherwise, <c>false</c>.</value>
@@ -43,7 +53,7 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         /// <value>The URL to be used, or <see cref="string.Empty"/> to use the current URL.</value>
         public string Url { get; set; }
-        
+
         /// <summary>
         /// Raises the <see cref="E:System.Web.UI.Control.Init"/> event.
         /// </summary>
@@ -63,9 +73,9 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void LoadSettings()
         {
-            this.ShowInModal = Utility.GetBooleanSetting(Settings, "ShowModal", false);
-            this.Url = Utility.GetStringSetting(Settings, "SiteUrl", string.Empty);
-            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", true);
+            this.ShowInModal = Utility.GetBooleanSetting(Settings, "ShowModal", this.ShowInModal);
+            this.Url = Utility.GetStringSetting(Settings, "SiteUrl", this.Url);
+            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", this.ShowMessage);
         }
 
         /// <summary>

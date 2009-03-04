@@ -34,7 +34,6 @@
                     <controlKey/>
                     <controlSrc>DesktopModules/EngageTellAFriend/ViewTellAFriend.ascx</controlSrc>
                     <controlType>View</controlType>
-                    <supportsPartialRendering>True</supportsPartialRendering>
                   </moduleControl>
                   <moduleControl>
                     <controlKey>Settings</controlKey>
@@ -53,6 +52,29 @@
               <version>REPLACED BY NANT</version>
             </assembly>
           </assemblies>
+        </component>
+      </components>
+    </package>
+    <package name="EngageTellAFriend" type="SkinObject" version="1.0.0">
+      <friendlyName>Engage: Tell A Friend Skin Object</friendlyName>
+      <description>A simple and flexible skin object for sharing DNN websites from Engage Software (http://www.engagesoftware.com/).</description>
+      <owner>
+        <name>Engage Software</name>
+        <organization>Engage Software</organization>
+        <url><![CDATA[<a href="http://www.engagesoftware.com/">http://www.engagesoftware.com/</a>]]></url>
+        <email><![CDATA[<a href="mailto:support@engagemodules.com">support@engagemodules.com</a>]]></email>
+      </owner>
+      <license src="REPLACED BY NANT"/>
+      <releaseNotes src="REPLACED BY NANT" />
+      <dependencies>
+        <dependency type="package">Engage: Tell A Friend</dependency>
+      </dependencies>
+      <components>
+        <component type="SkinObject">
+          <moduleControl>
+            <controlKey>EngageTellAFriend</controlKey>
+            <controlSrc>DesktopModules/EngageTellAFriend/ViewTellAFriend.ascx</controlSrc>
+          </moduleControl>
         </component>
       </components>
     </package>
