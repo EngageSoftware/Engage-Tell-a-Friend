@@ -20,6 +20,7 @@
               <src>DesktopModules/EngageTellAFriend/ViewTellAFriend.ascx</src>
               <type>View</type>
               <helpurl></helpurl>
+              <supportspartialrendering>true</supportspartialrendering>
             </control>
             <control>
               <key>Settings</key>
