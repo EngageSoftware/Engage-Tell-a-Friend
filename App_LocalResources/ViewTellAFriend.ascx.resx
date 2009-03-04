@@ -121,7 +121,7 @@
     <value>Your E-mail</value>
   </data>
   <data name="EmailAFriend.Text" xml:space="preserve">
-    <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient],&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient],&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] ([Engage:SenderEmail]) with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
   </data>
   <data name="EmailAFriendSubject.Text" xml:space="preserve">
     <value>[Engage:Portal] - A Friend has sent you a link</value>
