@@ -131,18 +131,21 @@
         <EmbeddedResource Include="JavaScript\jquery-1.2.6.debug.js" />
         <EmbeddedResource Include="JavaScript\jquery.simplemodal.debug.js" />
         <EmbeddedResource Include="JavaScript\taf.debug.js" />
+        <EmbeddedResource Include="JavaScript\json2.debug.js" />
       </ItemGroup>
     </When>
     <Otherwise>
       <ItemGroup>
-        <None Include="JavaScript\jquery-1.2.6.js" />
-        <None Include="JavaScript\jquery.simplemodal.js" />
-        <None Include="JavaScript\taf.js" />
-        <None Include="UnInstall.SqlDataProvider" />
+        <None Include="JavaScript\jquery-1.2.6.debug.js" />
+        <None Include="JavaScript\jquery.simplemodal.debug.js" />
+        <None Include="JavaScript\taf.debug.js" />
+        <None Include="JavaScript\json2.debug.js" />
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <None Include="JavaScript\jquery-1.2.6.debug-vsdoc.js" />
+    <Content Include="UnInstall.SqlDataProvider" />
     <Content Include="App_LocalResources\Settings.ascx.resx">
       <SubType>Designer</SubType>
     </Content>
@@ -151,6 +154,7 @@
     <EmbeddedResource Include="JavaScript\jquery-1.2.6.js" />
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
     <EmbeddedResource Include="JavaScript\taf.js" />
+    <EmbeddedResource Include="JavaScript\json2.js" />
     <Content Include="Licenses\EULA-OSS.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.0.0.htm" />

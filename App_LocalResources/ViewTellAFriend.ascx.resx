@@ -121,10 +121,20 @@
     <value>Your E-mail</value>
   </data>
   <data name="EmailAFriend.Text" xml:space="preserve">
-    <value>&lt;html&gt;&lt;body&gt;Dear [Engage:Recipient],&lt;br /&gt;&lt;a href=[Engage:Url]&gt; This link &lt;/a&gt; has been sent to you from [Engage:From] ([Engage:SenderEmail]) with the attached message. &lt;p&gt;[Engage:Message]&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <value>&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;Dear [Engage:Recipient],&lt;/p&gt;
+
+&lt;p&gt;[Engage:From] ([Engage:SenderEmail]) sent you a link to &lt;a href="[Engage:Url]"&gt;[Engage:Portal]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[Engage:From] says: [Engage:Message]&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</value>
   </data>
   <data name="EmailAFriendSubject.Text" xml:space="preserve">
-    <value>[Engage:Portal] - A Friend has sent you a link</value>
+    <value>[Engage:Portal] - A friend has sent you a link</value>
   </data>
   <data name="EmailSuccess.Text" xml:space="preserve">
     <value>Your email has been sent successfully.</value>
@@ -133,7 +143,7 @@
     <value>Your Name</value>
   </data>
   <data name="Introduction.Text" xml:space="preserve">
-    <value>&lt;h2&gt;Tell A Friend&lt;/h2&gt;&lt;p&gt;Use this form to tell your friends.&lt;/p&gt;</value>
+    <value>&lt;h2&gt;Tell A Friend&lt;/h2&gt;&lt;p&gt;Send your friend a link to this site.&lt;/p&gt;</value>
   </data>
   <data name="FriendName.Text" xml:space="preserve">
     <value>Your Friend's Name</value>

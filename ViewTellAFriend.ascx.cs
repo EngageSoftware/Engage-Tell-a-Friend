@@ -89,6 +89,7 @@ namespace Engage.Dnn.TellAFriend
             {
                 Utility.AddJQueryReference(this.Page);
                 Utility.AddJavaScriptResource(this.Page, "jquery.simplemodal");
+                Utility.AddJavaScriptResource(this.Page, "json2");
                 Utility.AddJavaScriptResource(this.Page, "taf");
                 this.AddCssFile();
                 this.RegisterCurrentContext();

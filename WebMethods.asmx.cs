@@ -11,7 +11,9 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using System;
     using System.Text;
+    using System.Web;
     using System.Web.Script.Services;
     using System.Web.Services;
     using DotNetNuke.Services.Localization;
@@ -63,12 +65,12 @@ namespace Engage.Dnn.TellAFriend
         private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail)
         {
             var textBuilder = new StringBuilder(tokenizedText);
-            textBuilder = textBuilder.Replace("[Engage:Recipient]", friendName);
-            textBuilder = textBuilder.Replace("[Engage:Url]", siteUrl);
-            textBuilder = textBuilder.Replace("[Engage:From]", senderName);
-            textBuilder = textBuilder.Replace("[Engage:Message]", message);
-            textBuilder = textBuilder.Replace("[Engage:Portal]", portalName);
-            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", senderEmail);
+            textBuilder = textBuilder.Replace("[Engage:Recipient]", HttpUtility.HtmlEncode(friendName));
+            textBuilder = textBuilder.Replace("[Engage:Url]", HttpUtility.HtmlEncode(siteUrl));
+            textBuilder = textBuilder.Replace("[Engage:From]", HttpUtility.HtmlEncode(senderName));
+            textBuilder = textBuilder.Replace("[Engage:Message]", HttpUtility.HtmlEncode(message).Replace("\n", "<br />"));
+            textBuilder = textBuilder.Replace("[Engage:Portal]", HttpUtility.HtmlEncode(portalName));
+            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", HttpUtility.HtmlEncode(senderEmail));
             return textBuilder.ToString();
         }
     }

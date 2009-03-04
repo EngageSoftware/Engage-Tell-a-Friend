@@ -38,7 +38,7 @@
             </div>
             
             <div class="taf-submit">
-                <a href="#" class="CommandButton"><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
+                <a href="#" class="CommandButton" title='<%= Localization.GetString("SubmitButtonToolTip.Text", LocalResourceFile) %>'><%= Localization.GetString("SubmitButton.Text", LocalResourceFile) %></a>
             </div>
             <span class="taf-progress-icon"></span>
         </div>
