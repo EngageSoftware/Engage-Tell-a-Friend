@@ -53,7 +53,7 @@
   <target name="package" depends="get-version" description="Creates packages for this module, one for each three licenses and version of DNN (4 and 5)">
     <property name="package.directory" value="package"/>
     <property name="package.name" value="Resources.zip"/>
-    <property name="package.license" value="OSS"/>
+    <property name="package.license" value="Free"/>
     <property name="includeSource" value="false"/>
 
     <call target="setup-package-files"/>

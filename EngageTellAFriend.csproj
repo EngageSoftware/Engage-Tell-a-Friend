@@ -155,7 +155,7 @@
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
     <EmbeddedResource Include="JavaScript\taf.js" />
     <EmbeddedResource Include="JavaScript\json2.js" />
-    <Content Include="Licenses\EULA-OSS.htm" />
+	<Content Include="Licenses\EULA-Free.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.0.0.htm" />
     <Content Include="WebMethods.asmx" />
