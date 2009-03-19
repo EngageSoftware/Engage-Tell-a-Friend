@@ -45,8 +45,8 @@ jQuery(function() {
     });
     jQuery('.taf-anchor').click(function(event) {
         if (jQuery(event.target).is('.taf-anchor a')) {
-            jQuery('.taf-form-wrap').modal({ persist: true });
-            return false;
+            event.preventDefault();
+            jQuery(this).siblings('.taf-form-wrap').modal({ persist: true });
         }
     });
 });
