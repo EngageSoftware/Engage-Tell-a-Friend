@@ -24,18 +24,17 @@ using System.Web.UI;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
-[assembly: AssemblyVersion("01.00.00.*")]
+[assembly: AssemblyVersion("01.01.00.*")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
 
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.js", "text/javascript")]
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.js", "text/javascript")]
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.js", "text/javascript")]
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.json2.js", "text/javascript")]
 #if DEBUG
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.debug.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.debug.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.debug.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.json2.debug.js", "text/javascript")]
+#else
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery-1.2.6.js", "text/javascript")]
+[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.bundle.js", "text/javascript")]
 #endif

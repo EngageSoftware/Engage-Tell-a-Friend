@@ -37,6 +37,7 @@
     <include name="**/*.build"/>
     <include name="**/*.dnn"/>
     <include name="**/*.docx"/>
+    <include name="tools/jsmin.exe"/>
   </patternset>
 
   <target name="build" description="Builds the solution" if="${build}">

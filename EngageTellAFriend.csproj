@@ -145,6 +145,8 @@
   </Choose>
   <ItemGroup>
     <None Include="JavaScript\jquery-1.2.6.debug-vsdoc.js" />
+    <EmbeddedResource Include="JavaScript\taf.bundle.js" />
+    <Content Include="tools\jsmin.exe" />
     <Content Include="UnInstall.SqlDataProvider" />
     <Content Include="App_LocalResources\Settings.ascx.resx">
       <SubType>Designer</SubType>
@@ -155,9 +157,9 @@
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
     <EmbeddedResource Include="JavaScript\taf.js" />
     <EmbeddedResource Include="JavaScript\json2.js" />
-	<Content Include="Licenses\EULA-Free.htm" />
+    <Content Include="Licenses\EULA-Free.htm" />
     <Content Include="References\DotNetNuke.dll" />
-    <Content Include="ReleaseNotes_1.0.0.htm" />
+    <Content Include="ReleaseNotes_1.1.0.htm" />
     <Content Include="WebMethods.asmx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -173,7 +175,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf-bundle.js"</PostBuildEvent>
   </PropertyGroup>
 </Project>

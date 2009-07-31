@@ -88,9 +88,14 @@ namespace Engage.Dnn.TellAFriend
             try
             {
                 Utility.AddJQueryReference(this.Page);
+#if DEBUG
                 Utility.AddJavaScriptResource(this.Page, "jquery.simplemodal");
                 Utility.AddJavaScriptResource(this.Page, "json2");
                 Utility.AddJavaScriptResource(this.Page, "taf");
+#else
+                Utility.AddJavaScriptResource(this.Page, "taf.bundle");
+#endif
+
                 this.AddCssFile();
                 this.RegisterCurrentContext();
                 this.PopulateUserInfo();
