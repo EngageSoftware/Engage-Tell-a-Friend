@@ -36,7 +36,13 @@ jQuery(function() {
                     url: CurrentContextInfo.WebMethodUrl,
                     data: JSON.stringify(tafData),
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json",
+                    dataFilter: function(data) {
+                        var msg = eval('(' + data + ')');
+                        if (msg.hasOwnProperty('d'))
+                            return msg.d;
+                        else
+                            return msg;
+                    },
                     success: function(msg) { taf_displayMessage(msg === ''); },
                     error: function(XMLHttpRequest, textStatus, errorThrown) { taf_displayMessage(false); }
                 });
