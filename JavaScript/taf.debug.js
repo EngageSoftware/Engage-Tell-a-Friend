@@ -1,5 +1,5 @@
 ﻿/// <reference path="json2.debug.js"/>
-/// <reference path="jquery-1.2.6.debug.js"/>
+/// <reference path="jquery-1.3.2.debug.js"/>
 /// <reference path="jquery.simplemodal.debug.js"/>
 function taf_displayMessage(successful) {
     jQuery(".taf-progress-icon").hide();
