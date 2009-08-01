@@ -129,7 +129,7 @@
     <When Condition=" '$(Configuration)' == 'Debug' ">
       <ItemGroup>
         <EmbeddedResource Include="JavaScript\jquery.simplemodal.debug.js" />
-        <EmbeddedResource Include="JavaScript\taf.debug.js" />
+        <Content Include="JavaScript\taf.debug.js" />
         <EmbeddedResource Include="JavaScript\json2.debug.js" />
       </ItemGroup>
     </When>
@@ -155,7 +155,6 @@
     <Content Include="images\progress.gif" />
     <Content Include="images\x.png" />
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
-    <EmbeddedResource Include="JavaScript\taf.js" />
     <EmbeddedResource Include="JavaScript\json2.js" />
     <Content Include="Licenses\EULA-Free.htm" />
     <Content Include="References\DotNetNuke.dll" />
@@ -175,6 +174,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf-bundle.js"</PostBuildEvent>
+    <PostBuildEvent>type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -27,7 +27,8 @@ jQuery(function() {
                     senderName: jQuery('.taf-form input:eq(2)').val(),
                     friendName: jQuery('.taf-form input:eq(0)').val(),
                     message: jQuery('.taf-form textarea').val() || '',
-                    portalEmail: CurrentContextInfo.PortalEmail
+                    portalEmail: CurrentContextInfo.PortalEmail,
+                    currentCulture: CurrentContextInfo.CurrentCulture
                 };
 
                 jQuery(".taf-progress-icon").show();

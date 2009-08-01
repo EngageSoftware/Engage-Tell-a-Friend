@@ -61,6 +61,12 @@ namespace Engage.Dnn.TellAFriend
         private bool showModal;
 
         /// <summary>
+        /// Backing field for <see cref="CurrentCulture" />
+        /// </summary>
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+        private string currentCulture;
+
+        /// <summary>
         /// Initializes a new instance of the CurrentContext class.
         /// </summary>
         /// <param name="siteUrl">The site URL.</param>
@@ -70,7 +76,8 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="webMethodUrl">The web method URL.</param>
         /// <param name="showModalPopup">if set to <c>true</c> the form is shown in a modal popup.</param>
         /// <param name="portalEmail">The portal administrator's email.</param>
-        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, bool showModalPopup, string portalEmail)
+        /// <param name="currentCulture">The current culture.</param>
+        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, bool showModalPopup, string portalEmail, string currentCulture)
         {
             this.siteUrl = siteUrl;
             this.localResourceFile = localResourceFile;
@@ -79,6 +86,7 @@ namespace Engage.Dnn.TellAFriend
             this.webMethodUrl = webMethodUrl;
             this.showModal = showModalPopup;
             this.portalEmail = portalEmail;
+            this.currentCulture = currentCulture;
         }
 
         /// <summary>
@@ -163,6 +171,18 @@ namespace Engage.Dnn.TellAFriend
             get { return this.showModal; }
             [DebuggerStepThrough]
             set { this.showModal = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the current context.
+        /// </summary>
+        /// <value>The current context.</value>
+        public string CurrentCulture
+        {
+            [DebuggerStepThrough]   
+            get { return this.currentCulture; }
+            [DebuggerStepThrough]
+            set { this.currentCulture = value; }
         }
     }
 }

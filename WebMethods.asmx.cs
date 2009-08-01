@@ -12,6 +12,7 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
+    using System.Globalization;
     using System.Text;
     using System.Web;
     using System.Web.Script.Services;
@@ -39,10 +40,13 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="friendName">Name of the friend.</param>
         /// <param name="message">The message.</param>
         /// <param name="portalEmail">The portal administrator's email.</param>
+        /// <param name="currentCulture">The current culture.</param>
         /// <returns>The result of the SendEmail method.</returns>
         [WebMethod]
-        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail)
+        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, string currentCulture)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
+
             string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
             string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
 
