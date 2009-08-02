@@ -174,13 +174,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>:: This task's actual work is skipped if you're building in debug mode.
-IF NOT $(ConfigurationName) == Release GOTO end
-
-:: Minify and combine Simple Modal, JSON 2, and TAF scripts.
-:: NOTE: You have to have JavaScript/taf.bundle.js checked out for this to work.
+    <PostBuildEvent>IF NOT $(ConfigurationName) == Release GOTO end
 type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"
-
 :end
 echo Finished JSMin Post Build Event</PostBuildEvent>
   </PropertyGroup>
