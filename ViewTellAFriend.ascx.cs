@@ -32,7 +32,7 @@ namespace Engage.Dnn.TellAFriend
         public ViewTellAFriend()
         {
             this.ShowMessage = true;
-            this.ShowInModal = true;
+            this.ShowInModal = false;
             this.Url = string.Empty;
         }
 
