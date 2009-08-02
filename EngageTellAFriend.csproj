@@ -174,9 +174,6 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>IF NOT $(ConfigurationName) == Release GOTO end
-type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"
-:end
-echo Finished JSMin Post Build Event</PostBuildEvent>
+    <PostBuildEvent>type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"</PostBuildEvent>
   </PropertyGroup>
 </Project>
