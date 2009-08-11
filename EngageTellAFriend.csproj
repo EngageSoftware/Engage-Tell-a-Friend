@@ -39,7 +39,7 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRules>-Microsoft.Design#CA1031;-Microsoft.Design#CA1054;-Microsoft.Design#CA1056;-Microsoft.Design#CA1055</CodeAnalysisRules>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'CustomBuildEvents|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'RunJSMin|AnyCPU' ">
     <OutputPath>..\..\bin\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -179,7 +179,7 @@
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
-    <PreBuildEvent>IF NOT $(ConfigurationName) == CustomBuildEvents GOTO end
+    <PreBuildEvent>IF NOT $(ConfigurationName) == RunJSMin GOTO end
 
 "$(DevEnvDir)tf" checkout /lock:none "$(ProjectDir)JavaScript\taf.bundle.js"
 

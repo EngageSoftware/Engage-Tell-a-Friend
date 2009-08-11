@@ -16,17 +16,17 @@ Global
 		CategoryFile = Engage Framework 3.0.vsmdi
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		CustomBuildEvents|Any CPU = CustomBuildEvents|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		RunJSMin|Any CPU = RunJSMin|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.CustomBuildEvents|Any CPU.ActiveCfg = CustomBuildEvents|Any CPU
-		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.CustomBuildEvents|Any CPU.Build.0 = CustomBuildEvents|Any CPU
 		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.RunJSMin|Any CPU.ActiveCfg = RunJSMin|Any CPU
+		{AD1A58BB-FBF7-4212-BF69-F81A84652ACA}.RunJSMin|Any CPU.Build.0 = RunJSMin|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
