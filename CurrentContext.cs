@@ -174,9 +174,9 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Gets or sets the current context.
+        /// Gets or sets the current culture.
         /// </summary>
-        /// <value>The current context.</value>
+        /// <value>The current culture.</value>
         public string CurrentCulture
         {
             [DebuggerStepThrough]   
