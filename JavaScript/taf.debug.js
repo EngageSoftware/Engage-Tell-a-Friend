@@ -51,6 +51,7 @@ jQuery(function() {
         }
     });
     jQuery('.taf-anchor').click(function(event) {
+        //todo: add a real click event and traverse up to the form wrap more generically.
         if (jQuery(event.target).is('.taf-anchor a')) {
             event.preventDefault();
             jQuery(this).siblings('.taf-form-wrap').modal({ persist: true });
