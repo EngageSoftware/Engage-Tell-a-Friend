@@ -146,9 +146,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <EmbeddedResource Include="JavaScript\jquery-1.3.2.debug-vsdoc.js" />
-    <EmbeddedResource Include="JavaScript\jquery-1.3.2.debug.js" />
-    <EmbeddedResource Include="JavaScript\jquery-1.3.2.js" />
+    <EmbeddedResource Include="JavaScript\jquery-1.4.1.debug-vsdoc.js" />
+    <EmbeddedResource Include="JavaScript\jquery-1.4.2.debug.js" />
+    <EmbeddedResource Include="JavaScript\jquery-1.4.2.js" />
     <Content Include="tools\jsmin.exe" />
     <Content Include="UnInstall.SqlDataProvider" />
     <Content Include="App_LocalResources\Settings.ascx.resx">
