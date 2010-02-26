@@ -1,60 +1,71 @@
 ﻿/// <reference path="json2.debug.js"/>
 /// <reference path="jquery-1.4.1.debug-vsdoc.js"/>
 /// <reference path="jquery.simplemodal.debug.js"/>
-function taf_displayMessage(successful) {
-    jQuery(".taf-progress-icon").hide();
-    if (successful) {
-        jQuery(".taf-success").show();
-        jQuery(".taf-error").hide();
-    }
-    else {
-        jQuery(".taf-error").show();
-        jQuery(".taf-success").hide(); 
-    }
-}
-jQuery(function() {
-    jQuery('.taf-submit a').click(function(event) {
-        event.preventDefault();
-        if (typeof (Page_ClientValidate) === 'function') {
-            var validationResult = Page_ClientValidate('EngageTellAFriend');
-            if (validationResult) {
-                var tafData = {
-                    localResourceFile: CurrentContextInfo.LocalResourceFile,
-                    siteUrl: CurrentContextInfo.SiteUrl,
-                    portalName: CurrentContextInfo.PortalName,
-                    senderEmail: jQuery('.taf-form input:eq(3)').val(),
-                    friendsEmail: jQuery('.taf-form input:eq(1)').val(),
-                    senderName: jQuery('.taf-form input:eq(2)').val(),
-                    friendName: jQuery('.taf-form input:eq(0)').val(),
-                    message: jQuery('.taf-form textarea').val() || '',
-                    portalEmail: CurrentContextInfo.PortalEmail,
-                    currentCulture: CurrentContextInfo.CurrentCulture
-                };
 
-                jQuery(".taf-progress-icon").show();
-                jQuery.ajax({
-                    type: "POST",
-                    url: CurrentContextInfo.WebMethodUrl,
-                    data: JSON.stringify(tafData),
-                    contentType: "application/json; charset=utf-8",
-                    dataFilter: function(data) {
-                        var msg = eval('(' + data + ')');
-                        if (msg.hasOwnProperty('d'))
-                            return msg.d;
-                        else
-                            return msg;
-                    },
-                    success: function(msg) { taf_displayMessage(msg === ''); },
-                    error: function(XMLHttpRequest, textStatus, errorThrown) { taf_displayMessage(false); }
-                });
-            }
+(function ($) {
+    function taf_displayMessage($tafFormWrap, successful) {
+        $tafFormWrap.find(".taf-progress-icon").hide();
+        if (successful) {
+            $tafFormWrap.find(".taf-success").show();
+            $tafFormWrap.find(".taf-error").hide();
         }
-    });
-    jQuery('.taf-anchor').click(function(event) {
-        //todo: add a real click event and traverse up to the form wrap more generically.
-        if (jQuery(event.target).is('.taf-anchor a')) {
+        else {
+            $tafFormWrap.find(".taf-error").show();
+            $tafFormWrap.find(".taf-success").hide(); 
+        }
+    }
+    $(function() {
+        $('.taf-submit a').click(function(event) {
+            var $tafFormWrap = $(this).closest('.taf-form-wrap'),
+                validationResult,
+                tafData,
+                $tafForm;
+            
             event.preventDefault();
-            jQuery(this).siblings('.taf-form-wrap').modal({ persist: true });
-        }
+            
+            if ($.isFunction(Page_ClientValidate)) {
+                validationResult = Page_ClientValidate('EngageTellAFriend');
+                if (validationResult) {
+                    $tafFormWrap.find(".taf-progress-icon").show();
+                    
+                    $tafForm = $tafFormWrap.find('.taf-form');
+                    tafData = {
+                        localResourceFile: CurrentContextInfo.LocalResourceFile,
+                        siteUrl: CurrentContextInfo.SiteUrl,
+                        portalName: CurrentContextInfo.PortalName,
+                        friendName: $tafForm.find('input:eq(0)').val(),
+                        friendsEmail: $tafForm.find('input:eq(1)').val(),
+                        senderName: $tafForm.find('input:eq(2)').val(),
+                        senderEmail: $tafForm.find('input:eq(3)').val(),
+                        message: $tafForm.find('textarea').val() || '',
+                        portalEmail: CurrentContextInfo.PortalEmail,
+                        currentCulture: CurrentContextInfo.CurrentCulture
+                    };
+
+                    $.ajax({
+                        type: "POST",
+                        url: CurrentContextInfo.WebMethodUrl,
+                        data: JSON.stringify(tafData),
+                        contentType: "application/json; charset=utf-8",
+                        dataFilter: function(data) {
+                            var msg = eval('(' + data + ')');
+                            if (msg.hasOwnProperty('d')) {
+                                return msg.d;
+                            }
+                            else {
+                                return msg;
+                            }
+                        },
+                        success: function(msg) { taf_displayMessage($tafFormWrap, msg === ''); },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) { taf_displayMessage($tafFormWrap, false); }
+                    });
+                }
+            }
+        });
+        
+        $('.taf-anchor a').click(function(event) {
+            event.preventDefault();
+            $(this).closest('.taf-wrap').find('.taf-form-wrap').modal({ persist: true });
+        });
     });
-});
+} (jQuery))
