@@ -41,6 +41,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'RunJSMin|AnyCPU' ">
     <OutputPath>..\..\bin\</OutputPath>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRules>-Microsoft.Design#CA1031;-Microsoft.Design#CA1054;-Microsoft.Design#CA1056;-Microsoft.Design#CA1055</CodeAnalysisRules>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetNuke, Version=4.8.2.0, Culture=neutral, processorArchitecture=MSIL">
