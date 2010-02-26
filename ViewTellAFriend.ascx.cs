@@ -1,6 +1,6 @@
 // <copyright file="ViewTellAFriend.ascx.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2009
+// Copyright (c) 2004-2010
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -12,6 +12,7 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
+    using System.Globalization;
     using System.Web.Script.Serialization;
     using System.Web.UI;
     using DotNetNuke.Common;
@@ -147,7 +148,7 @@ namespace Engage.Dnn.TellAFriend
                 this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail",
                 Utility.GetBooleanSetting(Settings, "ShowModal", false),
                 this.PortalSettings.Email,
-                System.Globalization.CultureInfo.CurrentCulture.ToString());
+                CultureInfo.CurrentCulture.ToString());
 
             var serializer = new JavaScriptSerializer();
             string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
@@ -163,7 +164,7 @@ namespace Engage.Dnn.TellAFriend
             string currentUrl = Globals.NavigateURL(this.TabId);
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
-                currentUrl = this.Request.Url.Scheme + "://" + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
+                currentUrl = this.Request.Url.Scheme + Uri.SchemeDelimiter + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
             }
 
             return currentUrl;

@@ -1,6 +1,6 @@
 ﻿// <copyright file="Utility.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2009
+// Copyright (c) 2004-2010
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -51,7 +51,7 @@ namespace Engage.Dnn.TellAFriend
             const string JQueryRegistrationKey = "jQueryTAF";
             if (!page.ClientScript.IsClientScriptBlockRegistered(typeof(ModuleBase), JQueryRegistrationKey))
             {
-                string scriptReference = String.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.3.2")));
+                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.3.2")));
                 page.Header.Controls.Add(new LiteralControl(scriptReference));
                 page.ClientScript.RegisterClientScriptBlock(typeof(ModuleBase), JQueryRegistrationKey, "jQuery(function($){$.noConflict();});", true);
             }

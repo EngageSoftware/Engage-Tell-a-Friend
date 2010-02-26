@@ -1,6 +1,6 @@
 ﻿// <copyright file="WebMethods.asmx.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2009
+// Copyright (c) 2004-2010
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -11,9 +11,9 @@
 
 namespace Engage.Dnn.TellAFriend
 {
-    using System;
     using System.Globalization;
     using System.Text;
+    using System.Threading;
     using System.Web;
     using System.Web.Script.Services;
     using System.Web.Services;
@@ -45,7 +45,7 @@ namespace Engage.Dnn.TellAFriend
         [WebMethod]
         public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, string currentCulture)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
 
             string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
             string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
