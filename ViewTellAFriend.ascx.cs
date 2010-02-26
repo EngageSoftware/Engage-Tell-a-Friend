@@ -56,6 +56,41 @@ namespace Engage.Dnn.TellAFriend
         public string Url { get; set; }
 
         /// <summary>
+        /// Gets the validation group for this instance of the module.
+        /// </summary>
+        /// <value>The module's validation group.</value>
+        public string ValidationGroup
+        {
+            get
+            {
+                return "EngageTellAFriend" + this.ModuleId.ToString(CultureInfo.InvariantCulture);
+            }
+        }
+
+        /// <summary>
+        /// Gets the options to send into the tell-a-friend plugin.
+        /// </summary>
+        /// <value>The tell-a-friend plugin options.</value>
+        protected string TellAFriendOptions
+        {
+            get
+            {
+                string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
+                var options = new CurrentContext(
+                        string.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
+                        this.LocalResourceFile,
+                        this.PortalId,
+                        this.PortalSettings.PortalName,
+                        this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail",
+                        this.PortalSettings.Email,
+                        CultureInfo.CurrentCulture.ToString(),
+                        this.ValidationGroup);
+
+                return new JavaScriptSerializer().Serialize(options);
+            }
+        }
+
+        /// <summary>
         /// Raises the <see cref="E:System.Web.UI.Control.Init"/> event.
         /// </summary>
         /// <param name="e">An <see cref="T:System.EventArgs"/> object that contains the event data.</param>
@@ -98,7 +133,7 @@ namespace Engage.Dnn.TellAFriend
 #endif
 
                 this.AddCssFile();
-                this.RegisterCurrentContext();
+                this.SetValidationGroupOnChildControls();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
                 this.ModalAnchorDiv.Visible = this.ShowInModal;
@@ -123,6 +158,19 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
+        /// Sets the validation group on child controls.
+        /// </summary>
+        private void SetValidationGroupOnChildControls()
+        {
+            this.FriendNameRequiredValidator.ValidationGroup = this.ValidationGroup;
+            this.FriendEmailRequiredValidator.ValidationGroup = this.ValidationGroup;
+            this.FriendEmailPatternValidator.ValidationGroup = this.ValidationGroup;
+            this.SenderNameRequiredValidator.ValidationGroup = this.ValidationGroup;
+            this.SenderEmailRequiredValidator.ValidationGroup = this.ValidationGroup;
+            this.SenderEmailPatternValidator.ValidationGroup = this.ValidationGroup;
+        }
+
+        /// <summary>
         /// Populates the "from" fields with the current DNN user's display name and email address.
         /// </summary>
         private void PopulateUserInfo()
@@ -132,27 +180,6 @@ namespace Engage.Dnn.TellAFriend
                 this.SenderNameTextBox.Text = this.UserInfo.DisplayName;
                 this.SenderEmailTextBox.Text = this.UserInfo.Email;
             }
-        }
-
-        /// <summary>
-        /// Registers the JSON current context object on the client side.
-        /// </summary>
-        private void RegisterCurrentContext()
-        {
-            string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
-            var currentContextInfo = new CurrentContext(
-                string.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
-                this.LocalResourceFile,
-                this.PortalId,
-                this.PortalSettings.PortalName,
-                this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail",
-                Utility.GetBooleanSetting(Settings, "ShowModal", false),
-                this.PortalSettings.Email,
-                CultureInfo.CurrentCulture.ToString());
-
-            var serializer = new JavaScriptSerializer();
-            string scriptBlock = "var CurrentContextInfo = " + serializer.Serialize(currentContextInfo);
-            this.Page.ClientScript.RegisterClientScriptBlock(typeof(ViewTellAFriend), "CurrentContext", scriptBlock, true);
         }
 
         /// <summary>

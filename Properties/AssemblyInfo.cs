@@ -1,6 +1,6 @@
 // <copyright file="AssemblyInfo.cs" company="Engage Software">
 // Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2009
+// Copyright (c) 2004-2010
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -15,11 +15,11 @@ using System.Runtime.InteropServices;
 using System.Web.UI;
 
 [assembly: AssemblyTitle("EngageTellAFriend")]
-[assembly: AssemblyDescription("A simple and flexible module for sharing DNN websites. Brought to you by Ian Robinson of Engage Software.")]
+[assembly: AssemblyDescription("A simple and flexible module for sharing DNN websites. Brought to you by Engage Software.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("2009 Engage Software")]
+[assembly: AssemblyCopyright("2010 Engage Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
