@@ -42,7 +42,7 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Adds the a reference to jQuery 1.3.2.
+        /// Adds the a reference to jQuery 1.4.2.
         /// </summary>
         /// <param name="page">The page. Used to generate a key when registering the client script.</param>
         public static void AddJQueryReference(Page page)
@@ -51,7 +51,7 @@ namespace Engage.Dnn.TellAFriend
             const string JQueryRegistrationKey = "jQueryTAF";
             if (!page.ClientScript.IsClientScriptBlockRegistered(typeof(ModuleBase), JQueryRegistrationKey))
             {
-                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.3.2")));
+                string scriptReference = string.Format(CultureInfo.InvariantCulture, JavaScriptReferenceFormat, page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.4.2")));
                 page.Header.Controls.Add(new LiteralControl(scriptReference));
                 page.ClientScript.RegisterClientScriptBlock(typeof(ModuleBase), JQueryRegistrationKey, "jQuery(function($){$.noConflict();});", true);
             }
