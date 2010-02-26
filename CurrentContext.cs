@@ -11,6 +11,8 @@
 
 namespace Engage.Dnn.TellAFriend
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// Custom object to be serialized and made available in client code
     /// </summary>
@@ -27,7 +29,15 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalEmail">The portal administrator's email.</param>
         /// <param name="currentCulture">The current culture.</param>
         /// <param name="validationGroup">The validation group.</param>
-        public CurrentContext(string siteUrl, string localResourceFile, int portalId, string portalName, string webMethodUrl, string portalEmail, string currentCulture, string validationGroup)
+        public CurrentContext(
+                string siteUrl,
+                string localResourceFile,
+                int portalId,
+                string portalName,
+                string webMethodUrl,
+                string portalEmail,
+                string currentCulture,
+                string validationGroup)
         {
             this.siteUrl = siteUrl;
             this.localResourceFile = localResourceFile;
@@ -43,6 +53,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the site URL.
         /// </summary>
         /// <value>The site URL.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "site", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string siteUrl
         {
             get;
@@ -53,6 +65,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the local resource file.
         /// </summary>
         /// <value>The local resource file.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "local", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string localResourceFile
         {
             get;
@@ -63,6 +77,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the portal id.
         /// </summary>
         /// <value>The portal id.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public int portalId
         {
             get;
@@ -73,6 +89,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the name of the portal.
         /// </summary>
         /// <value>The name of the portal.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string portalName
         {
             get;
@@ -83,6 +101,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the portal email.
         /// </summary>
         /// <value>The email address of the portal administrator.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string portalEmail
         {
             get;
@@ -93,6 +113,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the web method URL.
         /// </summary>
         /// <value>The web method URL.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "web", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string webMethodUrl
         {
             get;
@@ -103,6 +125,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the current culture.
         /// </summary>
         /// <value>The current culture.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "current", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string currentCulture
         {
             get;
@@ -113,6 +137,8 @@ namespace Engage.Dnn.TellAFriend
         /// Gets or sets the validation group.
         /// </summary>
         /// <value>The validation group.</value>
+        [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "validation", Justification = "Following JSON naming convention")]
+        [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
         public string validationGroup
         {
             get;

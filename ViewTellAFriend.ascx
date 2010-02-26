@@ -3,7 +3,7 @@
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
-<asp:Panel ID="TafWrap" runat="server" class="taf-wrap">
+<asp:Panel ID="ModuleWrap" runat="server" class="taf-wrap">
     <div id="ModalAnchorDiv" class="taf-anchor" runat="server">
         <a href="#" class="CommandButton"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
     </div>
@@ -55,7 +55,7 @@
 <script type="text/javascript">
     (function ($) {
         $(function () {
-            $('#<%=this.TafWrap.ClientID %>').engageTellAFriend(<%=this.TellAFriendOptions %>);
+            $('#<%=this.ModuleWrap.ClientID %>').engageTellAFriend(<%=this.TellAFriendOptions %>);
         });
     } (jQuery))
 </script>
