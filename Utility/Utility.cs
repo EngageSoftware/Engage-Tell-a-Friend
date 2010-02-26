@@ -133,7 +133,7 @@ namespace Engage.Dnn.TellAFriend
                 if (jqueryType != null)
                 {
                     // run the DNN 5.0 specific jQuery registration code
-                    jqueryType.InvokeMember("RequestRegistration", BindingFlags.Static, null, jqueryType, null, null);
+                    jqueryType.InvokeMember("RequestRegistration", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, jqueryType, null, null);
                 }
             }
         }
