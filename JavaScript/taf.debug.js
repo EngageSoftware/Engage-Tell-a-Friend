@@ -51,6 +51,7 @@
                             type: "POST",
                             url: opts.webMethodUrl,
                             data: JSON.stringify(tafData),
+                            dataType: "text",
                             contentType: "application/json; charset=utf-8",
                             dataFilter: function(data) {
                                 var msg = eval('(' + data + ')');
