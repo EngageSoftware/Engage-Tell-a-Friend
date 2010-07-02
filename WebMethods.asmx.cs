@@ -47,8 +47,8 @@ namespace Engage.Dnn.TellAFriend
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
 
-            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
-            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail);
+            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, true);
+            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, false);
 
             return Mail.SendMail(portalEmail, friendsEmail, string.Empty, subject, body, string.Empty, "HTML", string.Empty, string.Empty, string.Empty, string.Empty);
         }
@@ -63,18 +63,19 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="message">The message, replaces <c>[Engage:Message]</c>.</param>
         /// <param name="portalName">Name of the portal, replaces <c>[Engage:Portal]</c>.</param>
         /// <param name="senderEmail">The sender's email.</param>
+        /// <param name="encode">Specifies if the replaced tokens should be encoded.</param>
         /// <returns>
         /// The string with the given tokens replaced
         /// </returns>
-        private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail)
+        private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail, bool encode)
         {
             var textBuilder = new StringBuilder(tokenizedText);
-            textBuilder = textBuilder.Replace("[Engage:Recipient]", HttpUtility.HtmlEncode(friendName));
-            textBuilder = textBuilder.Replace("[Engage:Url]", HttpUtility.HtmlEncode(siteUrl));
-            textBuilder = textBuilder.Replace("[Engage:From]", HttpUtility.HtmlEncode(senderName));
-            textBuilder = textBuilder.Replace("[Engage:Message]", HttpUtility.HtmlEncode(message).Replace("\n", "<br />"));
-            textBuilder = textBuilder.Replace("[Engage:Portal]", HttpUtility.HtmlEncode(portalName));
-            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", HttpUtility.HtmlEncode(senderEmail));
+            textBuilder = textBuilder.Replace("[Engage:Recipient]", encode ? HttpUtility.HtmlEncode(friendName) : friendName);
+            textBuilder = textBuilder.Replace("[Engage:Url]", encode ? HttpUtility.HtmlEncode(siteUrl) : siteUrl);
+            textBuilder = textBuilder.Replace("[Engage:From]", encode ? HttpUtility.HtmlEncode(senderName) : senderName);
+            textBuilder = textBuilder.Replace("[Engage:Message]", encode ? HttpUtility.HtmlEncode(message).Replace("\n", "<br />") : message);
+            textBuilder = textBuilder.Replace("[Engage:Portal]", encode ? HttpUtility.HtmlEncode(portalName) : portalName);
+            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", encode ? HttpUtility.HtmlEncode(senderEmail) : senderEmail);
             return textBuilder.ToString();
         }
     }
