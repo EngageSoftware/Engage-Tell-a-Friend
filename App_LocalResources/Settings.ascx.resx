@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlindCarbonCopyInvalid.Text" xml:space="preserve">
+    <value>&lt;span class='error'&gt;Please enter a valid e-mail addresses.&lt;/span&gt;</value>
+  </data>
+  <data name="BlindCarbonCopyLabel.Help" xml:space="preserve">
+    <value>Enter email addresses to be used in the BCC (blind carbon copy) section of the email.  If you do not want to have any BCC recipients, leave this field blank.  You can enter multiple email addresses separated by commas.  BCC recipients will receive the email, but their email address will not be included for any recipients to see.</value>
+  </data>
+  <data name="BlindCarbonCopyLabel.Text" xml:space="preserve">
+    <value>BCC recipients:</value>
+  </data>
+  <data name="CarbonCopyInvalid.Text" xml:space="preserve">
+    <value>&lt;span class='error'&gt;Please enter valid e-mail addresses.&lt;/span&gt;</value>
+  </data>
+  <data name="CarbonCopyLabel.Help" xml:space="preserve">
+    <value>Enter email addresses to be used in the CC (carbon copy) section of the email.  If you do not want to have any CC recipeients, leave this field blank.  You can enter multiple email addresses separated by commas.  CC recipients will receive the email and their address will appear to all recipients.</value>
+  </data>
+  <data name="CarbonCopyLabel.Text" xml:space="preserve">
+    <value>CC recipients:</value>
+  </data>
   <data name="ControlTitle_settings.Text" xml:space="preserve">
     <value>Engage: Tell-A-Friend Settings</value>
   </data>

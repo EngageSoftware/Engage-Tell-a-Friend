@@ -44,7 +44,9 @@
                             senderEmail: $tafForm.find('input:eq(3)').val(),
                             message: $tafForm.find('textarea').val() || '',
                             portalEmail: opts.portalEmail,
-                            currentCulture: opts.currentCulture
+                            currentCulture: opts.currentCulture,
+                            tabId: opts.tabId,
+                            moduleId: opts.moduleId
                         };
 
                         $.ajax({

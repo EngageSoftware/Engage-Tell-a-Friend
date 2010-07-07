@@ -19,6 +19,7 @@ namespace Engage.Dnn.TellAFriend
     using System.Web.Services;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
+    using DotNetNuke.Entities.Modules;
 
     /// <summary>
     /// Web service method to handle client side calls
@@ -41,16 +42,24 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="message">The message.</param>
         /// <param name="portalEmail">The portal administrator's email.</param>
         /// <param name="currentCulture">The current culture.</param>
+        /// <param name="moduleId">The ID of the module from which this email is being sent.</param>
+        /// <param name="tabId">The ID of the tab from which this email is being sent.</param>
         /// <returns>The result of the SendEmail method.</returns>
         [WebMethod]
-        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, string currentCulture)
+        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, string currentCulture, int moduleId, int tabId)
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
+
+            var settingsControl = new Settings();
+            settingsControl.ModuleConfiguration = new ModuleController().GetModule(moduleId, tabId);
+
+            string carbonCopy = Utility.GetStringSetting(settingsControl.Settings, "CarbonCopy", string.Empty);
+            string blindCarbonCopy = Utility.GetStringSetting(settingsControl.Settings, "BlindCarbonCopy", string.Empty);
 
             string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, true);
             string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, false);
 
-            return Mail.SendMail(portalEmail, friendsEmail, string.Empty, subject, body, string.Empty, "HTML", string.Empty, string.Empty, string.Empty, string.Empty);
+            return Mail.SendMail(portalEmail, friendsEmail, carbonCopy, blindCarbonCopy, MailPriority.Normal, subject, MailFormat.Html, Encoding.UTF8, body, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
         }
 
         /// <summary>

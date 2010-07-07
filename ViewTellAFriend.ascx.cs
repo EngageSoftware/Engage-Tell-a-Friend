@@ -84,7 +84,9 @@ namespace Engage.Dnn.TellAFriend
                         this.ResolveUrl("~" + DesktopModuleFolderName + "WebMethods.asmx") + "/SendEmail",
                         this.PortalSettings.Email,
                         CultureInfo.CurrentCulture.ToString(),
-                        this.ValidationGroup);
+                        this.ValidationGroup,
+                        this.TabId,
+                        this.ModuleId);
 
                 return new JavaScriptSerializer().Serialize(options);
             }
@@ -133,6 +135,7 @@ namespace Engage.Dnn.TellAFriend
 #endif
 
                 this.AddCssFile();
+                this.SetEmailValidation();
                 this.SetValidationGroupOnChildControls();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
@@ -143,6 +146,15 @@ namespace Engage.Dnn.TellAFriend
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        /// <summary>
+        /// Sets the validator expression for email fields.
+        /// </summary>
+        private void SetEmailValidation()
+        {
+            this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
+            this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
         }
 
         /// <summary>

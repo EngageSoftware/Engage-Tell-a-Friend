@@ -37,6 +37,9 @@ namespace Engage.Dnn.TellAFriend
                     this.SiteUrlTextBox.Text = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
                     this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowMessage", true);
                     this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowModal", false);
+                    this.CarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "CarbonCopy", string.Empty);
+                    this.BlindCarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "BlindCarbonCopy", string.Empty);
+                    this.SetEmailValidation();
                 }
             }
             catch (Exception exc)
@@ -60,12 +63,23 @@ namespace Engage.Dnn.TellAFriend
                     modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
                     modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
                     modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                    modules.UpdateModuleSetting(this.ModuleId, "CarbonCopy", this.CarbonCopyTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "BlindCarbonCopy", this.BlindCarbonCopyTextBox.Text);
                 }
             }
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        /// <summary>
+        /// Sets the validator expression for email fields.
+        /// </summary>
+        private void SetEmailValidation()
+        {
+            this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
+            this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
         }
     }
 }

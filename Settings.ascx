@@ -14,4 +14,14 @@
         <dnn:help runat="server" ControlName="ShowModalCheckBox" CssClass="Normal" ResourceKey="ShowModalLabel" />
         <asp:CheckBox ID="ShowModalCheckBox" runat="server" />
     </div>
+    <div class="taf-cc">
+        <dnn:help runat="server" ControlName="CarbonCopyTextBox" CssClass="Normal" ResourceKey="CarbonCopyLabel" />
+        <asp:TextBox ID="CarbonCopyTextBox" runat="server" CssClass="NormalTextBox" Width="50%" />
+        <asp:RegularExpressionValidator ID="CarbonCopyValidator" runat="server" ControlToValidate="CarbonCopyTextBox" Display="Dynamic" ResourceKey="CarbonCopyInvalid" CssClass="NormalRed error-msg-last" />
+    </div>
+    <div class="taf-bcc">
+        <dnn:help runat="server" ControlName="BlindCarbonCopyTextBox" CssClass="Normal" ResourceKey="BlindCarbonCopyLabel" />
+        <asp:TextBox ID="BlindCarbonCopyTextBox" runat="server" CssClass="NormalTextBox" Width="50%" />
+        <asp:RegularExpressionValidator ID="BlindCarbonCopyValidator" runat="server" ControlToValidate="BlindCarbonCopyTextBox" Display="Dynamic" ResourceKey="BlindCarbonCopyInvalid" CssClass="NormalRed error-msg-last" />
+    </div>
 </div>
