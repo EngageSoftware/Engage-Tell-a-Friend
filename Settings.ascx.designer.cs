@@ -40,6 +40,24 @@ namespace Engage.Dnn.TellAFriend {
         protected global::System.Web.UI.WebControls.CheckBox ShowModalCheckBox;
         
         /// <summary>
+        /// FromTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FromTextBox;
+        
+        /// <summary>
+        /// FromValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator FromValidator;
+        
+        /// <summary>
         /// CarbonCopyTextBox control.
         /// </summary>
         /// <remarks>

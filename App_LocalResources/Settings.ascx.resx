@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BlindCarbonCopyInvalid.Text" xml:space="preserve">
-    <value>&lt;span class='error'&gt;Please enter a valid e-mail addresses.&lt;/span&gt;</value>
+    <value>&lt;span class='error'&gt;Please enter valid e-mail addresses.&lt;/span&gt;</value>
   </data>
   <data name="BlindCarbonCopyLabel.Help" xml:space="preserve">
     <value>Enter email addresses to be used in the BCC (blind carbon copy) section of the email.  If you do not want to have any BCC recipients, leave this field blank.  You can enter multiple email addresses separated by commas.  BCC recipients will receive the email, but their email address will not be included for any recipients to see.</value>
@@ -137,6 +137,15 @@
   </data>
   <data name="ControlTitle_settings.Text" xml:space="preserve">
     <value>Engage: Tell-A-Friend Settings</value>
+  </data>
+  <data name="FromInvalid.Text" xml:space="preserve">
+    <value>&lt;span class='error'&gt;Please enter a valid email address.&lt;/span&gt;</value>
+  </data>
+  <data name="FromLabel.Help" xml:space="preserve">
+    <value>Enter an email address to be used in the FROM field of the email.  If you do not specify an address in this field, Tell-A-Friend will default to the portal email address.</value>
+  </data>
+  <data name="FromLabel.Text" xml:space="preserve">
+    <value>Sender Email:</value>
   </data>
   <data name="ShowMessageLabel.Help" xml:space="preserve">
     <value>Optionally, you can choose to allow users to send a custom message to their friends. Check this box if you would like to allow the addition of custom messages to the Tell A Friend module.</value>

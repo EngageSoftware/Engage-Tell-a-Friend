@@ -14,6 +14,11 @@
         <dnn:help runat="server" ControlName="ShowModalCheckBox" CssClass="Normal" ResourceKey="ShowModalLabel" />
         <asp:CheckBox ID="ShowModalCheckBox" runat="server" />
     </div>
+    <div class="taf-from">
+        <dnn:help runat="server" ControlName="FromTextBox" CssClass="Normal" ResourceKey="FromLabel" />
+        <asp:TextBox ID="FromTextBox" runat="server" CssClass="NormalTextBox" Width="50%" />
+        <asp:RegularExpressionValidator ID="FromValidator" runat="server" ControlToValidate="FromTextBox" Display="Dynamic" ResourceKey="FromInvalid" CssClass="NormalRed error-msg-last" />
+    </div>
     <div class="taf-cc">
         <dnn:help runat="server" ControlName="CarbonCopyTextBox" CssClass="Normal" ResourceKey="CarbonCopyLabel" />
         <asp:TextBox ID="CarbonCopyTextBox" runat="server" CssClass="NormalTextBox" Width="50%" />

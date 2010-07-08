@@ -39,6 +39,7 @@ namespace Engage.Dnn.TellAFriend
                     this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowModal", false);
                     this.CarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "CarbonCopy", string.Empty);
                     this.BlindCarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "BlindCarbonCopy", string.Empty);
+                    this.FromTextBox.Text = Utility.GetStringSetting(this.Settings, "From", string.Empty);
                     this.SetEmailValidation();
                 }
             }
@@ -65,6 +66,7 @@ namespace Engage.Dnn.TellAFriend
                     modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
                     modules.UpdateModuleSetting(this.ModuleId, "CarbonCopy", this.CarbonCopyTextBox.Text);
                     modules.UpdateModuleSetting(this.ModuleId, "BlindCarbonCopy", this.BlindCarbonCopyTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "From", this.FromTextBox.Text);
                 }
             }
             catch (Exception exc)
@@ -80,6 +82,7 @@ namespace Engage.Dnn.TellAFriend
         {
             this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
             this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
+            this.FromValidator.ValidationExpression = FeaturesController.EmailRegEx;
         }
     }
 }
