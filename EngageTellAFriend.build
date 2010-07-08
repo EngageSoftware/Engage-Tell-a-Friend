@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project xmlns="http://nant.sf.net/release/0.86-beta1/nant.xsd" name="Engage: Tell A Friend" basedir="." default="package">
+<project xmlns="http://nant.sf.net/release/0.90/nant.xsd" name="Engage: Tell A Friend" basedir="." default="package">
   <property name="build" value="true" overwrite="false"/>
   <property name="bin.directory" value="..\..\bin" overwrite="false"/>
   <property name="project.config" value="release"/>
@@ -7,6 +7,7 @@
   <property name="solution.file" value="Engage${project.name}.sln"/>
   <property name="references.directory" value="References"/>
   <property name="project.dll" value="${bin.directory}\Engage${project.name}.dll"/>
+  <property name="nant.settings.currentframework" value="net-3.5" />
 
   <patternset id="content.fileset">
     <include name="**/*.ascx" />
@@ -45,6 +46,7 @@
       <arg value="${solution.file}" />
       <arg value="/p:Configuration=${project.config}" />
       <arg value="/p:Platform=&quot;Any CPU&quot;" />
+      <arg value="/noconsolelogger" />
     </exec>
   </target>
   <target name="get-version" depends="build" description="Sets the project.version property to the first three numbers from the version of the main assembly for this module">
