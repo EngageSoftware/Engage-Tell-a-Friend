@@ -12,6 +12,7 @@
 namespace Engage.Dnn.TellAFriend
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Web.Script.Serialization;
     using System.Web.UI;
@@ -200,13 +201,32 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The fully qualified current URL.</returns>
         private string GetCurrentUrl()
         {
-            string currentUrl = Globals.NavigateURL(this.TabId);
+            string currentUrl = Globals.NavigateURL(this.TabId, string.Empty, this.GetCurrentQueryString());
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
                 currentUrl = this.Request.Url.Scheme + Uri.SchemeDelimiter + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
             }
 
             return currentUrl;
+        }
+
+        /// <summary>
+        /// Gets the current query string.
+        /// </summary>
+        /// <returns>The full and current query string parameters.</returns>
+        private string[] GetCurrentQueryString()
+        {
+            int queryStringCount = this.Request.QueryString.Count;
+            var parameters = new List<string>(queryStringCount);
+            foreach (string key in this.Request.QueryString)
+            {
+                if (!key.Equals("TABID", StringComparison.OrdinalIgnoreCase))
+                {
+                    parameters.Add(key + "=" + this.Request.QueryString[key]);
+                }
+            }
+
+            return parameters.ToArray();
         }
     }
 }
