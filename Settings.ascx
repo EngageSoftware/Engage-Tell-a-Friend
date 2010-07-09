@@ -29,4 +29,17 @@
         <asp:TextBox ID="BlindCarbonCopyTextBox" runat="server" CssClass="NormalTextBox" Width="50%" />
         <asp:RegularExpressionValidator ID="BlindCarbonCopyValidator" runat="server" ControlToValidate="BlindCarbonCopyTextBox" Display="Dynamic" ResourceKey="BlindCarbonCopyInvalid" CssClass="NormalRed error-msg-last" />
     </div>
+    <div class="taf-subject">
+        <dnn:help runat="server" ControlName="SubjectTextBox" CssClass="Normal" ResourceKey="SubjectLabel" />
+        <asp:TextBox ID="SubjectTextBox" runat="server" CssClass="NormalTextBox" Width="50%"/>
+        <asp:RequiredFieldValidator ID="SubjectRequiredValidator" runat="server" ControlToValidate="SubjectTextBox" Display="Dynamic" ResourceKey="SubjectRequired" CssClass="NormalRed error-msg-rt"/>
+    </div>
+    <div class="taf-body">
+        <dnn:help runat="server" ControlName="BodyTextBox" CssClass="Normal" ResourceKey="BodyLabel" />
+        <asp:TextBox ID="BodyTextBox" runat="server" CssClass="NormalTextBox" TextMode="MultiLine" Rows="8" Columns="80"/>
+        <asp:RequiredFieldValidator ID="BodyRequiredValidator" runat="server" ControlToValidate="BodyTextBox" Display="Dynamic" ResourceKey="BodyRequired" CssClass="NormalRed error-msg-rt"/>
+    </div>
+    <div class="taf-restore">
+        <asp:Button ID="RestoreButton" runat="server" ResourceKey="RestoreButton" CausesValidation="false"/>
+    </div>
 </div>

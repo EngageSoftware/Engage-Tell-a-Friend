@@ -15,6 +15,7 @@ namespace Engage.Dnn.TellAFriend
     using System.Globalization;
     using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Exceptions;
+    using DotNetNuke.Services.Localization;
 
     /// -----------------------------------------------------------------------------
     /// <summary>
@@ -23,6 +24,8 @@ namespace Engage.Dnn.TellAFriend
     /// -----------------------------------------------------------------------------
     public partial class Settings : ModuleSettingsBase
     {
+        private const string LocalResourcesFile = "~/DesktopModules/EngageTellAFriend/App_LocalResources/ViewTellAFriend.ascx.resx";
+
         /// -----------------------------------------------------------------------------
         /// <summary>
         /// LoadSettings loads the settings from the Database and displays them
@@ -40,9 +43,12 @@ namespace Engage.Dnn.TellAFriend
                     this.CarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "CarbonCopy", string.Empty);
                     this.BlindCarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "BlindCarbonCopy", string.Empty);
                     this.FromTextBox.Text = Utility.GetStringSetting(this.Settings, "From", string.Empty);
+                    this.SubjectTextBox.Text = Utility.GetStringSetting(this.Settings, "Subject", string.Empty);
+                    this.BodyTextBox.Text = Utility.GetStringSetting(this.Settings, "Body", string.Empty);
+
                     this.SetEmailValidation();
                 }
-            }
+           } 
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
@@ -67,12 +73,25 @@ namespace Engage.Dnn.TellAFriend
                     modules.UpdateModuleSetting(this.ModuleId, "CarbonCopy", this.CarbonCopyTextBox.Text);
                     modules.UpdateModuleSetting(this.ModuleId, "BlindCarbonCopy", this.BlindCarbonCopyTextBox.Text);
                     modules.UpdateModuleSetting(this.ModuleId, "From", this.FromTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "Subject", this.SubjectTextBox.Text);
+                    modules.UpdateModuleSetting(this.ModuleId, "Body", this.BodyTextBox.Text);
                 }
             }
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        /// <summary>
+        /// Raises the <see cref="Control.Init"/> event.
+        /// </summary>
+        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+
+            this.RestoreButton.Click += this.RestoreButton_Click;
         }
 
         /// <summary>
@@ -83,6 +102,17 @@ namespace Engage.Dnn.TellAFriend
             this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
             this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
             this.FromValidator.ValidationExpression = FeaturesController.EmailRegEx;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the RestoreButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        protected void RestoreButton_Click(object sender, EventArgs e)
+        {
+            this.SubjectTextBox.Text = Localization.GetString("EmailAFriendSubject", LocalResourcesFile);
+            this.BodyTextBox.Text = Localization.GetString("EmailAFriend", LocalResourcesFile);
         }
     }
 }

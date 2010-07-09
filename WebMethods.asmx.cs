@@ -50,17 +50,27 @@ namespace Engage.Dnn.TellAFriend
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
 
-            var settingsControl = new Settings();
-            settingsControl.ModuleConfiguration = new ModuleController().GetModule(moduleId, tabId);
+            using (var settingsControl = new Settings())
+            {
+                settingsControl.ModuleConfiguration = new ModuleController().GetModule(moduleId, tabId);
 
-            string from = Utility.GetStringSetting(settingsControl.Settings, "From", portalEmail);
-            string carbonCopy = Utility.GetStringSetting(settingsControl.Settings, "CarbonCopy", string.Empty);
-            string blindCarbonCopy = Utility.GetStringSetting(settingsControl.Settings, "BlindCarbonCopy", string.Empty);
+                string from = Utility.GetStringSetting(settingsControl.Settings, "From", string.Empty);
+                string carbonCopy = Utility.GetStringSetting(settingsControl.Settings, "CarbonCopy", string.Empty);
+                string blindCarbonCopy = Utility.GetStringSetting(settingsControl.Settings, "BlindCarbonCopy", string.Empty);
 
-            string body = ReplaceTokens(Localization.GetString("EmailAFriend", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, true);
-            string subject = ReplaceTokens(Localization.GetString("EmailAFriendSubject", localResourceFile), friendName, siteUrl, senderName, message, portalName, senderEmail, false);
+                string body = Utility.GetStringSetting(settingsControl.Settings, "Body", Localization.GetString("EmailAFriend", localResourceFile));
+                string subject = Utility.GetStringSetting(settingsControl.Settings, "Subject", Localization.GetString("EmailAFriendSubject", localResourceFile));
 
-            return Mail.SendMail(from, friendsEmail, carbonCopy, blindCarbonCopy, MailPriority.Normal, subject, MailFormat.Html, Encoding.UTF8, body, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+                if (string.IsNullOrEmpty(from))
+                {
+                    from = portalEmail;
+                }
+
+                body = ReplaceTokens(body, friendName, siteUrl, senderName, message, portalName, senderEmail, true);
+                subject = ReplaceTokens(subject, friendName, siteUrl, senderName, message, portalName, senderEmail, false);
+
+                return Mail.SendMail(from, friendsEmail, carbonCopy, blindCarbonCopy, MailPriority.Normal, subject, MailFormat.Html, Encoding.UTF8, body, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+            }
         }
 
         /// <summary>
