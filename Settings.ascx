@@ -1,5 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="false" Inherits="Engage.Dnn.TellAFriend.Settings" Codebehind="Settings.ascx.cs" %>
 <%@ Register TagName="help" TagPrefix="dnn" Src="~/controls/labelcontrol.ascx" %>
+<%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
 <div class="taf-settings">
     <div class="taf-siteurl">
@@ -42,4 +43,22 @@
     <div class="taf-restore">
         <asp:Button ID="RestoreButton" runat="server" ResourceKey="RestoreButton" CausesValidation="false"/>
     </div>
+    <br />
+    <div class="taf-help">
+        <a id="TokenLink" href="#" class="CommandButton"><%= Localization.GetString("TokenReferenceLink.Text", LocalResourceFile) %></a>
+        <div id="TokenList" class="taf-tokens" style="display: none; border: 1px solid #000;">
+            <%= Localization.GetString("TokenReference.Text", LocalResourceFile) %>
+        </div>
+    </div>
 </div>
+
+<script type="text/javascript">
+    (function ($) {
+        $(function () {
+            $('#TokenLink').click(function (event) {
+                event.preventDefault();
+                $('#TokenList').slideToggle();
+            });
+        });
+    } (jQuery))
+</script>

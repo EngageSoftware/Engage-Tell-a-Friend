@@ -186,4 +186,23 @@
   <data name="SubjectRequired.Text" xml:space="preserve">
     <value>Subject is required.</value>
   </data>
+  <data name="TokenReference.Text" xml:space="preserve">
+    <value>&lt;dl&gt;
+	&lt;dt&gt;[Engage:Recipient]&lt;/dt&gt;
+		&lt;dd&gt;The recipient's name.&lt;/dd&gt;
+	&lt;dt&gt;[Engage:Url]&lt;/dt&gt;
+		&lt;dd&gt;The URL to be shared.&lt;/dd&gt;
+	&lt;dt&gt;[Engage:From]&lt;/dt&gt;
+		&lt;dd&gt;The sender's name.&lt;/dd&gt;
+	&lt;dt&gt;[Engage:Message]&lt;/dt&gt;
+		&lt;dd&gt;The (optional) message from the sender.&lt;/dd&gt;
+	&lt;dt&gt;[Engage:Portal]&lt;/dt&gt;
+		&lt;dd&gt;The current portal name.&lt;/dd&gt;
+	&lt;dt&gt;[Engage:SenderEmail]&lt;/dt&gt;
+		&lt;dd&gt;The email address of the sender.&lt;/dd&gt;
+&lt;/dl&gt;</value>
+  </data>
+  <data name="TokenReferenceLink.Text" xml:space="preserve">
+    <value>Show/Hide Token Reference</value>
+  </data>
 </root>

@@ -13,6 +13,7 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Globalization;
+    using System.Web.UI;
     using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Exceptions;
     using DotNetNuke.Services.Localization;
@@ -91,6 +92,7 @@ namespace Engage.Dnn.TellAFriend
         {
             base.OnInit(e);
 
+            Utility.AddJQueryReference(this.Page);
             this.RestoreButton.Click += this.RestoreButton_Click;
         }
 
