@@ -137,6 +137,7 @@
     <None Include="Migrated rules for EngageTellAFriend.ruleset" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ReleaseNotes_1.2.0.htm" />
     <Content Include="References\System.Web.Extensions.dll" />
     <Content Include="TellAFriend.css" />
     <Content Include="Settings.ascx" />
