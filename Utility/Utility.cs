@@ -13,6 +13,7 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Collections;
+    using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Web.UI;
     using System.Web.UI.HtmlControls;
@@ -40,6 +41,11 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="scriptName">Name of the script (without file extension).</param>
         public static void AddJavaScriptResource(Page page, string scriptName)
         {
+            if (page == null)
+            {
+                throw new ArgumentNullException("page", "page is required not to be null");
+            }
+            
             page.ClientScript.RegisterClientScriptResource(typeof(ModuleBase), GetJavaScriptResourceName(scriptName));
         }
 
@@ -61,11 +67,21 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The given setting as a <see cref="bool"/>, or <paramref name="defaultValue"/> if the setting hasn't been set.</returns>
         public static bool GetBooleanSetting(IDictionary settings, string settingName, bool? defaultValue)
         {
+            if (settings == null)
+            {
+                throw new ArgumentNullException("settings", "settings dictionary must not be null");
+            }
+
+            if (settingName == null)
+            {
+                throw new ArgumentNullException("settingName", "setting name must not be null");
+            }
+
             object o = settings[settingName];
             if (o != null)
             {
                 bool value;
-                if (Boolean.TryParse(o.ToString(), out value))
+                if (bool.TryParse(o.ToString(), out value))
                 {
                     return value;
                 }
@@ -97,6 +113,7 @@ namespace Engage.Dnn.TellAFriend
         /// <remarks>Based on http://www.ifinity.com.au/Blog/EntryId/75/Include-jQuery-in-a-DotNetNuke-Module-with-version-independent-code</remarks>
         /// <param name="page">Page object from calling page/control</param>
         /// <param name="includeNoConflict">if <c>true</c>, includes the uncompressed libraries</param>
+        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Page's Controls collection is responsible for disposing")]
         private static void InjectJQueryLibrary(Page page, bool includeNoConflict)
         {
             int major, minor, build, revision;
@@ -114,7 +131,7 @@ namespace Engage.Dnn.TellAFriend
                     jqueryReference.Attributes.Add("type", "text/javascript");
                     jqueryReference.ID = "jquery";
                     page.Header.Controls.Add(jqueryReference);
-
+                    
                     if (includeNoConflict)
                     {
                         // use the noConflict (stops use of $) due to the use of prototype 

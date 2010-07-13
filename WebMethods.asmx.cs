@@ -17,9 +17,9 @@ namespace Engage.Dnn.TellAFriend
     using System.Web;
     using System.Web.Script.Services;
     using System.Web.Services;
+    using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
-    using DotNetNuke.Entities.Modules;
 
     /// <summary>
     /// Web service method to handle client side calls

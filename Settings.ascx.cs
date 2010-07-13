@@ -25,6 +25,9 @@ namespace Engage.Dnn.TellAFriend
     /// -----------------------------------------------------------------------------
     public partial class Settings : ModuleSettingsBase
     {
+        /// <summary>
+        /// The local resources file for ViewTellAFriend so we can get the default email subject and body
+        /// </summary>
         private const string LocalResourcesFile = "~/DesktopModules/EngageTellAFriend/App_LocalResources/ViewTellAFriend.ascx.resx";
 
         /// -----------------------------------------------------------------------------
@@ -97,16 +100,6 @@ namespace Engage.Dnn.TellAFriend
         }
 
         /// <summary>
-        /// Sets the validator expression for email fields.
-        /// </summary>
-        private void SetEmailValidation()
-        {
-            this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
-            this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
-            this.FromValidator.ValidationExpression = FeaturesController.EmailRegEx;
-        }
-
-        /// <summary>
         /// Handles the Click event of the RestoreButton control.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
@@ -115,6 +108,16 @@ namespace Engage.Dnn.TellAFriend
         {
             this.SubjectTextBox.Text = Localization.GetString("EmailAFriendSubject", LocalResourcesFile);
             this.BodyTextBox.Text = Localization.GetString("EmailAFriend", LocalResourcesFile);
+        }
+
+        /// <summary>
+        /// Sets the validator expression for email fields.
+        /// </summary>
+        private void SetEmailValidation()
+        {
+            this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
+            this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
+            this.FromValidator.ValidationExpression = FeaturesController.EmailRegEx;
         }
     }
 }

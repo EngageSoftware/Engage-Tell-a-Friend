@@ -30,6 +30,8 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalEmail">The portal administrator's email.</param>
         /// <param name="currentCulture">The current culture.</param>
         /// <param name="validationGroup">The validation group.</param>
+        /// <param name="tabId">The tab ID.</param>
+        /// <param name="moduleId">The module ID.</param>
         public CurrentContext(
                 string siteUrl,
                 string localResourceFile,
