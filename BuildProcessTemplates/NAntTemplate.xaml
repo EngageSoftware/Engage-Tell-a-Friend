@@ -30,10 +30,10 @@
   </this:Process.GetVersion>
   <this:Process.Metadata>
     <mtbw:ProcessParameterMetadataCollection>
-      <mtbw:ProcessParameterMetadata Category="NAnt Integration" Description="The name of the directory, relative to the project's Sources root, in which your NAnt build file lives.  Can be empty if the build file lives at the root of the team project." DisplayName="NAnt Directory" ParameterName="NAntDirectory" Required="True" />
+      <mtbw:ProcessParameterMetadata Category="NAnt Integration" Description="The name of the directory, relative to the project's Sources root, in which your NAnt build file lives.  Can be empty if the build file lives at the root of the team project." DisplayName="NAnt Directory" ParameterName="NAntDirectory" />
     </mtbw:ProcessParameterMetadataCollection>
   </this:Process.Metadata>
-  <sap:VirtualizedContainerService.HintSize>588,1913</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>502,1070</sap:VirtualizedContainerService.HintSize>
   <mva:VisualBasic.Settings>Assembly references and imported namespaces serialized as XML namespaces</mva:VisualBasic.Settings>
   <sap:WorkflowViewStateService.ViewState>
     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -41,7 +41,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sad:XamlDebuggerXmlReader.FileName="C:\Users\bdukes\Documents\Visual Studio 2010\Projects\TFS\Login\NAntTemplate.xaml" sap:VirtualizedContainerService.HintSize="548,1873" mtbwt:BuildTrackingParticipant.Importance="None" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+  <Sequence sad:XamlDebuggerXmlReader.FileName="C:\inetpub\wwwroot\DotNetNuke\Website\DesktopModules\EngageTellAFriend\BuildProcessTemplates\NAntTemplate.xaml" sap:VirtualizedContainerService.HintSize="462,1030" mtbwt:BuildTrackingParticipant.Importance="None" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
     <Sequence.Variables>
       <Variable x:TypeArguments="mtbc:IBuildDetail" Name="BuildDetail" />
     </Sequence.Variables>
@@ -50,8 +50,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <mtbwa:GetBuildDetail DisplayName="Get the Build" sap:VirtualizedContainerService.HintSize="526,22" mtbwt:BuildTrackingParticipant.Importance="Low" Result="[BuildDetail]" />
-    <Sequence DisplayName="Update Drop Location" sap:VirtualizedContainerService.HintSize="526,51" mtbwt:BuildTrackingParticipant.Importance="Low">
+    <mtbwa:GetBuildDetail DisplayName="Get the Build" sap:VirtualizedContainerService.HintSize="440,22" mtbwt:BuildTrackingParticipant.Importance="Low" Result="[BuildDetail]" />
+    <Sequence DisplayName="Update Drop Location" sap:VirtualizedContainerService.HintSize="440,51" mtbwt:BuildTrackingParticipant.Importance="Low">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -112,7 +112,7 @@
         </If.Then>
       </If>
     </Sequence>
-    <mtbwa:AgentScope DisplayName="Run On Agent" sap:VirtualizedContainerService.HintSize="526,1505" MaxExecutionTime="[AgentSettings.MaxExecutionTime]" MaxWaitTime="[AgentSettings.MaxWaitTime]" ReservationSpec="[AgentSettings.GetAgentReservationSpec()]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+    <mtbwa:AgentScope DisplayName="Run On Agent" sap:VirtualizedContainerService.HintSize="440,662" MaxExecutionTime="[AgentSettings.MaxExecutionTime]" MaxWaitTime="[AgentSettings.MaxWaitTime]" ReservationSpec="[AgentSettings.GetAgentReservationSpec()]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
       <mtbwa:AgentScope.Variables>
         <Variable x:TypeArguments="mtbc:IBuildAgent" Name="BuildAgent" />
         <Variable x:TypeArguments="mtvc1:Workspace" Name="Workspace" />
@@ -128,7 +128,7 @@
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence DisplayName="Initialize Variables" sap:VirtualizedContainerService.HintSize="504,51" mtbwt:BuildTrackingParticipant.Importance="Low">
+      <Sequence DisplayName="Initialize Variables" sap:VirtualizedContainerService.HintSize="418,51" mtbwt:BuildTrackingParticipant.Importance="Low">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -159,7 +159,7 @@
           </If.Then>
         </If>
       </Sequence>
-      <Sequence DisplayName="Initialize Workspace" sap:VirtualizedContainerService.HintSize="504,51" mtbwt:BuildTrackingParticipant.Importance="Low">
+      <Sequence DisplayName="Initialize Workspace" sap:VirtualizedContainerService.HintSize="418,51" mtbwt:BuildTrackingParticipant.Importance="Low">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -232,7 +232,7 @@
         </If>
         <mtbwa:SyncWorkspace DisplayName="Get Workspace" sap:VirtualizedContainerService.HintSize="818,22" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" VersionOverride="[GetVersion]" Workspace="[Workspace]" />
       </Sequence>
-      <If Condition="[CreateLabel]" DisplayName="If CreateLabel" sap:VirtualizedContainerService.HintSize="504,51" mtbwt:BuildTrackingParticipant.Importance="Low">
+      <If Condition="[CreateLabel]" DisplayName="If CreateLabel" sap:VirtualizedContainerService.HintSize="418,51" mtbwt:BuildTrackingParticipant.Importance="Low">
         <If.Then>
           <mtbwa:InvokeForReason DisplayName="Create and Set Label for non-Shelveset Builds" sap:VirtualizedContainerService.HintSize="281,208" Reason="Manual, IndividualCI, BatchedCI, Schedule, ScheduleForced, UserCreated">
             <mtbwa:LabelWorkspace Comment="[&quot;Label Created by Team Build&quot;]" DisplayName="Create Label" sap:VirtualizedContainerService.HintSize="200,22" Name="[LabelName]" Scope="[String.Format(&quot;$/{0}&quot;, BuildDetail.BuildDefinition.TeamProject)]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" Workspace="[Workspace]" />
@@ -240,7 +240,7 @@
           </mtbwa:InvokeForReason>
         </If.Then>
       </If>
-      <TryCatch DisplayName="Try Compile, Test, and Associate Changesets and Work Items" sap:VirtualizedContainerService.HintSize="504,1108" mtbwt:BuildTrackingParticipant.Importance="Low">
+      <TryCatch DisplayName="Try Compile, Test, and Associate Changesets and Work Items" sap:VirtualizedContainerService.HintSize="418,265" mtbwt:BuildTrackingParticipant.Importance="Low">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -723,7 +723,7 @@
         </TryCatch.Try>
       </TryCatch>
     </mtbwa:AgentScope>
-    <mtbwa:InvokeForReason DisplayName="Check In Gated Changes for CheckInShelveset Builds" sap:VirtualizedContainerService.HintSize="526,51" Reason="CheckInShelveset">
+    <mtbwa:InvokeForReason DisplayName="Check In Gated Changes for CheckInShelveset Builds" sap:VirtualizedContainerService.HintSize="440,51" Reason="CheckInShelveset">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
