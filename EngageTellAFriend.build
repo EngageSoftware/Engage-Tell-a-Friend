@@ -7,7 +7,6 @@
   <property name="solution.file" value="Engage${project.name}.sln"/>
   <property name="references.directory" value="References"/>
   <property name="project.dll" value="${bin.directory}\Engage${project.name}.dll"/>
-  <property name="nant.settings.currentframework" value="net-3.5" />
 
   <patternset id="content.fileset">
     <include name="**/*.ascx" />
