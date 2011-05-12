@@ -2,7 +2,10 @@
 /// <reference path="jquery-1.4.1.debug-vsdoc.js"/>
 /// <reference path="jquery.simplemodal.debug.js"/>
 
-(function ($) {
+/*global jQuery */
+
+(function ($, window) {
+    "use strict";
     $.fn.engageTellAFriend = function (options) {
         var opts = $.extend({}, $.fn.engageTellAFriend.defaults, options),
             $tafWrap = $(this);
@@ -19,17 +22,18 @@
             }
         }
         
-        $(function() {
-            $tafWrap.find('.taf-submit a').click(function(event) {
+        $(function () {
+            $tafWrap.find('.taf-submit a').click(function (event) {
                 var $tafFormWrap = $(this).closest('.taf-form-wrap'),
                     validationResult,
                     tafData,
-                    $tafForm;
+                    $tafForm,
+                    page_ClientValidate = window.Page_ClientValidate;
                 
                 event.preventDefault();
                 
-                if ($.isFunction(Page_ClientValidate)) {
-                    validationResult = Page_ClientValidate(opts.validationGroup);
+                if ($.isFunction(page_ClientValidate)) {
+                    validationResult = page_ClientValidate(opts.validationGroup);
                     if (validationResult) {
                         $tafFormWrap.find(".taf-progress-icon").show();
                         
@@ -55,8 +59,8 @@
                             data: JSON.stringify(tafData),
                             dataType: "text",
                             contentType: "application/json; charset=utf-8",
-                            dataFilter: function(data) {
-                                var msg = eval('(' + data + ')');
+                            dataFilter: function (data) {
+                                var msg = JSON.parse(data);
                                 if (msg.hasOwnProperty('d')) {
                                     return msg.d;
                                 }
@@ -64,14 +68,18 @@
                                     return msg;
                                 }
                             },
-                            success: function(msg) { taf_displayMessage($tafFormWrap, msg === ''); },
-                            error: function(XMLHttpRequest, textStatus, errorThrown) { taf_displayMessage($tafFormWrap, false); }
+                            success: function (msg) { 
+                                taf_displayMessage($tafFormWrap, msg === ''); 
+                            },
+                            error: function (/*XMLHttpRequest, textStatus, errorThrown*/) { 
+                                taf_displayMessage($tafFormWrap, false); 
+                            }
                         });
                     }
                 }
             });
             
-            $tafWrap.find('.taf-anchor a').click(function(event) {
+            $tafWrap.find('.taf-anchor a').click(function (event) {
                 event.preventDefault();
                 $(this).closest('.taf-wrap').find('.taf-form-wrap').modal({ persist: true });
             });
@@ -88,5 +96,4 @@
         currentCulture: 'en-US',
         validationGroup: 'EngageTellAFriend'
     };
-
-} (jQuery))
+} (jQuery, this));
