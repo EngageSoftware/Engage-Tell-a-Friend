@@ -1,6 +1,6 @@
 // <copyright file="ViewTellAFriend.ascx.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2010
+// Engage: TellAFriend
+// Copyright (c) 2004-2011
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -14,6 +14,7 @@ namespace Engage.Dnn.TellAFriend
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Web;
     using System.Web.Script.Serialization;
     using System.Web.UI;
     using DotNetNuke.Common;
@@ -201,6 +202,11 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The fully qualified current URL.</returns>
         private string GetCurrentUrl()
         {
+            if (HttpContext.Current != null && HttpContext.Current.Items.Contains("UrlRewrite:OriginalUrl"))
+            {
+                return (string)HttpContext.Current.Items["UrlRewrite:OriginalUrl"];
+            }
+
             string currentUrl = Globals.NavigateURL(this.TabId, string.Empty, this.GetCurrentQueryString());
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
@@ -216,13 +222,18 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The full and current query string parameters.</returns>
         private string[] GetCurrentQueryString()
         {
-            int queryStringCount = this.Request.QueryString.Count;
-            var parameters = new List<string>(queryStringCount);
-            foreach (string key in this.Request.QueryString)
+            var parameters = new List<string>(this.Request.QueryString.Count);
+            foreach (var key in this.Request.QueryString.AllKeys)
             {
-                if (!key.Equals("TABID", StringComparison.OrdinalIgnoreCase))
+                if (string.Equals(key, "TABID", StringComparison.OrdinalIgnoreCase) || string.Equals(key, "LANGUAGE", StringComparison.OrdinalIgnoreCase))
                 {
-                    parameters.Add(key + "=" + this.Request.QueryString[key]);
+                    continue;
+                }
+
+                var values = this.Request.QueryString[key].Split(',');
+                foreach (var value in values)
+                {
+                    parameters.Add(key == null ? value + '=' : key + '=' + value);
                 }
             }
 
