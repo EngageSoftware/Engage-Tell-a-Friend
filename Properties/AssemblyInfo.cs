@@ -1,6 +1,6 @@
 // <copyright file="AssemblyInfo.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2010
+// Engage: TellAFriend
+// Copyright (c) 2004-2011
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -19,12 +19,12 @@ using System.Web.UI;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("2010 Engage Software")]
+[assembly: AssemblyCopyright("2011 Engage Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(true)]
-[assembly: AssemblyVersion("01.02.00.*")]
+[assembly: AssemblyVersion("01.02.01.*")]
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("")]
 [assembly: AssemblyKeyName("")]
