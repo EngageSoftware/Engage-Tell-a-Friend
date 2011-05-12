@@ -43,7 +43,7 @@ namespace Engage.Dnn.TellAFriend
         {
             if (page == null)
             {
-                throw new ArgumentNullException("page", "page is required not to be null");
+                throw new ArgumentNullException("page");
             }
             
             page.ClientScript.RegisterClientScriptResource(typeof(ModuleBase), GetJavaScriptResourceName(scriptName));
@@ -69,12 +69,12 @@ namespace Engage.Dnn.TellAFriend
         {
             if (settings == null)
             {
-                throw new ArgumentNullException("settings", "settings dictionary must not be null");
+                throw new ArgumentNullException("settings");
             }
 
             if (settingName == null)
             {
-                throw new ArgumentNullException("settingName", "setting name must not be null");
+                throw new ArgumentNullException("settingName");
             }
 
             object o = settings[settingName];
