@@ -18,7 +18,7 @@
             }
             else {
                 $tafFormWrap.find(".taf-error").show();
-                $tafFormWrap.find(".taf-success").hide(); 
+                $tafFormWrap.find(".taf-success").hide();
             }
         }
         
@@ -68,11 +68,11 @@
                                     return msg;
                                 }
                             },
-                            success: function (msg) { 
-                                taf_displayMessage($tafFormWrap, msg === ''); 
+                            success: function (msg) {
+                                taf_displayMessage($tafFormWrap, msg === '');
                             },
-                            error: function (/*XMLHttpRequest, textStatus, errorThrown*/) { 
-                                taf_displayMessage($tafFormWrap, false); 
+                            error: function (/*XMLHttpRequest, textStatus, errorThrown*/) {
+                                taf_displayMessage($tafFormWrap, false);
                             }
                         });
                     }
