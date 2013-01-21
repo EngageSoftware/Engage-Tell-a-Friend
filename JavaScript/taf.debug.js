@@ -70,6 +70,9 @@
                             },
                             success: function (msg) {
                                 taf_displayMessage($tafFormWrap, msg === '');
+                                $tafForm.find('input:eq(0)').val('');
+                                $tafForm.find('input:eq(1)').val('');
+                                $tafForm.find('textarea').val('');
                             },
                             error: function (/*XMLHttpRequest, textStatus, errorThrown*/) {
                                 taf_displayMessage($tafFormWrap, false);
