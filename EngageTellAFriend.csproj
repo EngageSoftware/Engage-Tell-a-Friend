@@ -139,6 +139,7 @@
     <None Include="Migrated rules for EngageTellAFriend.ruleset" />
   </ItemGroup>
   <ItemGroup>
+    <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="ReleaseNotes_1.2.1.htm" />
     <Content Include="ReleaseNotes_1.2.0.htm" />
     <Content Include="References\System.Web.Extensions.dll" />

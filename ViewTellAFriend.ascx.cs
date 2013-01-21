@@ -113,9 +113,9 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void LoadSettings()
         {
-            this.ShowInModal = Utility.GetBooleanSetting(Settings, "ShowModal", this.ShowInModal);
-            this.Url = Utility.GetStringSetting(Settings, "SiteUrl", this.Url);
-            this.ShowMessage = Utility.GetBooleanSetting(Settings, "ShowMessage", this.ShowMessage);
+            this.ShowInModal = Utility.GetBooleanSetting(this.Settings, "ShowModal", this.ShowInModal);
+            this.Url = Utility.GetStringSetting(this.Settings, "SiteUrl", this.Url);
+            this.ShowMessage = Utility.GetBooleanSetting(this.Settings, "ShowMessage", this.ShowMessage);
         }
 
         /// <summary>

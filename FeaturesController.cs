@@ -28,133 +28,133 @@ namespace Engage.Dnn.TellAFriend
         /// <para>Basic Explanation: Any valid characters, @ symbol, any valid characters, . (period), then either two letters or one of the other 25 top-level-domains</para>
         /// <para>
         ///  Beginning of line or string
-        ///  Any character in this class: [a-zA-Z0-9._%\-+'], one or more repetitions
-        ///  @
-        ///  Match expression but don't capture it. [[a-zA-Z0-9\-]+\.], one or more repetitions
-        ///      [a-zA-Z0-9\-]+\.
-        ///          Any character in this class: [a-zA-Z0-9\-], one or more repetitions
-        ///          Literal .
-        ///  Match expression but don't capture it. [[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]]
+        ///  Any character in this class: <c>[a-zA-Z0-9._%\-+']</c>, one or more repetitions
+        ///  <c>@</c>
+        ///  Match expression but don't capture it. <c>[a-zA-Z0-9\-]+\.</c>, one or more repetitions
+        ///      <c>[a-zA-Z0-9\-]+\.</c>
+        ///          Any character in this class: <c>[a-zA-Z0-9\-]</c>, one or more repetitions
+        ///          Literal <c>.</c>
+        ///  Match expression but don't capture it. <c>[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]</c>
         ///      Select from 26 alternatives
-        ///          Any character in this class: [a-zA-Z], exactly 2 repetitions
-        ///          [Aa][Ee][Rr][Oo]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///          [Aa][Rr][Pp][Aa]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Aa]
-        ///          [Aa][Ss][Ii][Aa]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Aa]
-        ///          [Bb][Ii][Zz]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Zz]
-        ///          [Cc][Aa][Tt]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Tt]
-        ///          [Cc][Oo][Mm]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Mm]
-        ///          [Cc][Oo][Oo][Pp]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Pp]
-        ///          [Ee][dD][Uu]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [dD]
-        ///              Any character in this class: [Uu]
-        ///          [Gg][Oo][Vv]
-        ///              Any character in this class: [Gg]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Vv]
-        ///          [Ii][Nn][Ff][Oo]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Ff]
-        ///              Any character in this class: [Oo]
-        ///          [Ii][Nn][Tt]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Tt]
-        ///          [Jj][Oo][Bb][Ss]
-        ///              Any character in this class: [Jj]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ss]
-        ///          [Mm][Mm][Ii][Ll]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Ll]
-        ///          [Mm][Mm][Oo][Bb][Ii]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ii]
-        ///          [Mm][Uu][Ss][Ee][Uu][Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Uu]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Uu]
-        ///              Any character in this class: [Mm]
-        ///          [Nn][Aa][Mm][Ee]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Ee]
-        ///          [Nn][Ee][Tt]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Tt]
-        ///          [Oo][Rr][Gg]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Gg]
-        ///          [Pp][Rr][Oo]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///          [Rr][Oo][Oo][Tt]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Tt]
-        ///          [Tt][Ee][Ll]
-        ///              Any character in this class: [Tt]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Ll]
-        ///          [Tt][Rr][Aa][Vv][Ee][Ll]
-        ///              Any character in this class: [Tt]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Vv]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Ll]
-        ///          [Cc][Yy][Mm]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Yy]
-        ///              Any character in this class: [Mm]
-        ///          [Gg][Ee][Oo]
-        ///              Any character in this class: [Gg]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Oo]
-        ///          [Pp][Oo][Ss][Tt]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Tt]
+        ///          Any character in this class: <c>[a-zA-Z]</c>, exactly 2 repetitions
+        ///          <c>[Aa][Ee][Rr][Oo]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Aa][Rr][Pp][Aa]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///          <c>[Aa][Ss][Ii][Aa]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///          <c>[Bb][Ii][Zz]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Zz]</c>
+        ///          <c>[Cc][Aa][Tt]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Cc][Oo][Mm]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Cc][Oo][Oo][Pp]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///          <c>[Ee][dD][Uu]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[dD]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///          <c>[Gg][Oo][Vv]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Vv]</c>
+        ///          <c>[Ii][Nn][Ff][Oo]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Ff]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Ii][Nn][Tt]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Jj][Oo][Bb][Ss]</c>
+        ///              Any character in this class: <c>[Jj]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///          <c>[Mm][Mm][Ii][Ll]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Mm][Mm][Oo][Bb][Ii]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///          <c>[Mm][Uu][Ss][Ee][Uu][Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Nn][Aa][Mm][Ee]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///          <c>[Nn][Ee][Tt]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Oo][Rr][Gg]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///          <c>[Pp][Rr][Oo]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Rr][Oo][Oo][Tt]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Tt][Ee][Ll]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Tt][Rr][Aa][Vv][Ee][Ll]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Vv]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Cc][Yy][Mm]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Yy]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Gg][Ee][Oo]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Pp][Oo][Ss][Tt]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Tt]</c>
         ///  End of line or string</para>
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ex is not an acronym.")]
@@ -171,264 +171,264 @@ namespace Engage.Dnn.TellAFriend
         /// </para>
         /// <para>
         ///  Beginning of line or string
-        ///  Any character in this class: [a-zA-Z0-9._%\-+'], one or more repetitions
+        ///  Any character in this class: <c>[a-zA-Z0-9._%\-+']</c>, one or more repetitions
         ///  @
-        ///  Match expression but don't capture it. [[a-zA-Z0-9\-]+\.], one or more repetitions
-        ///      [a-zA-Z0-9\-]+\.
-        ///          Any character in this class: [a-zA-Z0-9\-], one or more repetitions
+        ///  Match expression but don't capture it. <c>[a-zA-Z0-9\-]+\.</c>, one or more repetitions
+        ///      <c>[a-zA-Z0-9\-]+\.</c>
+        ///          Any character in this class: <c>[a-zA-Z0-9\-]</c>, one or more repetitions
         ///          Literal .
-        ///  Match expression but don't capture it. [[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]]
+        ///  Match expression but don't capture it. <c>[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]</c>
         ///      Select from 26 alternatives
-        ///          Any character in this class: [a-zA-Z], exactly 2 repetitions
-        ///          [Aa][Ee][Rr][Oo]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///          [Aa][Rr][Pp][Aa]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Aa]
-        ///          [Aa][Ss][Ii][Aa]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Aa]
-        ///          [Bb][Ii][Zz]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Zz]
-        ///          [Cc][Aa][Tt]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Tt]
-        ///          [Cc][Oo][Mm]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Mm]
-        ///          [Cc][Oo][Oo][Pp]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Pp]
-        ///          [Ee][dD][Uu]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [dD]
-        ///              Any character in this class: [Uu]
-        ///          [Gg][Oo][Vv]
-        ///              Any character in this class: [Gg]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Vv]
-        ///          [Ii][Nn][Ff][Oo]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Ff]
-        ///              Any character in this class: [Oo]
-        ///          [Ii][Nn][Tt]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Tt]
-        ///          [Jj][Oo][Bb][Ss]
-        ///              Any character in this class: [Jj]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ss]
-        ///          [Mm][Mm][Ii][Ll]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Ii]
-        ///              Any character in this class: [Ll]
-        ///          [Mm][Mm][Oo][Bb][Ii]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Bb]
-        ///              Any character in this class: [Ii]
-        ///          [Mm][Uu][Ss][Ee][Uu][Mm]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Uu]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Uu]
-        ///              Any character in this class: [Mm]
-        ///          [Nn][Aa][Mm][Ee]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Mm]
-        ///              Any character in this class: [Ee]
-        ///          [Nn][Ee][Tt]
-        ///              Any character in this class: [Nn]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Tt]
-        ///          [Oo][Rr][Gg]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Gg]
-        ///          [Pp][Rr][Oo]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///          [Rr][Oo][Oo][Tt]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Tt]
-        ///          [Tt][Ee][Ll]
-        ///              Any character in this class: [Tt]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Ll]
-        ///          [Tt][Rr][Aa][Vv][Ee][Ll]
-        ///              Any character in this class: [Tt]
-        ///              Any character in this class: [Rr]
-        ///              Any character in this class: [Aa]
-        ///              Any character in this class: [Vv]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Ll]
-        ///          [Cc][Yy][Mm]
-        ///              Any character in this class: [Cc]
-        ///              Any character in this class: [Yy]
-        ///              Any character in this class: [Mm]
-        ///          [Gg][Ee][Oo]
-        ///              Any character in this class: [Gg]
-        ///              Any character in this class: [Ee]
-        ///              Any character in this class: [Oo]
-        ///          [Pp][Oo][Ss][Tt]
-        ///              Any character in this class: [Pp]
-        ///              Any character in this class: [Oo]
-        ///              Any character in this class: [Ss]
-        ///              Any character in this class: [Tt]
-        ///  Match expression but don't capture it. [,\s?[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])], any number of repetitions
-        ///      ,\s?[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])
-        ///          ,
+        ///          Any character in this class: <c>[a-zA-Z]</c>, exactly 2 repetitions
+        ///          <c>[Aa][Ee][Rr][Oo]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Aa][Rr][Pp][Aa]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///          <c>[Aa][Ss][Ii][Aa]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///          <c>[Bb][Ii][Zz]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Zz]</c>
+        ///          <c>[Cc][Aa][Tt]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Cc][Oo][Mm]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Cc][Oo][Oo][Pp]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///          <c>[Ee][dD][Uu]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[dD]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///          <c>[Gg][Oo][Vv]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Vv]</c>
+        ///          <c>[Ii][Nn][Ff][Oo]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Ff]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Ii][Nn][Tt]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Jj][Oo][Bb][Ss]</c>
+        ///              Any character in this class: <c>[Jj]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///          <c>[Mm][Mm][Ii][Ll]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Mm][Mm][Oo][Bb][Ii]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Bb]</c>
+        ///              Any character in this class: <c>[Ii]</c>
+        ///          <c>[Mm][Uu][Ss][Ee][Uu][Mm]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Uu]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Nn][Aa][Mm][Ee]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///          <c>[Nn][Ee][Tt]</c>
+        ///              Any character in this class: <c>[Nn]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Oo][Rr][Gg]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///          <c>[Pp][Rr][Oo]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Rr][Oo][Oo][Tt]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///          <c>[Tt][Ee][Ll]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Tt][Rr][Aa][Vv][Ee][Ll]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///              Any character in this class: <c>[Rr]</c>
+        ///              Any character in this class: <c>[Aa]</c>
+        ///              Any character in this class: <c>[Vv]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Ll]</c>
+        ///          <c>[Cc][Yy][Mm]</c>
+        ///              Any character in this class: <c>[Cc]</c>
+        ///              Any character in this class: <c>[Yy]</c>
+        ///              Any character in this class: <c>[Mm]</c>
+        ///          <c>[Gg][Ee][Oo]</c>
+        ///              Any character in this class: <c>[Gg]</c>
+        ///              Any character in this class: <c>[Ee]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///          <c>[Pp][Oo][Ss][Tt]</c>
+        ///              Any character in this class: <c>[Pp]</c>
+        ///              Any character in this class: <c>[Oo]</c>
+        ///              Any character in this class: <c>[Ss]</c>
+        ///              Any character in this class: <c>[Tt]</c>
+        ///  Match expression but don't capture it. <c>,\s?[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])</c>, any number of repetitions
+        ///      <c>,\s?[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])</c>
+        ///          <c>,</c>
         ///          Whitespace, zero or one repetitions
-        ///          Any character in this class: [a-zA-Z0-9._%\-+'], one or more repetitions
-        ///          @
-        ///          Match expression but don't capture it. [[a-zA-Z0-9\-]+\.], one or more repetitions
-        ///              [a-zA-Z0-9\-]+\.
-        ///                  Any character in this class: [a-zA-Z0-9\-], one or more repetitions
+        ///          Any character in this class: <c>[a-zA-Z0-9._%\-+']</c>, one or more repetitions
+        ///          <c>@</c>
+        ///          Match expression but don't capture it. <c>[a-zA-Z0-9\-]+\.</c>, one or more repetitions
+        ///              <c>[a-zA-Z0-9\-]+\.</c>
+        ///                  Any character in this class: <c>[a-zA-Z0-9\-]</c>, one or more repetitions
         ///                  Literal .
-        ///          Match expression but don't capture it. [[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]]
+        ///          Match expression but don't capture it. <c>[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Mm][Ii][Ll]|[Mm][Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt]</c>
         ///              Select from 26 alternatives
-        ///                  Any character in this class: [a-zA-Z], exactly 2 repetitions
-        ///                  [Aa][Ee][Rr][Oo]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Oo]
-        ///                  [Aa][Rr][Pp][Aa]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Pp]
-        ///                      Any character in this class: [Aa]
-        ///                  [Aa][Ss][Ii][Aa]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Ss]
-        ///                      Any character in this class: [Ii]
-        ///                      Any character in this class: [Aa]
-        ///                  [Bb][Ii][Zz]
-        ///                      Any character in this class: [Bb]
-        ///                      Any character in this class: [Ii]
-        ///                      Any character in this class: [Zz]
-        ///                  [Cc][Aa][Tt]
-        ///                      Any character in this class: [Cc]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Tt]
-        ///                  [Cc][Oo][Mm]
-        ///                      Any character in this class: [Cc]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Mm]
-        ///                  [Cc][Oo][Oo][Pp]
-        ///                      Any character in this class: [Cc]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Pp]
-        ///                  [Ee][dD][Uu]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [dD]
-        ///                      Any character in this class: [Uu]
-        ///                  [Gg][Oo][Vv]
-        ///                      Any character in this class: [Gg]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Vv]
-        ///                  [Ii][Nn][Ff][Oo]
-        ///                      Any character in this class: [Ii]
-        ///                      Any character in this class: [Nn]
-        ///                      Any character in this class: [Ff]
-        ///                      Any character in this class: [Oo]
-        ///                  [Ii][Nn][Tt]
-        ///                      Any character in this class: [Ii]
-        ///                      Any character in this class: [Nn]
-        ///                      Any character in this class: [Tt]
-        ///                  [Jj][Oo][Bb][Ss]
-        ///                      Any character in this class: [Jj]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Bb]
-        ///                      Any character in this class: [Ss]
-        ///                  [Mm][Mm][Ii][Ll]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Ii]
-        ///                      Any character in this class: [Ll]
-        ///                  [Mm][Mm][Oo][Bb][Ii]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Bb]
-        ///                      Any character in this class: [Ii]
-        ///                  [Mm][Uu][Ss][Ee][Uu][Mm]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Uu]
-        ///                      Any character in this class: [Ss]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Uu]
-        ///                      Any character in this class: [Mm]
-        ///                  [Nn][Aa][Mm][Ee]
-        ///                      Any character in this class: [Nn]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Mm]
-        ///                      Any character in this class: [Ee]
-        ///                  [Nn][Ee][Tt]
-        ///                      Any character in this class: [Nn]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Tt]
-        ///                  [Oo][Rr][Gg]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Gg]
-        ///                  [Pp][Rr][Oo]
-        ///                      Any character in this class: [Pp]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Oo]
-        ///                  [Rr][Oo][Oo][Tt]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Tt]
-        ///                  [Tt][Ee][Ll]
-        ///                      Any character in this class: [Tt]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Ll]
-        ///                  [Tt][Rr][Aa][Vv][Ee][Ll]
-        ///                      Any character in this class: [Tt]
-        ///                      Any character in this class: [Rr]
-        ///                      Any character in this class: [Aa]
-        ///                      Any character in this class: [Vv]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Ll]
-        ///                  [Cc][Yy][Mm]
-        ///                      Any character in this class: [Cc]
-        ///                      Any character in this class: [Yy]
-        ///                      Any character in this class: [Mm]
-        ///                  [Gg][Ee][Oo]
-        ///                      Any character in this class: [Gg]
-        ///                      Any character in this class: [Ee]
-        ///                      Any character in this class: [Oo]
-        ///                  [Pp][Oo][Ss][Tt]
-        ///                      Any character in this class: [Pp]
-        ///                      Any character in this class: [Oo]
-        ///                      Any character in this class: [Ss]
-        ///                      Any character in this class: [Tt]
+        ///                  Any character in this class: <c>[a-zA-Z]</c>, exactly 2 repetitions
+        ///                  <c>[Aa][Ee][Rr][Oo]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                  <c>[Aa][Rr][Pp][Aa]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Pp]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                  <c>[Aa][Ss][Ii][Aa]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Ss]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                  <c>[Bb][Ii][Zz]</c>
+        ///                      Any character in this class: <c>[Bb]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                      Any character in this class: <c>[Zz]</c>
+        ///                  <c>[Cc][Aa][Tt]</c>
+        ///                      Any character in this class: <c>[Cc]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                  <c>[Cc][Oo][Mm]</c>
+        ///                      Any character in this class: <c>[Cc]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                  <c>[Cc][Oo][Oo][Pp]</c>
+        ///                      Any character in this class: <c>[Cc]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Pp]</c>
+        ///                  <c>[Ee][dD][Uu]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[dD]</c>
+        ///                      Any character in this class: <c>[Uu]</c>
+        ///                  <c>[Gg][Oo][Vv]</c>
+        ///                      Any character in this class: <c>[Gg]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Vv]</c>
+        ///                  <c>[Ii][Nn][Ff][Oo]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                      Any character in this class: <c>[Nn]</c>
+        ///                      Any character in this class: <c>[Ff]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                  <c>[Ii][Nn][Tt]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                      Any character in this class: <c>[Nn]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                  <c>[Jj][Oo][Bb][Ss]</c>
+        ///                      Any character in this class: <c>[Jj]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Bb]</c>
+        ///                      Any character in this class: <c>[Ss]</c>
+        ///                  <c>[Mm][Mm][Ii][Ll]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                      Any character in this class: <c>[Ll]</c>
+        ///                  <c>[Mm][Mm][Oo][Bb][Ii]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Bb]</c>
+        ///                      Any character in this class: <c>[Ii]</c>
+        ///                  <c>[Mm][Uu][Ss][Ee][Uu][Mm]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Uu]</c>
+        ///                      Any character in this class: <c>[Ss]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Uu]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                  <c>[Nn][Aa][Mm][Ee]</c>
+        ///                      Any character in this class: <c>[Nn]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                  <c>[Nn][Ee][Tt]</c>
+        ///                      Any character in this class: <c>[Nn]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                  <c>[Oo][Rr][Gg]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Gg]</c>
+        ///                  <c>[Pp][Rr][Oo]</c>
+        ///                      Any character in this class: <c>[Pp]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                  <c>[Rr][Oo][Oo][Tt]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                  <c>[Tt][Ee][Ll]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Ll]</c>
+        ///                  <c>[Tt][Rr][Aa][Vv][Ee][Ll]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
+        ///                      Any character in this class: <c>[Rr]</c>
+        ///                      Any character in this class: <c>[Aa]</c>
+        ///                      Any character in this class: <c>[Vv]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Ll]</c>
+        ///                  <c>[Cc][Yy][Mm]</c>
+        ///                      Any character in this class: <c>[Cc]</c>
+        ///                      Any character in this class: <c>[Yy]</c>
+        ///                      Any character in this class: <c>[Mm]</c>
+        ///                  <c>[Gg][Ee][Oo]</c>
+        ///                      Any character in this class: <c>[Gg]</c>
+        ///                      Any character in this class: <c>[Ee]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                  <c>[Pp][Oo][Ss][Tt]</c>
+        ///                      Any character in this class: <c>[Pp]</c>
+        ///                      Any character in this class: <c>[Oo]</c>
+        ///                      Any character in this class: <c>[Ss]</c>
+        ///                      Any character in this class: <c>[Tt]</c>
         ///  End of line or string</para>
         /// </remarks>
         [SuppressMessage("Microsoft.Naming", "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ex is not an acronym.")]

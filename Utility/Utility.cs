@@ -110,7 +110,7 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>
         /// Includes the jQuery libraries onto the page
         /// </summary>
-        /// <remarks>Based on http://www.ifinity.com.au/Blog/EntryId/75/Include-jQuery-in-a-DotNetNuke-Module-with-version-independent-code</remarks>
+        /// <remarks>Based on <see href="http://www.ifinity.com.au/Blog/EntryId/75/Include-jQuery-in-a-DotNetNuke-Module-with-version-independent-code"/></remarks>
         /// <param name="page">Page object from calling page/control</param>
         /// <param name="includeNoConflict">if <c>true</c>, includes the uncompressed libraries</param>
         [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Page's Controls collection is responsible for disposing")]
