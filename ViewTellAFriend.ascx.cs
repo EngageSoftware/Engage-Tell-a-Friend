@@ -164,11 +164,7 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void AddCssFile()
         {
-            var basePage = this.Page as CDefault;
-            if (basePage != null)
-            {
-                basePage.AddStyleSheet("TellAFriend", this.ResolveUrl("TellAFriend.css"), true);
-            }
+            PageBase.RegisterStyleSheet(this.Page, this.ResolveUrl("TellAFriend.css"), true);
         }
 
         /// <summary>
