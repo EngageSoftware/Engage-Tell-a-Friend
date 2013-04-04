@@ -13,11 +13,9 @@ namespace Engage.Dnn.TellAFriend
 {
     using System;
     using System.Collections;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Reflection;
     using System.Web.UI;
-    using System.Web.UI.HtmlControls;
-    using DotNetNuke.Common;
+
+    using DotNetNuke.Framework;
 
     /// <summary>
     /// Utility Class for Engage Tell A Friend
@@ -52,10 +50,9 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>
         /// Adds the a reference to jQuery 1.4.2.
         /// </summary>
-        /// <param name="page">The page. Used to generate a key when registering the client script.</param>
-        public static void AddJQueryReference(Page page)
+        public static void AddJQueryReference()
         {
-            InjectJQueryLibrary(page, true);
+            jQuery.RequestRegistration();
         }
 
         /// <summary>
@@ -105,85 +102,6 @@ namespace Engage.Dnn.TellAFriend
             }
 
             return defaultValue;
-        }
-
-        /// <summary>
-        /// Includes the jQuery libraries onto the page
-        /// </summary>
-        /// <remarks>Based on <see href="http://www.ifinity.com.au/Blog/EntryId/75/Include-jQuery-in-a-DotNetNuke-Module-with-version-independent-code"/></remarks>
-        /// <param name="page">Page object from calling page/control</param>
-        /// <param name="includeNoConflict">if <c>true</c>, includes the uncompressed libraries</param>
-        [SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope", Justification = "Page's Controls collection is responsible for disposing")]
-        private static void InjectJQueryLibrary(Page page, bool includeNoConflict)
-        {
-            int major, minor, build, revision;
-            bool injectLib = !SafeDNNVersion(out major, out minor, out revision, out build) || major < 5;
-
-            if (injectLib)
-            {
-                // no in-built jQuery libraries into the framework, so include the google version
-                string lib = page.ClientScript.GetWebResourceUrl(typeof(ModuleBase), GetJavaScriptResourceName("jquery-1.4.2"));
-
-                if (page.Header.FindControl("jquery") == null)
-                {
-                    var jqueryReference = new HtmlGenericControl("script");
-                    jqueryReference.Attributes.Add("src", lib);
-                    jqueryReference.Attributes.Add("type", "text/javascript");
-                    jqueryReference.ID = "jquery";
-                    page.Header.Controls.Add(jqueryReference);
-                    
-                    if (includeNoConflict)
-                    {
-                        // use the noConflict (stops use of $) due to the use of prototype 
-                        // with a standard DNN distro
-                        var jqueryNoConflictScript = new HtmlGenericControl("script");
-                        jqueryNoConflictScript.InnerText = " jQuery.noConflict(); ";
-                        jqueryNoConflictScript.Attributes.Add("type", "text/javascript");
-                        page.Header.Controls.Add(jqueryNoConflictScript);
-                    }
-                }
-            }
-            else
-            {
-                // call DotNetNuke.Framework.jQuery.RequestRegistration();
-                var jqueryType = Type.GetType("DotNetNuke.Framework.jQuery, DotNetNuke");
-                if (jqueryType != null)
-                {
-                    // run the DNN 5.0 specific jQuery registration code
-                    jqueryType.InvokeMember("RequestRegistration", BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static, null, jqueryType, null, null);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns a version-safe set of version numbers for DNN
-        /// </summary>
-        /// <param name="major">out value of major version (i.e., 4,5 etc)</param>
-        /// <param name="minor">out value of minor version (i.e., 1 in 5.1 etc)</param>
-        /// <param name="revision">out value of revision (i.e., 3 in 5.1.3)</param>
-        /// <param name="build">out value of build number</param>
-        /// <remarks>DNN moved the version number during about the 4.9 version, 
-        /// which to me was a bit frustrating and caused the need for this reflection method call</remarks>
-        /// <returns><c>true</c> if successful, <c>false</c> if not</returns>
-        private static bool SafeDNNVersion(out int major, out int minor, out int revision, out int build)
-        {
-            var version = Assembly.GetAssembly(typeof(Globals)).GetName().Version;
-            if (version != null)
-            {
-                major = version.Major;
-                minor = version.Minor;
-                build = version.Build;
-                revision = version.Revision;
-
-                return true;
-            }
-
-            major = 0;
-            minor = 0;
-            build = 0;
-            revision = 0;
-
-            return false;
         }
 
         /// <summary>

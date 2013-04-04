@@ -127,7 +127,7 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                Utility.AddJQueryReference(this.Page);
+                Utility.AddJQueryReference();
 #if DEBUG
                 Utility.AddJavaScriptResource(this.Page, "jquery.simplemodal");
                 Utility.AddJavaScriptResource(this.Page, "json2");
