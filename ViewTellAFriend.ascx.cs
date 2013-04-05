@@ -22,16 +22,10 @@ namespace Engage.Dnn.TellAFriend
     using DotNetNuke.Framework;
     using DotNetNuke.Services.Exceptions;
 
-    /// -----------------------------------------------------------------------------
-    /// <summary>
-    /// The ViewTellAFriend class displays the content
-    /// </summary>
-    /// -----------------------------------------------------------------------------
+    /// <summary>The ViewTellAFriend class displays the content</summary>
     public partial class ViewTellAFriend : ModuleBase
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ViewTellAFriend"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="ViewTellAFriend" /> class.</summary>
         public ViewTellAFriend()
         {
             this.ShowMessage = true;
@@ -39,27 +33,19 @@ namespace Engage.Dnn.TellAFriend
             this.Url = string.Empty;
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the message textbox should be shown.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating whether the message textbox should be shown.</summary>
         /// <value><c>true</c> if the message textbox should be shown; otherwise, <c>false</c>.</value>
         public bool ShowMessage { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the module should be displayed as a modal popup or inline.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating whether the module should be displayed as a modal popup or inline.</summary>
         /// <value><c>true</c> if the module should be displayed as a modal popup; otherwise, <c>false</c>.</value>
         public bool ShowInModal { get; set; }
 
-        /// <summary>
-        /// Gets or sets the URL to use in the email, or <see cref="string.Empty"/> to use the current URL.
-        /// </summary>
-        /// <value>The URL to be used, or <see cref="string.Empty"/> to use the current URL.</value>
+        /// <summary>Gets or sets the URL to use in the email, or <see cref="string.Empty" /> to use the current URL.</summary>
+        /// <value>The URL to be used, or <see cref="string.Empty" /> to use the current URL.</value>
         public string Url { get; set; }
 
-        /// <summary>
-        /// Gets the validation group for this instance of the module.
-        /// </summary>
+        /// <summary>Gets the validation group for this instance of the module.</summary>
         /// <value>The module's validation group.</value>
         public string ValidationGroup
         {
@@ -69,9 +55,7 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Gets the options to send into the tell-a-friend plugin.
-        /// </summary>
+        /// <summary>Gets the options to send into the tell-a-friend plugin.</summary>
         /// <value>The tell-a-friend plugin options.</value>
         protected string TellAFriendOptions
         {
@@ -94,10 +78,8 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Raises the <see cref="E:System.Web.UI.Control.Init"/> event.
-        /// </summary>
-        /// <param name="e">An <see cref="T:System.EventArgs"/> object that contains the event data.</param>
+        /// <summary>Raises the <see cref="Control.Init" /> event.</summary>
+        /// <param name="e">An <see cref="EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             // If this control is loaded as a Skin Object, we need to set the LocalResourceFile manually
@@ -108,9 +90,7 @@ namespace Engage.Dnn.TellAFriend
             base.OnInit(e);
         }
 
-        /// <summary>
-        /// Loads the settings.
-        /// </summary>
+        /// <summary>Loads the settings.</summary>
         private void LoadSettings()
         {
             this.ShowInModal = Utility.GetBooleanSetting(this.Settings, "ShowModal", this.ShowInModal);
@@ -118,11 +98,9 @@ namespace Engage.Dnn.TellAFriend
             this.ShowMessage = Utility.GetBooleanSetting(this.Settings, "ShowMessage", this.ShowMessage);
         }
 
-        /// <summary>
-        /// Handles the Load event of the Page control.
-        /// </summary>
+        /// <summary>Handles the Load event of the Page control.</summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
         private void Page_Load(object sender, EventArgs e)
         {
             try
@@ -150,18 +128,14 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Sets the validator expression for email fields.
-        /// </summary>
+        /// <summary>Sets the validator expression for email fields.</summary>
         private void SetEmailValidation()
         {
             this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
             this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
         }
 
-        /// <summary>
-        /// Adds the CSS file if this is loaded as a skin object rather than a regular module.
-        /// </summary>
+        /// <summary>Adds the CSS file if this is loaded as a skin object rather than a regular module.</summary>
         private void AddCssFile()
         {
             var basePage = this.Page as CDefault;
@@ -171,9 +145,7 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Sets the validation group on child controls.
-        /// </summary>
+        /// <summary>Sets the validation group on child controls.</summary>
         private void SetValidationGroupOnChildControls()
         {
             this.FriendNameRequiredValidator.ValidationGroup = this.ValidationGroup;
@@ -184,9 +156,7 @@ namespace Engage.Dnn.TellAFriend
             this.SenderEmailPatternValidator.ValidationGroup = this.ValidationGroup;
         }
 
-        /// <summary>
-        /// Populates the "from" fields with the current DNN user's display name and email address.
-        /// </summary>
+        /// <summary>Populates the "from" fields with the current DNN user's display name and email address.</summary>
         private void PopulateUserInfo()
         {
             if (!Null.IsNull(this.UserId))
@@ -196,9 +166,7 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Gets the current URL.
-        /// </summary>
+        /// <summary>Gets the current URL.</summary>
         /// <returns>The fully qualified current URL.</returns>
         private string GetCurrentUrl()
         {
@@ -216,9 +184,7 @@ namespace Engage.Dnn.TellAFriend
             return currentUrl;
         }
 
-        /// <summary>
-        /// Gets the current query string.
-        /// </summary>
+        /// <summary>Gets the current query string.</summary>
         /// <returns>The full and current query string parameters.</returns>
         private string[] GetCurrentQueryString()
         {

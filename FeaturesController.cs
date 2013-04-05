@@ -14,15 +14,11 @@ namespace Engage.Dnn.TellAFriend
     using System.Diagnostics.CodeAnalysis;
     using System.Text.RegularExpressions;
 
-    /// <summary>
-    /// Controls which DNN features are available for this module.
-    /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated through reflection by DNN")]
+    /// <summary>Controls which DNN features are available for this module.</summary>
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated through reflection by DNN")]
     internal class FeaturesController
     {
-        /// <summary>
-        /// A regular expression which will match an email address
-        /// </summary>
+        /// <summary>A regular expression which will match an email address</summary>
         /// <remarks>
         /// Because this needs to work in JavaScript and .NET, we can't just set <see cref="RegexOptions.IgnoreCase"/>, we have to manually include both cases for each letter
         /// <para>Basic Explanation: Any valid characters, @ symbol, any valid characters, . (period), then either two letters or one of the other 25 top-level-domains</para>
@@ -158,9 +154,7 @@ namespace Engage.Dnn.TellAFriend
         [SuppressMessage("Microsoft.Naming", "CA1706:ShortAcronymsShouldBeUppercase", MessageId = "Member", Justification = "Ex is not an acronym.")]
         public const string EmailRegEx = @"^[a-zA-Z0-9._%\-+']+@(?:[a-zA-Z0-9\-]+\.)+(?:[a-zA-Z]{2}|[Aa][Ee][Rr][Oo]|[Aa][Rr][Pp][Aa]|[Aa][Ss][Ii][Aa]|[Bb][Ii][Zz]|[Cc][Aa][Tt]|[Cc][Oo][Mm]|[Cc][Oo][Oo][Pp]|[Ee][dD][Uu]|[Gg][Oo][Vv]|[Ii][Nn][Ff][Oo]|[Ii][Nn][Tt]|[Jj][Oo][Bb][Ss]|[Mm][Ii][Ll]|[Mm][Oo][Bb][Ii]|[Mm][Uu][Ss][Ee][Uu][Mm]|[Nn][Aa][Mm][Ee]|[Nn][Ee][Tt]|[Oo][Rr][Gg]|[Pp][Rr][Oo]|[Rr][Oo][Oo][Tt]|[Tt][Ee][Ll]|[Tt][Rr][Aa][Vv][Ee][Ll]|[Cc][Yy][Mm]|[Gg][Ee][Oo]|[Pp][Oo][Ss][Tt])$";
 
-        /// <summary>
-        /// A regular expression which will match a comma-delimited list of email addresses
-        /// </summary>
+        /// <summary>A regular expression which will match a comma-delimited list of email addresses</summary>
         /// <remarks>
         /// Because this needs to work in JavaScript and .NET, we can't just set <see cref="RegexOptions.IgnoreCase"/>, we have to manually include both cases for each letter
         /// <para>

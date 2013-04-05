@@ -18,23 +18,13 @@ namespace Engage.Dnn.TellAFriend
     using DotNetNuke.Services.Exceptions;
     using DotNetNuke.Services.Localization;
 
-    /// -----------------------------------------------------------------------------
-    /// <summary>
-    /// The Settings class manages Module Settings
-    /// </summary>
-    /// -----------------------------------------------------------------------------
+    /// <summary>The Settings class manages Module Settings</summary>
     public partial class Settings : ModuleSettingsBase
     {
-        /// <summary>
-        /// The local resources file for ViewTellAFriend so we can get the default email subject and body
-        /// </summary>
+        /// <summary>The local resources file for ViewTellAFriend so we can get the default email subject and body</summary>
         private const string LocalResourcesFile = "~/DesktopModules/EngageTellAFriend/App_LocalResources/ViewTellAFriend.ascx.resx";
 
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// LoadSettings loads the settings from the Database and displays them
-        /// </summary>
-        /// -----------------------------------------------------------------------------
+        /// <summary>LoadSettings loads the settings from the Database and displays them</summary>
         public override void LoadSettings()
         {
             try
@@ -59,11 +49,7 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// -----------------------------------------------------------------------------
-        /// <summary>
-        /// UpdateSettings saves the modified settings to the Database
-        /// </summary>
-        /// -----------------------------------------------------------------------------
+        /// <summary>UpdateSettings saves the modified settings to the Database</summary>
         public override void UpdateSettings()
         {
             try
@@ -87,10 +73,8 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Raises the <see cref="Control.Init"/> event.
-        /// </summary>
-        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
+        /// <summary>Raises the <see cref="Control.Init" /> event.</summary>
+        /// <param name="e">An <see cref="EventArgs" /> object that contains the event data.</param>
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -99,20 +83,16 @@ namespace Engage.Dnn.TellAFriend
             this.RestoreButton.Click += this.RestoreButton_Click;
         }
 
-        /// <summary>
-        /// Handles the Click event of the RestoreButton control.
-        /// </summary>
+        /// <summary>Handles the Click event of the RestoreButton control.</summary>
         /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
+        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
         protected void RestoreButton_Click(object sender, EventArgs e)
         {
             this.SubjectTextBox.Text = Localization.GetString("EmailAFriendSubject", LocalResourcesFile);
             this.BodyTextBox.Text = Localization.GetString("EmailAFriend", LocalResourcesFile);
         }
 
-        /// <summary>
-        /// Sets the validator expression for email fields.
-        /// </summary>
+        /// <summary>Sets the validator expression for email fields.</summary>
         private void SetEmailValidation()
         {
             this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;

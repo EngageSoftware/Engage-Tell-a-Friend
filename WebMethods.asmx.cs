@@ -21,17 +21,13 @@ namespace Engage.Dnn.TellAFriend
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
 
-    /// <summary>
-    /// Web service method to handle client side calls
-    /// </summary>
+    /// <summary>Web service method to handle client side calls</summary>
     [WebService(Namespace = "http://www.engagesoftware.com")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [ScriptService]
     public class WebMethods : WebService
     {
-        /// <summary>
-        /// Sends the email.
-        /// </summary>
+        /// <summary>Sends the email.</summary>
         /// <param name="localResourceFile">The local resource file.</param>
         /// <param name="siteUrl">The site URL.</param>
         /// <param name="portalName">Name of the portal.</param>
@@ -73,9 +69,7 @@ namespace Engage.Dnn.TellAFriend
             }
         }
 
-        /// <summary>
-        /// Replaces the tokens in the given <paramref name="tokenizedText"/>.
-        /// </summary>
+        /// <summary>Replaces the tokens in the given <paramref name="tokenizedText" />.</summary>
         /// <param name="tokenizedText">Text with tokens to be replaced</param>
         /// <param name="friendName">Name of the friend, replaces <c>[Engage:Recipient]</c>.</param>
         /// <param name="siteUrl">The site URL, replaces <c>[Engage:Url]</c>.</param>
@@ -84,9 +78,7 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="portalName">Name of the portal, replaces <c>[Engage:Portal]</c>.</param>
         /// <param name="senderEmail">The sender's email.</param>
         /// <param name="encode">Specifies if the replaced tokens should be encoded.</param>
-        /// <returns>
-        /// The string with the given tokens replaced
-        /// </returns>
+        /// <returns>The string with the given tokens replaced</returns>
         private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail, bool encode)
         {
             var textBuilder = new StringBuilder(tokenizedText);

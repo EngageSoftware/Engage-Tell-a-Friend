@@ -13,14 +13,10 @@ namespace Engage.Dnn.TellAFriend
 {
     using DotNetNuke.Entities.Modules;
 
-    /// <summary>
-    /// Base class for user controls within the TellAFriend module
-    /// </summary>
+    /// <summary>Base class for user controls within the TellAFriend module</summary>
     public class ModuleBase : PortalModuleBase
     {
-        /// <summary>
-        /// The relative path of the root module folder
-        /// </summary>
+        /// <summary>The relative path of the root module folder</summary>
         protected const string DesktopModuleFolderName = "/DesktopModules/EngageTellAFriend/";
     }
 }
