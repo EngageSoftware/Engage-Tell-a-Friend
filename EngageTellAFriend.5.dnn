@@ -3,7 +3,8 @@
     <package name="Engage: Tell A Friend" type="Module" version="REPLACED BY NANT">
       <friendlyName>Engage: Tell A Friend</friendlyName>
       <description>A simple and flexible module for sharing DNN websites from Engage Software (http://www.engagesoftware.com/).</description>
-      <owner>
+        <iconFile>DesktopModules/EngageTellAFriend/images/tellafriend-icon32.png</iconFile>
+        <owner>
         <name>Engage Software</name>
         <organization>Engage Software</organization>
         <url><![CDATA[<a href="http://www.engagesoftware.com/">http://www.engagesoftware.com/</a>]]></url>
@@ -11,6 +12,9 @@
       </owner>
       <license src="REPLACED BY NANT"/>
       <releaseNotes src="REPLACED BY NANT" />
+      <dependencies>
+        <dependency type="CoreVersion">6.0.0</dependency>
+      </dependencies>
       <components>
         <component type="ResourceFile">
           <resourceFiles>

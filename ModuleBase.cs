@@ -1,6 +1,6 @@
 // <copyright file="ModuleBase.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2010
+// Engage: Tell-A-Friend
+// Copyright (c) 2004-2013
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -13,14 +13,10 @@ namespace Engage.Dnn.TellAFriend
 {
     using DotNetNuke.Entities.Modules;
 
-    /// <summary>
-    /// Base class for user controls within the TellAFriend module
-    /// </summary>
+    /// <summary>Base class for user controls within the TellAFriend module</summary>
     public class ModuleBase : PortalModuleBase
     {
-        /// <summary>
-        /// The relative path of the root module folder
-        /// </summary>
+        /// <summary>The relative path of the root module folder</summary>
         protected const string DesktopModuleFolderName = "/DesktopModules/EngageTellAFriend/";
     }
 }

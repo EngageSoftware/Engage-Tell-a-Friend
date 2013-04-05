@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="false" Inherits="Engage.Dnn.TellAFriend.Settings" Codebehind="Settings.ascx.cs" %>
-<%@ Register TagName="help" TagPrefix="dnn" Src="~/controls/labelcontrol.ascx" %>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
+<%@ Register TagPrefix="dnn" TagName="help" Src="~/controls/labelcontrol.ascx" %>
 
 <div class="taf-settings">
     <div class="taf-siteurl">
@@ -49,6 +49,18 @@
         <div id="TokenList" class="taf-tokens" style="display: none; border: 1px solid #000;">
             <%= Localization.GetString("TokenReference.Text", LocalResourceFile) %>
         </div>
+    </div>
+    <div class="taf-invisible-captcha">
+        <dnn:help runat="server" ControlName="InvisibleCaptchaCheckBox" CssClass="Normal" ResourceKey="UseInvisibleCAPTCHALabel" />
+        <asp:CheckBox ID="InvisibleCaptchaCheckBox" runat="server" />
+    </div>
+    <div class="taf-timed-captcha">
+        <dnn:help runat="server" ControlName="TimedCaptchaCheckBox" CssClass="Normal" ResourceKey="UseTimedCAPTCHALabel" />
+        <asp:CheckBox ID="TimedCaptchaCheckBox" runat="server" />
+    </div>
+    <div class="taf-standard-captcha">
+        <dnn:help runat="server" ControlName="StandardCaptchaCheckBox" CssClass="Normal" ResourceKey="UseStandardCAPTCHALabel" />
+        <asp:CheckBox ID="StandardCaptchaCheckBox" runat="server" />
     </div>
 </div>
 
