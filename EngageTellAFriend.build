@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<project xmlns="http://nant.sf.net/release/0.90/nant.xsd" name="Engage: Tell A Friend" basedir="." default="package">
+<project xmlns="http://nant.sf.net/release/0.92/nant.xsd" name="Engage: Tell A Friend" basedir="." default="package">
   <property name="build" value="true" overwrite="false"/>
   <property name="bin.directory" value="..\..\bin" overwrite="false"/>
   <property name="project.config" value="release"/>
@@ -113,6 +113,7 @@
         <include name="${releaseNotes.file}"/>
         <include name="??.??.??.txt" />
         <include name="ReadMe.txt" />
+        <include name="Docs/*" />
         <include name="**/*.SqlDataProvider"/>
         <include name="**/*.4.dnn"/>
         <include name="**/*.5.dnn"/>
@@ -124,7 +125,7 @@
         <include name="${project.dll}"/>
         <include name="${references.directory}/*.dll"/>
         <exclude name="${references.directory}/DotNetNuke.dll"/>
-        <exclude name="${references.directory}/DotNetNuke.WebUtility.dll"/>
+        <exclude name="${references.directory}/DotNetNuke.*.dll"/>
         <exclude name="${references.directory}/Microsoft.ApplicationBlocks.Data.dll"/>
       </fileset>
     </copy>
@@ -135,12 +136,11 @@
       </fileset>
     </attrib>
 
-    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${license.file}" xpath="dotnetnuke/packages/package/license/@src"/>
-    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${releaseNotes.file}" xpath="dotnetnuke/packages/package/releaseNotes/@src"/>
-    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/@version"/>
-    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/components/component[@type='Script']/scripts/script[@type='UnInstall']/version"/>
-    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/components/component[@type='Assembly']/assemblies/assembly[version='REPLACED BY NANT']/version"/>
-    <!--<xmlpoke file="${package.directory}/temp/package/Engage${project.name}.4.dnn" value="${project.version}" xpath="dotnetnuke/folders/folder/version"/>-->
+    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${license.file}" xpath="dotnetnuke/packages/package/license/@src" failonerror="false" />
+    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${releaseNotes.file}" xpath="dotnetnuke/packages/package/releaseNotes/@src" failonerror="false" />
+    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/@version" failonerror="false" />
+    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/components/component[@type='Script']/scripts/script[@type='UnInstall']/version" failonerror="false" />
+    <xmlpoke file="${package.directory}/temp/package/Engage${project.name}.5.dnn" value="${project.version}" xpath="dotnetnuke/packages/package/components/component[@type='Assembly']/assemblies/assembly[version='REPLACED BY NANT']/version" failonerror="false" />
   </target>
   <target name="zip-package" description="Zips up the files in the temp/package directory, getting the correct manifest file and using the correct naming convention">
     <property name="package.type" value="Install"/>
