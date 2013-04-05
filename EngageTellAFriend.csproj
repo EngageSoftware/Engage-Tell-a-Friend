@@ -116,17 +116,6 @@
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Utility\Annotations\AspMvcActionAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcActionSelectorAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcAreaAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcControllerAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcDisplayTemplateAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcEditorTemplateAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcMasterAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcModelTypeAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcPartialViewAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcSupressViewErrorAttribute.cs" />
-    <Compile Include="Utility\Annotations\AspMvcViewAttribute.cs" />
     <Compile Include="Utility\Annotations\BaseTypeRequiredAttribute.cs" />
     <Compile Include="Utility\Annotations\CanBeNullAttribute.cs" />
     <Compile Include="Utility\Annotations\CannotApplyEqualityOperatorAttribute.cs" />
