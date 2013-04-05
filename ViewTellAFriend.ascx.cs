@@ -49,10 +49,7 @@ namespace Engage.Dnn.TellAFriend
         /// <value>The module's validation group.</value>
         public string ValidationGroup
         {
-            get
-            {
-                return "EngageTellAFriend" + this.ModuleId.ToString(CultureInfo.InvariantCulture);
-            }
+            get { return "EngageTellAFriend" + this.ModuleId.ToString(CultureInfo.InvariantCulture); }
         }
 
         /// <summary>Gets the options to send into the tell-a-friend plugin.</summary>
