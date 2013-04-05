@@ -14,8 +14,10 @@ namespace Engage.Dnn.TellAFriend
     using System.Diagnostics.CodeAnalysis;
     using System.Text.RegularExpressions;
 
+    using JetBrains.Annotations;
+
     /// <summary>Controls which DNN features are available for this module.</summary>
-    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated through reflection by DNN")]
+    [UsedImplicitly, SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated through reflection by DNN")]
     internal class FeaturesController
     {
         /// <summary>A regular expression which will match an email address</summary>

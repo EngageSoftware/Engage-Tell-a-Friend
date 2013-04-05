@@ -22,6 +22,8 @@ namespace Engage.Dnn.TellAFriend
     using DotNetNuke.Framework;
     using DotNetNuke.Services.Exceptions;
 
+    using JetBrains.Annotations;
+
     /// <summary>The ViewTellAFriend class displays the content</summary>
     public partial class ViewTellAFriend : ModuleBase
     {
@@ -35,18 +37,22 @@ namespace Engage.Dnn.TellAFriend
 
         /// <summary>Gets or sets a value indicating whether the message textbox should be shown.</summary>
         /// <value><c>true</c> if the message textbox should be shown; otherwise, <c>false</c>.</value>
+        [PublicAPI]
         public bool ShowMessage { get; set; }
 
         /// <summary>Gets or sets a value indicating whether the module should be displayed as a modal popup or inline.</summary>
         /// <value><c>true</c> if the module should be displayed as a modal popup; otherwise, <c>false</c>.</value>
+        [PublicAPI]
         public bool ShowInModal { get; set; }
 
         /// <summary>Gets or sets the URL to use in the email, or <see cref="string.Empty" /> to use the current URL.</summary>
         /// <value>The URL to be used, or <see cref="string.Empty" /> to use the current URL.</value>
+        [PublicAPI]
         public string Url { get; set; }
 
         /// <summary>Gets the validation group for this instance of the module.</summary>
         /// <value>The module's validation group.</value>
+        [PublicAPI]
         public string ValidationGroup
         {
             get { return "EngageTellAFriend" + this.ModuleId.ToString(CultureInfo.InvariantCulture); }
