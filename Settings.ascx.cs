@@ -29,20 +29,22 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                if (!this.IsPostBack)
+                if (this.IsPostBack)
                 {
-                    this.SiteUrlTextBox.Text = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
-                    this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowMessage", true);
-                    this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowModal", false);
-                    this.CarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "CarbonCopy", string.Empty);
-                    this.BlindCarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "BlindCarbonCopy", string.Empty);
-                    this.FromTextBox.Text = Utility.GetStringSetting(this.Settings, "From", string.Empty);
-                    this.SubjectTextBox.Text = Utility.GetStringSetting(this.Settings, "Subject", string.Empty);
-                    this.BodyTextBox.Text = Utility.GetStringSetting(this.Settings, "Body", string.Empty);
-
-                    this.SetEmailValidation();
+                    return;
                 }
-           } 
+
+                this.SiteUrlTextBox.Text = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
+                this.ShowMessageCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowMessage", true);
+                this.ShowModalCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "ShowModal", false);
+                this.CarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "CarbonCopy", string.Empty);
+                this.BlindCarbonCopyTextBox.Text = Utility.GetStringSetting(this.Settings, "BlindCarbonCopy", string.Empty);
+                this.FromTextBox.Text = Utility.GetStringSetting(this.Settings, "From", string.Empty);
+                this.SubjectTextBox.Text = Utility.GetStringSetting(this.Settings, "Subject", string.Empty);
+                this.BodyTextBox.Text = Utility.GetStringSetting(this.Settings, "Body", string.Empty);
+
+                this.SetEmailValidation();
+            } 
             catch (Exception exc)
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
@@ -54,18 +56,20 @@ namespace Engage.Dnn.TellAFriend
         {
             try
             {
-                if (this.Page.IsValid)
+                if (!this.Page.IsValid)
                 {
-                    var modules = new ModuleController();
-                    modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
-                    modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
-                    modules.UpdateModuleSetting(this.ModuleId, "CarbonCopy", this.CarbonCopyTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "BlindCarbonCopy", this.BlindCarbonCopyTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "From", this.FromTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "Subject", this.SubjectTextBox.Text);
-                    modules.UpdateModuleSetting(this.ModuleId, "Body", this.BodyTextBox.Text);
+                    return;
                 }
+
+                var modules = new ModuleController();
+                modules.UpdateModuleSetting(this.ModuleId, "SiteUrl", this.SiteUrlTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "ShowMessage", this.ShowMessageCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                modules.UpdateModuleSetting(this.ModuleId, "ShowModal", this.ShowModalCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                modules.UpdateModuleSetting(this.ModuleId, "CarbonCopy", this.CarbonCopyTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "BlindCarbonCopy", this.BlindCarbonCopyTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "From", this.FromTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "Subject", this.SubjectTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "Body", this.BodyTextBox.Text);
             }
             catch (Exception exc)
             {
@@ -86,7 +90,7 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>Handles the Click event of the RestoreButton control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
-        protected void RestoreButton_Click(object sender, EventArgs e)
+        private void RestoreButton_Click(object sender, EventArgs e)
         {
             this.SubjectTextBox.Text = Localization.GetString("EmailAFriendSubject", LocalResourcesFile);
             this.BodyTextBox.Text = Localization.GetString("EmailAFriend", LocalResourcesFile);

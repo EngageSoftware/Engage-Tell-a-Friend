@@ -55,7 +55,7 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="defaultValue">The default value.</param>
         /// <returns>The given setting as a <see cref="bool" />, or <paramref name="defaultValue" /> if the setting hasn't been set.</returns>
         /// <exception cref="ArgumentNullException"><paramref name="settings"/> or <paramref name="settingName"/> are <c>null</c></exception>
-        public static bool GetBooleanSetting(IDictionary settings, string settingName, bool? defaultValue)
+        public static bool GetBooleanSetting(IDictionary settings, string settingName, bool defaultValue)
         {
             if (settings == null)
             {
@@ -67,17 +67,17 @@ namespace Engage.Dnn.TellAFriend
                 throw new ArgumentNullException("settingName");
             }
 
-            object o = settings[settingName];
-            if (o != null)
+            var settingValue = settings[settingName];
+            if (settingValue != null)
             {
                 bool value;
-                if (bool.TryParse(o.ToString(), out value))
+                if (bool.TryParse(settingValue.ToString(), out value))
                 {
                     return value;
                 }
             }
 
-            return defaultValue.Value;
+            return defaultValue;
         }
 
         /// <summary>Gets the given setting as a <see cref="string" />, or <paramref name="defaultValue" /> if the setting is not set.</summary>

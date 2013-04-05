@@ -26,7 +26,7 @@ namespace Engage.Dnn.TellAFriend
     public partial class ViewTellAFriend : ModuleBase
     {
         /// <summary>Initializes a new instance of the <see cref="ViewTellAFriend" /> class.</summary>
-        public ViewTellAFriend()
+        protected ViewTellAFriend()
         {
             this.ShowMessage = true;
             this.ShowInModal = false;
@@ -58,7 +58,7 @@ namespace Engage.Dnn.TellAFriend
         {
             get
             {
-                string siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
+                var siteUrl = Utility.GetStringSetting(this.Settings, "SiteUrl", string.Empty);
                 var options = new CurrentContext(
                         string.IsNullOrEmpty(siteUrl) ? this.GetCurrentUrl() : siteUrl,
                         this.LocalResourceFile,
@@ -156,11 +156,13 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>Populates the "from" fields with the current DNN user's display name and email address.</summary>
         private void PopulateUserInfo()
         {
-            if (!Null.IsNull(this.UserId))
+            if (Null.IsNull(this.UserId))
             {
-                this.SenderNameTextBox.Text = this.UserInfo.DisplayName;
-                this.SenderEmailTextBox.Text = this.UserInfo.Email;
+                return;
             }
+
+            this.SenderNameTextBox.Text = this.UserInfo.DisplayName;
+            this.SenderEmailTextBox.Text = this.UserInfo.Email;
         }
 
         /// <summary>Gets the current URL.</summary>
@@ -172,7 +174,7 @@ namespace Engage.Dnn.TellAFriend
                 return (string)HttpContext.Current.Items["UrlRewrite:OriginalUrl"];
             }
 
-            string currentUrl = Globals.NavigateURL(this.TabId, string.Empty, this.GetCurrentQueryString());
+            var currentUrl = Globals.NavigateURL(this.TabId, string.Empty, this.GetCurrentQueryString());
             if (!Uri.IsWellFormedUriString(currentUrl, UriKind.Absolute))
             {
                 currentUrl = this.Request.Url.Scheme + Uri.SchemeDelimiter + this.PortalSettings.PortalAlias.HTTPAlias + currentUrl;
