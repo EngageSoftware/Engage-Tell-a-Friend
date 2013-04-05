@@ -1,4 +1,4 @@
-﻿// <copyright file="WebMethods.asmx.cs" company="Engage Software">
+﻿// <copyright file="EmailService.cs" company="Engage Software">
 // Engage: Tell-A-Friend
 // Copyright (c) 2004-2013
 // by Engage Software ( http://www.engagesoftware.com )
@@ -15,17 +15,13 @@ namespace Engage.Dnn.TellAFriend
     using System.Text;
     using System.Threading;
     using System.Web;
-    using System.Web.Script.Services;
-    using System.Web.Services;
+
     using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
 
-    /// <summary>Web service method to handle client side calls</summary>
-    [WebService(Namespace = "http://www.engagesoftware.com")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [ScriptService]
-    public class WebMethods : WebService
+    /// <summary>Service to send the email</summary>
+    public static class EmailService
     {
         /// <summary>Sends the email.</summary>
         /// <param name="localResourceFile">The local resource file.</param>
@@ -37,15 +33,11 @@ namespace Engage.Dnn.TellAFriend
         /// <param name="friendName">Name of the friend.</param>
         /// <param name="message">The message.</param>
         /// <param name="portalEmail">The portal administrator's email.</param>
-        /// <param name="currentCulture">The current culture.</param>
         /// <param name="moduleId">The ID of the module from which this email is being sent.</param>
         /// <param name="tabId">The ID of the tab from which this email is being sent.</param>
         /// <returns>The result of the SendEmail method.</returns>
-        [WebMethod]
-        public string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, string currentCulture, int moduleId, int tabId)
+        public static string SendEmail(string localResourceFile, string siteUrl, string portalName, string senderEmail, string friendsEmail, string senderName, string friendName, string message, string portalEmail, int moduleId, int tabId)
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(currentCulture);
-
             using (var settingsControl = new Settings())
             {
                 settingsControl.ModuleConfiguration = new ModuleController().GetModule(moduleId, tabId);

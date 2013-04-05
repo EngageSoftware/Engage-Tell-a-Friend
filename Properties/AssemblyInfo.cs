@@ -32,7 +32,6 @@ using System.Web.UI;
 #if DEBUG
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.jquery.simplemodal.debug.js", "text/javascript")]
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.debug.js", "text/javascript")]
-[assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.json2.debug.js", "text/javascript")]
 #else
 [assembly: WebResource("Engage.Dnn.TellAFriend.JavaScript.taf.bundle.js", "text/javascript")]
 #endif

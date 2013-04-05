@@ -21,7 +21,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <JSLintSkip>\JavaScript\taf.bundle.js|\JavaScript\json2.debug.js|\JavaScript\jquery.simplemodal.js|\JavaScript\jquery.simplemodal.debug.js|\JavaScript\json2.js|\JavaScript\jquery-1.6.1.debug-vsdoc.js</JSLintSkip>
+    <JSLintSkip>\JavaScript\taf.bundle.js|\JavaScript\jquery.simplemodal.js|\JavaScript\jquery.simplemodal.debug.js|\JavaScript\jquery-1.6.1.debug-vsdoc.js</JSLintSkip>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -102,7 +102,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CurrentContext.cs" />
+    <Compile Include="EmailService.cs" />
     <Compile Include="ModuleBase.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -135,10 +135,6 @@
     <Compile Include="Utility\Annotations\StringFormatMethodAttribute.cs" />
     <Compile Include="Utility\Annotations\UsedImplicitlyAttribute.cs" />
     <Compile Include="Utility\Utility.cs" />
-    <Compile Include="WebMethods.asmx.cs">
-      <DependentUpon>WebMethods.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ViewTellAFriend.ascx.designer.cs">
       <DependentUpon>ViewTellAFriend.ascx</DependentUpon>
     </Compile>
@@ -169,7 +165,6 @@
       <ItemGroup>
         <EmbeddedResource Include="JavaScript\jquery.simplemodal.debug.js" />
         <EmbeddedResource Include="JavaScript\taf.debug.js" />
-        <EmbeddedResource Include="JavaScript\json2.debug.js" />
       </ItemGroup>
     </When>
     <Otherwise>
@@ -191,12 +186,10 @@
     <Content Include="images\progress.gif" />
     <Content Include="images\x.png" />
     <EmbeddedResource Include="JavaScript\jquery.simplemodal.js" />
-    <EmbeddedResource Include="JavaScript\json2.js" />
     <EmbeddedResource Include="JavaScript\taf.bundle.js" />
     <Content Include="Licenses\EULA-Free.htm" />
     <Content Include="References\DotNetNuke.dll" />
     <Content Include="ReleaseNotes_1.1.0.htm" />
-    <Content Include="WebMethods.asmx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -222,7 +215,7 @@
 
 "$(DevEnvDir)tf" checkout /lock:none "$(ProjectDir)JavaScript\taf.bundle.js"
 
-type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\json2.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"
+type "$(ProjectDir)JavaScript\jquery.simplemodal.debug.js" "$(ProjectDir)JavaScript\taf.debug.js" | "$(ProjectDir)tools\jsmin" &gt; "$(ProjectDir)JavaScript\taf.bundle.js"
 
 :end</PreBuildEvent>
   </PropertyGroup>
