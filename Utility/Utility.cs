@@ -40,7 +40,7 @@ namespace Engage.Dnn.TellAFriend
             page.ClientScript.RegisterClientScriptResource(typeof(ModuleBase), GetJavaScriptResourceName(scriptName));
         }
 
-        /// <summary>Adds the a reference to jQuery 1.4.2.</summary>
+        /// <summary>Adds the a reference to jQuery.</summary>
         public static void AddJQueryReference()
         {
             jQuery.RequestRegistration();

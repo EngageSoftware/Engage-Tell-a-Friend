@@ -21,7 +21,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <JSLintSkip>\JavaScript\taf.bundle.js|\JavaScript\json2.debug.js|\JavaScript\jquery.simplemodal.js|\JavaScript\jquery.simplemodal.debug.js|\JavaScript\json2.js|\JavaScript\jquery-1.4.2.debug.js|\JavaScript\jquery-1.4.2.js|\JavaScript\jquery-1.4.1.debug-vsdoc.js</JSLintSkip>
+    <JSLintSkip>\JavaScript\taf.bundle.js|\JavaScript\json2.debug.js|\JavaScript\jquery.simplemodal.js|\JavaScript\jquery.simplemodal.debug.js|\JavaScript\json2.js|\JavaScript\jquery-1.6.1.debug-vsdoc.js</JSLintSkip>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -182,9 +182,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <EmbeddedResource Include="JavaScript\jquery-1.4.1.debug-vsdoc.js" />
-    <EmbeddedResource Include="JavaScript\jquery-1.4.2.debug.js" />
-    <EmbeddedResource Include="JavaScript\jquery-1.4.2.js" />
+    <None Include="JavaScript\jquery-1.6.1.debug-vsdoc.js" />
     <Content Include="tools\jsmin.exe" />
     <Content Include="UnInstall.SqlDataProvider" />
     <Content Include="App_LocalResources\Settings.ascx.resx">

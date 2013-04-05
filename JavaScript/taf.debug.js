@@ -1,5 +1,5 @@
 ﻿/// <reference path="json2.debug.js"/>
-/// <reference path="jquery-1.4.1.debug-vsdoc.js"/>
+﻿/// <reference path="jquery-1.6.1.debug-vsdoc.js"/>
 /// <reference path="jquery.simplemodal.debug.js"/>
 
 /*global jQuery */
