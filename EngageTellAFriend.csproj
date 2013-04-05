@@ -164,6 +164,8 @@
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <Content Include="images\tellafriend-icon32.png" />
+    <Content Include="ReleaseNotes_1.3.0.htm" />
     <Content Include="References\DotNetNuke.Web.dll" />
     <Content Include="ReleaseNotes_1.2.1.htm" />
     <Content Include="ReleaseNotes_1.2.0.htm" />
