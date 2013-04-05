@@ -17,10 +17,13 @@
 namespace JetBrains.Annotations
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     [Flags]
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Naming", "CA1726:UsePreferredTerms", MessageId = "Flags", Justification = "Jetbrains code")]
     public enum ImplicitUseKindFlags
     {
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1602:EnumerationItemsMustBeDocumented", Justification = "Jetbrains code")]
         Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
 
         /// <summary>Only entity marked with attribute considered used</summary>

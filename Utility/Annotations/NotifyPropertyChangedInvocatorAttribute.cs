@@ -17,6 +17,7 @@
 namespace JetBrains.Annotations
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>Indicates that the method is contained in a type that implements
     /// <see cref="System.ComponentModel.INotifyPropertyChanged" /> interface
@@ -61,16 +62,19 @@ namespace JetBrains.Annotations
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class NotifyPropertyChangedInvocatorAttribute : Attribute
     {
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code")]
         public NotifyPropertyChangedInvocatorAttribute()
         {
         }
 
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code")]
         public NotifyPropertyChangedInvocatorAttribute(string parameterName)
         {
             this.ParameterName = parameterName;
         }
 
         [UsedImplicitly]
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code")]
         public string ParameterName { get; private set; }
     }
 }

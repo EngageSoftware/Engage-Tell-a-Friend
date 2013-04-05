@@ -17,6 +17,7 @@
 namespace JetBrains.Annotations
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>Describes dependency between method input and output.</summary>
     /// <syntax>
@@ -61,19 +62,23 @@ namespace JetBrains.Annotations
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public sealed class ContractAnnotationAttribute : Attribute
     {
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "fdt", Justification = "Jetbrains code")]
         public ContractAnnotationAttribute([NotNull] string fdt)
             : this(fdt, false)
         {
         }
 
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "fdt", Justification = "Jetbrains code")]
         public ContractAnnotationAttribute([NotNull] string fdt, bool forceFullStates)
         {
             this.FDT = fdt;
             this.ForceFullStates = forceFullStates;
         }
 
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "FDT", Justification = "Jetbrains code")]
         public string FDT { get; private set; }
 
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code")]
         public bool ForceFullStates { get; private set; }
     }
 }

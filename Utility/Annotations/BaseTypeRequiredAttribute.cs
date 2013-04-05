@@ -17,6 +17,7 @@
 namespace JetBrains.Annotations
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>When applied to a target attribute, specifies a requirement for any type marked with
     /// the target attribute to implement or inherit specific type or types.</summary>
@@ -30,6 +31,7 @@ namespace JetBrains.Annotations
     /// {}
     ///   </code>
     /// </example>
+    [SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments", Justification = "Jetbrains code")]
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
     [BaseTypeRequired(typeof(Attribute))]
     public sealed class BaseTypeRequiredAttribute : Attribute
@@ -42,6 +44,7 @@ namespace JetBrains.Annotations
         }
 
         /// <summary>Gets enumerations of specified base types</summary>
+        [SuppressMessage("Microsoft.Performance", "CA1819:PropertiesShouldNotReturnArrays", Justification = "Jetbrains code")]
         public Type[] BaseTypes { get; private set; }
     }
 }

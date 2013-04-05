@@ -17,15 +17,19 @@
 namespace JetBrains.Annotations
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>This attribute is intended to mark publicly available API which should not be removed and so is treated as used.</summary>
+    [SuppressMessage("Microsoft.Design", "CA1019:DefineAccessorsForAttributeArguments", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Design", "CA1018:MarkAttributesWithAttributeUsage", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "API", Justification = "Jetbrains code")]
     [MeansImplicitUse]
     public sealed class PublicAPIAttribute : Attribute
     {
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code")]
         public PublicAPIAttribute()
         {
         }
 
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented", Justification = "Jetbrains code"), SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "comment", Justification = "Jetbrains code")]
         public PublicAPIAttribute(string comment)
         {
         }
