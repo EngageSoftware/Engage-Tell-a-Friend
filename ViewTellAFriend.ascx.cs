@@ -158,6 +158,15 @@ namespace Engage.Dnn.TellAFriend
                 var successfullySent = string.IsNullOrEmpty(response);
                 this.SuccessPanel.Visible = successfullySent;
                 this.ErrorPanel.Visible = !successfullySent;
+
+                if (!successfullySent)
+                {
+                    return;
+                }
+
+                this.FriendNameTextBox.Text = string.Empty;
+                this.FriendsEmailTextBox.Text = string.Empty;
+                this.MessageTextBox.Text = string.Empty;
             }
             catch (Exception exc)
             {
