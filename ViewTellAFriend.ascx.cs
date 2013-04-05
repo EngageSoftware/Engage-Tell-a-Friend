@@ -155,8 +155,8 @@ namespace Engage.Dnn.TellAFriend
         /// </summary>
         private void SetEmailValidation()
         {
-            this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
-            this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
+            this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.GetEmailRegularExpression(this.PortalId);
+            this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.GetEmailRegularExpression(this.PortalId);
         }
 
         /// <summary>
