@@ -19,7 +19,7 @@ namespace JetBrains.Annotations
     using System;
 
     /// <summary>Indicates that a method does not make any observable state changes.
-    /// The same as <see cref="System.Diagnostics.Contracts.PureAttribute" /></summary>
+    /// The same as <c>System.Diagnostics.Contracts.PureAttribute</c></summary>
     /// <example>
     ///   <code>
     /// [Pure]
