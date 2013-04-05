@@ -83,7 +83,7 @@ namespace Engage.Dnn.TellAFriend
         {
             base.OnInit(e);
 
-            Utility.AddJQueryReference(this.Page);
+            Utility.AddJQueryReference();
             this.RestoreButton.Click += this.RestoreButton_Click;
         }
 
