@@ -14,6 +14,7 @@ namespace Engage.Dnn.TellAFriend
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
     using System.Text;
 
     using DotNetNuke.Common;
@@ -85,7 +86,7 @@ namespace Engage.Dnn.TellAFriend
                 emailRegularExpressionBuilder.Remove(emailRegularExpressionBuilder.Length - 2, 2);
             }
 
-            return string.Format(@"{0}{1}(?:,\s*{1})*{2}", prefixBuilder, emailRegularExpressionBuilder, suffixBuilder);
+            return string.Format(CultureInfo.InvariantCulture, @"{0}{1}(?:,\s*{1})*{2}", prefixBuilder, emailRegularExpressionBuilder, suffixBuilder);
         }
     }
 }

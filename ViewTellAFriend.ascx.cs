@@ -122,8 +122,8 @@ namespace Engage.Dnn.TellAFriend
                 this.SetValidationGroupOnChildControls();
                 this.PopulateUserInfo();
                 this.MessageRow.Visible = this.ShowMessage;
-                this.ModalAnchorDiv.Visible = this.ShowInModal;
-                this.FormWrapDiv.Style[HtmlTextWriterStyle.Display] = this.ModalAnchorDiv.Visible ? "none" : "block";
+                this.ModalAnchorPanel.Visible = this.ShowInModal;
+                this.FormWrapPanel.Style[HtmlTextWriterStyle.Display] = this.ModalAnchorPanel.Visible ? "none" : "block";
             }
             catch (Exception exc)
             {
