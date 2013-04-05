@@ -42,6 +42,9 @@ namespace Engage.Dnn.TellAFriend
                 this.FromTextBox.Text = Utility.GetStringSetting(this.Settings, "From", string.Empty);
                 this.SubjectTextBox.Text = Utility.GetStringSetting(this.Settings, "Subject", string.Empty);
                 this.BodyTextBox.Text = Utility.GetStringSetting(this.Settings, "Body", string.Empty);
+                this.InvisibleCaptchaCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "InvisibleCaptcha", true);
+                this.TimedCaptchaCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "TimedCaptcha", true);
+                this.StandardCaptchaCheckBox.Checked = Utility.GetBooleanSetting(this.Settings, "StandardCaptcha", false);
 
                 this.SetEmailValidation();
             } 
@@ -70,6 +73,9 @@ namespace Engage.Dnn.TellAFriend
                 modules.UpdateModuleSetting(this.ModuleId, "From", this.FromTextBox.Text);
                 modules.UpdateModuleSetting(this.ModuleId, "Subject", this.SubjectTextBox.Text);
                 modules.UpdateModuleSetting(this.ModuleId, "Body", this.BodyTextBox.Text);
+                modules.UpdateModuleSetting(this.ModuleId, "InvisibleCaptcha", this.InvisibleCaptchaCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                modules.UpdateModuleSetting(this.ModuleId, "TimedCaptcha", this.TimedCaptchaCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
+                modules.UpdateModuleSetting(this.ModuleId, "StandardCaptcha", this.StandardCaptchaCheckBox.Checked.ToString(CultureInfo.InvariantCulture));
             }
             catch (Exception exc)
             {

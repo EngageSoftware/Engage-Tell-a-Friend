@@ -205,4 +205,22 @@
   <data name="TokenReferenceLink.Text" xml:space="preserve">
     <value>Show/Hide Token Reference</value>
   </data>
+  <data name="UseInvisibleCAPTCHALabel.Help" xml:space="preserve">
+    <value>Prevent SPAM by adding an invisible text box to the tell-a-friend form, and rejecting submissions which fill in the text box (presumably automated bots, rather than real people)</value>
+  </data>
+  <data name="UseInvisibleCAPTCHALabel.Text" xml:space="preserve">
+    <value>Use Invisible CAPTCHA:</value>
+  </data>
+  <data name="UseStandardCAPTCHALabel.Help" xml:space="preserve">
+    <value>Prevent SPAM by requiring users to enter in the letters from a distorted image</value>
+  </data>
+  <data name="UseStandardCAPTCHALabel.Text" xml:space="preserve">
+    <value>Use Standard CAPTCHA:</value>
+  </data>
+  <data name="UseTimedCAPTCHALabel.Help" xml:space="preserve">
+    <value>Prevent SPAM by rejecting submissions which fill in the form too quickly</value>
+  </data>
+  <data name="UseTimedCAPTCHALabel.Text" xml:space="preserve">
+    <value>Use Timed CAPTCHA:</value>
+  </data>
 </root>
