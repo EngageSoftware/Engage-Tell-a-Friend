@@ -134,8 +134,8 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>Sets the validator expression for email fields.</summary>
         private void SetEmailValidation()
         {
-            this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
-            this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.EmailRegEx;
+            this.FriendEmailPatternValidator.ValidationExpression = FeaturesController.GetEmailRegularExpression(this.PortalId);
+            this.SenderEmailPatternValidator.ValidationExpression = FeaturesController.GetEmailRegularExpression(this.PortalId);
         }
 
         /// <summary>Adds the CSS file if this is loaded as a skin object rather than a regular module.</summary>

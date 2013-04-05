@@ -99,9 +99,9 @@ namespace Engage.Dnn.TellAFriend
         /// <summary>Sets the validator expression for email fields.</summary>
         private void SetEmailValidation()
         {
-            this.CarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
-            this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.EmailsRegEx;
-            this.FromValidator.ValidationExpression = FeaturesController.EmailRegEx;
+            this.CarbonCopyValidator.ValidationExpression = FeaturesController.GetEmailListRegularExpression(this.PortalId);
+            this.BlindCarbonCopyValidator.ValidationExpression = FeaturesController.GetEmailListRegularExpression(this.PortalId);
+            this.FromValidator.ValidationExpression = FeaturesController.GetEmailRegularExpression(this.PortalId);
         }
     }
 }
