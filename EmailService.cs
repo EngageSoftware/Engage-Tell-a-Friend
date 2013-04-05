@@ -11,9 +11,7 @@
 
 namespace Engage.Dnn.TellAFriend
 {
-    using System.Globalization;
     using System.Text;
-    using System.Threading;
     using System.Web;
 
     using DotNetNuke.Entities.Modules;
@@ -42,12 +40,12 @@ namespace Engage.Dnn.TellAFriend
             {
                 settingsControl.ModuleConfiguration = new ModuleController().GetModule(moduleId, tabId);
 
-                string from = Utility.GetStringSetting(settingsControl.Settings, "From", string.Empty);
-                string carbonCopy = Utility.GetStringSetting(settingsControl.Settings, "CarbonCopy", string.Empty);
-                string blindCarbonCopy = Utility.GetStringSetting(settingsControl.Settings, "BlindCarbonCopy", string.Empty);
+                var from = Utility.GetStringSetting(settingsControl.Settings, "From", string.Empty);
+                var carbonCopy = Utility.GetStringSetting(settingsControl.Settings, "CarbonCopy", string.Empty);
+                var blindCarbonCopy = Utility.GetStringSetting(settingsControl.Settings, "BlindCarbonCopy", string.Empty);
 
-                string body = Utility.GetStringSetting(settingsControl.Settings, "Body", Localization.GetString("EmailAFriend", localResourceFile));
-                string subject = Utility.GetStringSetting(settingsControl.Settings, "Subject", Localization.GetString("EmailAFriendSubject", localResourceFile));
+                var body = Utility.GetStringSetting(settingsControl.Settings, "Body", Localization.GetString("EmailAFriend", localResourceFile));
+                var subject = Utility.GetStringSetting(settingsControl.Settings, "Subject", Localization.GetString("EmailAFriendSubject", localResourceFile));
 
                 if (string.IsNullOrEmpty(from))
                 {
@@ -73,14 +71,14 @@ namespace Engage.Dnn.TellAFriend
         /// <returns>The string with the given tokens replaced</returns>
         private static string ReplaceTokens(string tokenizedText, string friendName, string siteUrl, string senderName, string message, string portalName, string senderEmail, bool encode)
         {
-            var textBuilder = new StringBuilder(tokenizedText);
-            textBuilder = textBuilder.Replace("[Engage:Recipient]", encode ? HttpUtility.HtmlEncode(friendName) : friendName);
-            textBuilder = textBuilder.Replace("[Engage:Url]", encode ? HttpUtility.HtmlEncode(siteUrl) : siteUrl);
-            textBuilder = textBuilder.Replace("[Engage:From]", encode ? HttpUtility.HtmlEncode(senderName) : senderName);
-            textBuilder = textBuilder.Replace("[Engage:Message]", encode ? HttpUtility.HtmlEncode(message).Replace("\n", "<br />") : message);
-            textBuilder = textBuilder.Replace("[Engage:Portal]", encode ? HttpUtility.HtmlEncode(portalName) : portalName);
-            textBuilder = textBuilder.Replace("[Engage:SenderEmail]", encode ? HttpUtility.HtmlEncode(senderEmail) : senderEmail);
-            return textBuilder.ToString();
+            return new StringBuilder(tokenizedText)
+                .Replace("[Engage:Recipient]", encode ? HttpUtility.HtmlEncode(friendName) : friendName)
+                .Replace("[Engage:Url]", encode ? HttpUtility.HtmlEncode(siteUrl) : siteUrl)
+                .Replace("[Engage:From]", encode ? HttpUtility.HtmlEncode(senderName) : senderName)
+                .Replace("[Engage:Message]", encode ? HttpUtility.HtmlEncode(message).Replace("\n", "<br />") : message)
+                .Replace("[Engage:Portal]", encode ? HttpUtility.HtmlEncode(portalName) : portalName)
+                .Replace("[Engage:SenderEmail]", encode ? HttpUtility.HtmlEncode(senderEmail) : senderEmail)
+                .ToString();
         }
     }
 }
