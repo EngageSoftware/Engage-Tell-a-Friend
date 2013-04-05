@@ -4,10 +4,10 @@
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
 
 <asp:Panel ID="ModuleWrap" runat="server" class="taf-wrap">
-    <div id="ModalAnchorDiv" class="taf-anchor" runat="server">
+    <asp:Panel ID="ModalAnchorPanel" CssClass="taf-anchor" runat="server">
         <a href="#" class="CommandButton"><%= Localization.GetString("MainLinkText", LocalResourceFile) %></a>
-    </div>
-    <div id="FormWrapDiv" runat="server" class="Normal taf-form-wrap">
+    </asp:Panel>
+    <asp:Panel ID="FormWrapPanel" runat="server" CssClass="Normal taf-form-wrap">
         <div class="taf-intro"><%= Localization.GetString("Introduction", LocalResourceFile) %></div>
         <div class="taf-form">
 	        <div>
@@ -49,7 +49,7 @@
             <%= Localization.GetString("EmailSuccess.Text", LocalResourceFile)%>
         </div>
         
-    </div>
+    </asp:Panel>
 </asp:Panel>
 
 <script type="text/javascript">

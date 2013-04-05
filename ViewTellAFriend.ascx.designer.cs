@@ -22,22 +22,22 @@ namespace Engage.Dnn.TellAFriend {
         protected global::System.Web.UI.WebControls.Panel ModuleWrap;
         
         /// <summary>
-        /// ModalAnchorDiv control.
+        /// ModalAnchorPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ModalAnchorDiv;
+        protected global::System.Web.UI.WebControls.Panel ModalAnchorPanel;
         
         /// <summary>
-        /// FormWrapDiv control.
+        /// FormWrapPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl FormWrapDiv;
+        protected global::System.Web.UI.WebControls.Panel FormWrapPanel;
         
         /// <summary>
         /// FriendNameTextBox control.

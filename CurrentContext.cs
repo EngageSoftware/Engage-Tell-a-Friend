@@ -1,6 +1,6 @@
 ﻿// <copyright file="CurrentContext.cs" company="Engage Software">
-// Engage: TellAFriend - http://www.engagesoftware.com
-// Copyright (c) 2004-2010
+// Engage: Tell-A-Friend
+// Copyright (c) 2004-2013
 // by Engage Software ( http://www.engagesoftware.com )
 // </copyright>
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED 
@@ -13,15 +13,11 @@ namespace Engage.Dnn.TellAFriend
 {
     using System.Diagnostics.CodeAnalysis;
 
-    /// <summary>
-    /// Custom object to be serialized and made available in client code
-    /// </summary>
+    /// <summary>Custom object to be serialized and made available in client code</summary>
     [SuppressMessage("Microsoft.StyleCop.CSharp.NamingRules", "SA1300:ElementMustBeginWithUpperCaseLetter", Justification = "Following JSON naming convention")]
     public class CurrentContext
     {
-        /// <summary>
-        /// Initializes a new instance of the CurrentContext class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the CurrentContext class.</summary>
         /// <param name="siteUrl">The site URL.</param>
         /// <param name="localResourceFile">The local resource file.</param>
         /// <param name="portalId">The portal id.</param>
@@ -56,114 +52,54 @@ namespace Engage.Dnn.TellAFriend
             this.moduleId = moduleId;
         }
 
-        /// <summary>
-        /// Gets or sets the site URL.
-        /// </summary>
+        /// <summary>Gets or sets the site URL.</summary>
         /// <value>The site URL.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "site", Justification = "Following JSON naming convention")]
-        public string siteUrl
-        {
-            get;
-            set;
-        }
+        public string siteUrl { get; set; }
 
-        /// <summary>
-        /// Gets or sets the local resource file.
-        /// </summary>
+        /// <summary>Gets or sets the local resource file.</summary>
         /// <value>The local resource file.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "local", Justification = "Following JSON naming convention")]
-        public string localResourceFile
-        {
-            get;
-            set;
-        }
+        public string localResourceFile { get; set; }
 
-        /// <summary>
-        /// Gets or sets the portal id.
-        /// </summary>
+        /// <summary>Gets or sets the portal id.</summary>
         /// <value>The portal id.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
-        public int portalId
-        {
-            get;
-            set;
-        }
+        public int portalId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the name of the portal.
-        /// </summary>
+        /// <summary>Gets or sets the name of the portal.</summary>
         /// <value>The name of the portal.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
-        public string portalName
-        {
-            get;
-            set;
-        }
+        public string portalName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the portal email.
-        /// </summary>
+        /// <summary>Gets or sets the portal email.</summary>
         /// <value>The email address of the portal administrator.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "portal", Justification = "Following JSON naming convention")]
-        public string portalEmail
-        {
-            get;
-            set;
-        }
+        public string portalEmail { get; set; }
 
-        /// <summary>
-        /// Gets or sets the web method URL.
-        /// </summary>
+        /// <summary>Gets or sets the web method URL.</summary>
         /// <value>The web method URL.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "web", Justification = "Following JSON naming convention")]
-        public string webMethodUrl
-        {
-            get;
-            set;
-        }
+        public string webMethodUrl { get; set; }
 
-        /// <summary>
-        /// Gets or sets the current culture.
-        /// </summary>
+        /// <summary>Gets or sets the current culture.</summary>
         /// <value>The current culture.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "current", Justification = "Following JSON naming convention")]
-        public string currentCulture
-        {
-            get;
-            set;
-        }
+        public string currentCulture { get; set; }
 
-        /// <summary>
-        /// Gets or sets the validation group.
-        /// </summary>
+        /// <summary>Gets or sets the validation group.</summary>
         /// <value>The validation group.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "validation", Justification = "Following JSON naming convention")]
-        public string validationGroup
-        {
-            get;
-            set;
-        }
+        public string validationGroup { get; set; }
 
-        /// <summary>
-        /// Gets or sets the tab ID.
-        /// </summary>
+        /// <summary>Gets or sets the tab ID.</summary>
         /// <value>The tab ID.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "tab", Justification = "Following JSON naming convention")]
-        public int tabId
-        {
-            get;
-            set;
-        }
+        public int tabId { get; set; }
 
-        /// <summary>
-        /// Gets or sets the module ID.
-        /// </summary>
+        /// <summary>Gets or sets the module ID.</summary>
         /// <value>The module ID.</value>
         [SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "module", Justification = "Following JSON naming convention")]
-        public int moduleId
-        {
-            get;
-            set;
-        }
+        public int moduleId { get; set; }
     }
 }

@@ -116,6 +116,24 @@
     <Compile Include="Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Utility\Annotations\BaseTypeRequiredAttribute.cs" />
+    <Compile Include="Utility\Annotations\CanBeNullAttribute.cs" />
+    <Compile Include="Utility\Annotations\CannotApplyEqualityOperatorAttribute.cs" />
+    <Compile Include="Utility\Annotations\ContractAnnotationAttribute.cs" />
+    <Compile Include="Utility\Annotations\ImplicitUseKindFlags.cs" />
+    <Compile Include="Utility\Annotations\ImplicitUseTargetFlags.cs" />
+    <Compile Include="Utility\Annotations\InstantHandleAttribute.cs" />
+    <Compile Include="Utility\Annotations\InvokerParameterNameAttribute.cs" />
+    <Compile Include="Utility\Annotations\LocalizationRequiredAttribute.cs" />
+    <Compile Include="Utility\Annotations\MeansImplicitUseAttribute.cs" />
+    <Compile Include="Utility\Annotations\NotifyPropertyChangedInvocatorAttribute.cs" />
+    <Compile Include="Utility\Annotations\NotNullAttribute.cs" />
+    <Compile Include="Utility\Annotations\PathReferenceAttribute.cs" />
+    <Compile Include="Utility\Annotations\PublicAPIAttribute.cs" />
+    <Compile Include="Utility\Annotations\PureAttribute.cs" />
+    <Compile Include="Utility\Annotations\RazorSectionAttribute.cs" />
+    <Compile Include="Utility\Annotations\StringFormatMethodAttribute.cs" />
+    <Compile Include="Utility\Annotations\UsedImplicitlyAttribute.cs" />
     <Compile Include="Utility\Utility.cs" />
     <Compile Include="WebMethods.asmx.cs">
       <DependentUpon>WebMethods.asmx</DependentUpon>
