@@ -34,6 +34,9 @@ namespace Engage.Dnn.TellAFriend
             this.ShowMessage = true;
             this.ShowInModal = false;
             this.Url = string.Empty;
+            this.UseInvisibleCaptcha = true;
+            this.UseTimedCaptcha = true;
+            this.UseStandardCaptcha = false;
         }
 
         /// <summary>Gets or sets a value indicating whether the message textbox should be shown.</summary>
@@ -50,6 +53,18 @@ namespace Engage.Dnn.TellAFriend
         /// <value>The URL to be used, or <see cref="string.Empty" /> to use the current URL.</value>
         [PublicAPI]
         public string Url { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether the module should use an invisible CAPTCHA.</summary>
+        /// <value><c>true</c> if the module should use an invisible CAPTCHA; otherwise, <c>false</c>.</value>
+        public bool UseInvisibleCaptcha { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether the module should use a timed CAPTCHA.</summary>
+        /// <value><c>true</c> if the module should use a timed CAPTCHA; otherwise, <c>false</c>.</value>
+        public bool UseTimedCaptcha { get; set; }
+
+        /// <summary>Gets or sets a value indicating whether the module should use a standard CAPTCHA.</summary>
+        /// <value><c>true</c> if the module should use a standard CAPTCHA; otherwise, <c>false</c>.</value>
+        public bool UseStandardCaptcha { get; set; }
 
         /// <summary>Gets the validation group for this instance of the module.</summary>
         /// <value>The module's validation group.</value>
@@ -78,6 +93,9 @@ namespace Engage.Dnn.TellAFriend
             this.ShowInModal = Utility.GetBooleanSetting(this.Settings, "ShowModal", this.ShowInModal);
             this.Url = Utility.GetStringSetting(this.Settings, "SiteUrl", this.Url);
             this.ShowMessage = Utility.GetBooleanSetting(this.Settings, "ShowMessage", this.ShowMessage);
+            this.UseInvisibleCaptcha = Utility.GetBooleanSetting(this.Settings, "InvisibleCaptcha", this.UseInvisibleCaptcha);
+            this.UseTimedCaptcha = Utility.GetBooleanSetting(this.Settings, "TimedCaptcha", this.UseTimedCaptcha);
+            this.UseStandardCaptcha = Utility.GetBooleanSetting(this.Settings, "StandardCaptcha", this.UseStandardCaptcha);
         }
 
         /// <summary>Handles the Load event of the Page control.</summary>
@@ -99,6 +117,7 @@ namespace Engage.Dnn.TellAFriend
                 this.SetEmailValidation();
                 this.SetValidationGroupOnChildControls();
                 this.PopulateUserInfo();
+                this.SetupCaptchas();
                 this.SubmitButton.ToolTip = Localization.GetString("SubmitButtonToolTip.Text", this.LocalResourceFile);
                 this.MessageRow.Visible = this.ShowMessage;
                 this.ModalAnchorPanel.Visible = this.ShowInModal;
@@ -168,6 +187,9 @@ namespace Engage.Dnn.TellAFriend
             this.SenderNameRequiredValidator.ValidationGroup = this.ValidationGroup;
             this.SenderEmailRequiredValidator.ValidationGroup = this.ValidationGroup;
             this.SenderEmailPatternValidator.ValidationGroup = this.ValidationGroup;
+            this.InvisibleCaptcha.ValidationGroup = this.ValidationGroup;
+            this.TimedCaptcha.ValidationGroup = this.ValidationGroup;
+            this.StandardCaptcha.ValidationGroup = this.ValidationGroup;
             this.SubmitButton.ValidationGroup = this.ValidationGroup;
         }
 
@@ -181,6 +203,22 @@ namespace Engage.Dnn.TellAFriend
 
             this.SenderNameTextBox.Text = this.UserInfo.DisplayName;
             this.SenderEmailTextBox.Text = this.UserInfo.Email;
+        }
+
+        /// <summary>Sets up the CAPTCHA controls.</summary>
+        private void SetupCaptchas()
+        {
+            this.InvisibleCaptcha.Visible = this.InvisibleCaptcha.Enabled = this.UseInvisibleCaptcha;
+            this.TimedCaptcha.Visible = this.TimedCaptcha.Enabled = this.UseTimedCaptcha;
+            this.StandardCaptcha.Visible = this.StandardCaptcha.Enabled = this.UseStandardCaptcha;
+
+            this.InvisibleCaptcha.ErrorMessage = Localization.GetString("InvisibleCaptchaFailed", this.LocalResourceFile);
+            this.InvisibleCaptcha.InvisibleTextBoxLabel = Localization.GetString("InvisibleCaptchaLabel", this.LocalResourceFile);
+            this.TimedCaptcha.ErrorMessage = Localization.GetString("TimedCaptchaFailed", this.LocalResourceFile);
+            this.StandardCaptcha.ErrorMessage = Localization.GetString("StandardCaptchaFailed", this.LocalResourceFile);
+            this.StandardCaptcha.CaptchaLinkButtonText = Localization.GetString("StandardCaptchaLink", this.LocalResourceFile);
+            this.StandardCaptcha.CaptchaTextBoxLabel = Localization.GetString("StandardCaptchaLabel", this.LocalResourceFile);
+            this.StandardCaptcha.CaptchaTextBoxTitle = Localization.GetString("StandardCaptchaTitle", this.LocalResourceFile);
         }
 
         /// <summary>Gets the current URL.</summary>

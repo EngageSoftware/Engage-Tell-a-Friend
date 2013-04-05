@@ -2,6 +2,7 @@
 <%@ Import Namespace="Engage.Dnn.TellAFriend"%>
 <%@ Import Namespace="DotNetNuke.Entities.Modules"%>
 <%@ Import Namespace="DotNetNuke.Services.Localization"%>
+<%@ Register TagPrefix="dnn" Assembly="DotNetNuke.Web" Namespace="DotNetNuke.Web.UI.WebControls" %>
 
 <asp:Panel ID="ModuleWrap" runat="server" class="taf-wrap">
     <asp:Panel ID="ModalAnchorPanel" CssClass="taf-anchor" runat="server">
@@ -37,6 +38,11 @@
                 <div runat="server" id="MessageRow">
                     <p><%= Localization.GetString("Message", LocalResourceFile) %></p>
                     <asp:TextBox ID="MessageTextBox" runat="server" TextMode="MultiLine" Rows="6" CssClass="NormalTextBox" />
+                </div>
+                <div>
+                    <dnn:DnnCaptcha runat="server" ID="InvisibleCaptcha" ProtectionMode="InvisibleTextBox" Display="Dynamic" />
+                    <dnn:DnnCaptcha runat="server" ID="TimedCaptcha" ProtectionMode="MinimumTimeout" Display="Dynamic" />
+                    <dnn:DnnCaptcha runat="server" ID="StandardCaptcha" Display="Dynamic" EnableRefreshImage="True" />
                 </div>
             
                 <div class="taf-submit">

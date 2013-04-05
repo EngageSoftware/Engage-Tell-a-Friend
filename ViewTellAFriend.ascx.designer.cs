@@ -148,6 +148,33 @@ namespace Engage.Dnn.TellAFriend {
         protected global::System.Web.UI.WebControls.TextBox MessageTextBox;
         
         /// <summary>
+        /// InvisibleCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DotNetNuke.Web.UI.WebControls.DnnCaptcha InvisibleCaptcha;
+        
+        /// <summary>
+        /// TimedCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DotNetNuke.Web.UI.WebControls.DnnCaptcha TimedCaptcha;
+        
+        /// <summary>
+        /// StandardCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DotNetNuke.Web.UI.WebControls.DnnCaptcha StandardCaptcha;
+        
+        /// <summary>
         /// SubmitButton control.
         /// </summary>
         /// <remarks>
