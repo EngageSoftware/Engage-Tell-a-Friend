@@ -20,8 +20,9 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <JSLintSkip>\JavaScript\taf.bundle.js|\JavaScript\json2.debug.js|\JavaScript\jquery.simplemodal.js|\JavaScript\jquery.simplemodal.debug.js|\JavaScript\json2.js|\JavaScript\jquery-1.4.2.debug.js|\JavaScript\jquery-1.4.2.js|\JavaScript\jquery-1.4.1.debug-vsdoc.js</JSLintSkip>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,10 +62,10 @@
     <Reference Include="System" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions, Version=1.0.61025.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>References\System.Web.Extensions.dll</HintPath>
-      <Private>False</Private>
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="DotNetNuke" />
@@ -133,7 +134,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Docs\Engage Tell A Friend - Read Me.docx" />
-    <None Include="EngageTellAFriend.4.dnn" />
     <None Include="EngageTellAFriend.5.dnn" />
     <None Include="EngageTellAFriend.build" />
     <None Include="Migrated rules for EngageTellAFriend.ruleset" />
@@ -142,7 +142,6 @@
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
     <Content Include="ReleaseNotes_1.2.1.htm" />
     <Content Include="ReleaseNotes_1.2.0.htm" />
-    <Content Include="References\System.Web.Extensions.dll" />
     <Content Include="TellAFriend.css" />
     <Content Include="Settings.ascx" />
     <Content Include="ViewTellAFriend.ascx" />
