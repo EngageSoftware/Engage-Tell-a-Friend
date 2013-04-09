@@ -227,7 +227,6 @@ namespace Engage.Dnn.TellAFriend
             this.StandardCaptcha.ErrorMessage = Localization.GetString("StandardCaptchaFailed", this.LocalResourceFile);
             this.StandardCaptcha.CaptchaLinkButtonText = Localization.GetString("StandardCaptchaLink", this.LocalResourceFile);
             this.StandardCaptcha.CaptchaTextBoxLabel = Localization.GetString("StandardCaptchaLabel", this.LocalResourceFile);
-            this.StandardCaptcha.CaptchaTextBoxTitle = Localization.GetString("StandardCaptchaTitle", this.LocalResourceFile);
         }
 
         /// <summary>Gets the current URL.</summary>

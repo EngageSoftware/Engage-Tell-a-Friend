@@ -202,7 +202,4 @@
   <data name="StandardCaptchaLink.Text" xml:space="preserve">
     <value>Generate New Image</value>
   </data>
-  <data name="StandardCaptchaTitle.Text" xml:space="preserve">
-    <value />
-  </data>
 </root>
