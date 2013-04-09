@@ -127,6 +127,7 @@
         <exclude name="${references.directory}/DotNetNuke.dll"/>
         <exclude name="${references.directory}/DotNetNuke.*.dll"/>
         <exclude name="${references.directory}/Microsoft.ApplicationBlocks.Data.dll"/>
+        <exclude name="${references.directory}/Telerik.Web.UI.dll"/>
       </fileset>
     </copy>
 
