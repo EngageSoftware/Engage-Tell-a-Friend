@@ -116,7 +116,11 @@ namespace Engage.Dnn.TellAFriend
                 this.AddCssFile();
                 this.SetEmailValidation();
                 this.SetValidationGroupOnChildControls();
-                this.PopulateUserInfo();
+                if (!this.IsPostBack)
+                {
+                    this.PopulateUserInfo();
+                }
+
                 this.SetupCaptchas();
                 this.SubmitButton.ToolTip = Localization.GetString("SubmitButtonToolTip.Text", this.LocalResourceFile);
                 this.MessageRow.Visible = this.ShowMessage;
