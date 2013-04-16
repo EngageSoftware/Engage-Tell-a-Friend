@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDictionary Include="CustomDictionary.xml" />
+    <Content Include="ReleaseNotes_1.3.1.htm" />
     <Content Include="images\tellafriend-icon32.png" />
     <Content Include="References\Telerik.Web.UI.dll" />
     <Content Include="ReleaseNotes_1.3.0.htm" />
