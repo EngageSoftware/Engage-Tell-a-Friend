@@ -1,16 +1,16 @@
 /*
- * SimpleModal 1.3.3 - jQuery Plugin
- * http://www.ericmmartin.com/projects/simplemodal/
- * Copyright (c) 2009 Eric Martin (http://twitter.com/EricMMartin)
- * Dual licensed under the MIT and GPL licenses
- * Revision: $Id: jquery.simplemodal.js 228 2009-10-30 13:34:27Z emartin24 $
+ * SimpleModal 1.4.4 - jQuery Plugin
+ * http://simplemodal.com/
+ * Copyright (c) 2013 Eric Martin
+ * Licensed under MIT and GPL
+ * Date: Sun, Jan 20 2013 15:58:56 -0800
  */
 
 /**
  * SimpleModal is a lightweight jQuery plugin that provides a simple
  * interface to create a modal dialog.
  *
- * The goal of SimpleModal is to provide developers with a cross-browser 
+ * The goal of SimpleModal is to provide developers with a cross-browser
  * overlay and container that will be populated with data provided to
  * SimpleModal.
  *
@@ -26,48 +26,68 @@
  *
  * 2) As a stand-alone function, like $.modal(data). The data parameter
  * is required and an optional options object can be passed as a second
- * parameter. This method provides more flexibility in the types of data 
+ * parameter. This method provides more flexibility in the types of data
  * that are allowed. The data could be a DOM object, a jQuery object, HTML
  * or a string.
- * 
+ *
  * @example $.modal('<div>my data</div>', {options});
  * @example $.modal('my data', {options});
  * @example $.modal($('#myDiv'), {options});
  * @example $.modal(jQueryObject, {options});
- * @example $.modal(document.getElementById('myDiv'), {options}); 
- * 
- * A SimpleModal call can contain multiple elements, but only one modal 
+ * @example $.modal(document.getElementById('myDiv'), {options});
+ *
+ * A SimpleModal call can contain multiple elements, but only one modal
  * dialog can be created at a time. Which means that all of the matched
  * elements will be displayed within the modal container.
- * 
+ *
  * SimpleModal internally sets the CSS needed to display the modal dialog
  * properly in all browsers, yet provides the developer with the flexibility
- * to easily control the look and feel. The styling for SimpleModal can be 
+ * to easily control the look and feel. The styling for SimpleModal can be
  * done through external stylesheets, or through SimpleModal, using the
- * overlayCss and/or containerCss options.
+ * overlayCss, containerCss, and dataCss options.
  *
  * SimpleModal has been tested in the following browsers:
- * - IE 6, 7, 8
- * - Firefox 2, 3
- * - Opera 9, 10
- * - Safari 3, 4
- * - Chrome 1, 2
+ * - IE 6+
+ * - Firefox 2+
+ * - Opera 9+
+ * - Safari 3+
+ * - Chrome 1+
  *
  * @name SimpleModal
  * @type jQuery
- * @requires jQuery v1.2.2
+ * @requires jQuery v1.3
  * @cat Plugins/Windows and Overlays
  * @author Eric Martin (http://ericmmartin.com)
- * @version 1.3.3
+ * @version 1.4.4
  */
-;(function ($) {
-	var ie6 = $.browser.msie && parseInt($.browser.version) == 6 && typeof window['XMLHttpRequest'] != "object",
-		ieQuirks = null,
+
+;(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['jquery'], factory);
+	} else {
+		// Browser globals
+		factory(jQuery);
+	}
+}
+(function ($) {
+	var d = [],
+		doc = $(document),
+		ua = navigator.userAgent.toLowerCase(),
+		wndw = $(window),
 		w = [];
 
+	var browser = {
+		ieQuirks: null,
+		msie: /msie/.test(ua) && !/opera/.test(ua),
+		opera: /opera/.test(ua)
+	};
+	browser.ie6 = browser.msie && /msie 6./.test(ua) && typeof window['XMLHttpRequest'] !== 'object';
+	browser.ie7 = browser.msie && /msie 7.0/.test(ua);
+
 	/*
-	 * Stand-alone function to create a modal dialog.
-	 * 
+	 * Create and display a modal dialog.
+	 *
 	 * @param {string, object} data A string, jQuery object or DOM object
 	 * @param {object} [options] An optional object containing options overrides
 	 */
@@ -76,15 +96,50 @@
 	};
 
 	/*
-	 * Stand-alone close function to close the modal dialog
+	 * Close the modal dialog.
 	 */
 	$.modal.close = function () {
 		$.modal.impl.close();
 	};
 
 	/*
+	 * Set focus on first or last visible input in the modal dialog. To focus on the last
+	 * element, call $.modal.focus('last'). If no input elements are found, focus is placed
+	 * on the data wrapper element.
+	 */
+	$.modal.focus = function (pos) {
+		$.modal.impl.focus(pos);
+	};
+
+	/*
+	 * Determine and set the dimensions of the modal dialog container.
+	 * setPosition() is called if the autoPosition option is true.
+	 */
+	$.modal.setContainerDimensions = function () {
+		$.modal.impl.setContainerDimensions();
+	};
+
+	/*
+	 * Re-position the modal dialog.
+	 */
+	$.modal.setPosition = function () {
+		$.modal.impl.setPosition();
+	};
+
+	/*
+	 * Update the modal dialog. If new dimensions are passed, they will be used to determine
+	 * the dimensions of the container.
+	 *
+	 * setContainerDimensions() is called, which in turn calls setPosition(), if enabled.
+	 * Lastly, focus() is called is the focus option is true.
+	 */
+	$.modal.update = function (height, width) {
+		$.modal.impl.update(height, width);
+	};
+
+	/*
 	 * Chained function to create a modal dialog.
-	 * 
+	 *
 	 * @param {object} [options] An optional object containing options overrides
 	 */
 	$.fn.modal = function (options) {
@@ -93,9 +148,9 @@
 
 	/*
 	 * SimpleModal default options
-	 * 
-	 * appendTo:		(String:'body') The jQuery selector to append the elements to. For ASP.NET, use 'form'.
-	 * focus:			(Boolean:true) Forces focus to remain on the modal dialog
+	 *
+	 * appendTo:		(String:'body') The jQuery selector to append the elements to. For .NET, use 'form'.
+	 * focus:			(Boolean:true) Focus in the first visible, enabled element?
 	 * opacity:			(Number:50) The opacity value for the overlay div, from 0 - 100
 	 * overlayId:		(String:'simplemodal-overlay') The DOM element id for the overlay div
 	 * overlayCss:		(Object:{}) The CSS styling for the overlay div
@@ -103,24 +158,29 @@
 	 * containerCss:	(Object:{}) The CSS styling for the container div
 	 * dataId:			(String:'simplemodal-data') The DOM element id for the data div
 	 * dataCss:			(Object:{}) The CSS styling for the data div
-	 * minHeight:		(Number:200) The minimum height for the container
-	 * minWidth:		(Number:200) The minimum width for the container
+	 * minHeight:		(Number:null) The minimum height for the container
+	 * minWidth:		(Number:null) The minimum width for the container
 	 * maxHeight:		(Number:null) The maximum height for the container. If not specified, the window height is used.
 	 * maxWidth:		(Number:null) The maximum width for the container. If not specified, the window width is used.
-	 * autoResize:		(Boolean:false) Resize container on window resize? Use with caution - this may have undesirable side-effects.
-	 * autoPosition:	(Boolean:true) Reposition container on window resize?
+	 * autoResize:		(Boolean:false) Automatically resize the container if it exceeds the browser window dimensions?
+	 * autoPosition:	(Boolean:true) Automatically position the container upon creation and on window resize?
 	 * zIndex:			(Number: 1000) Starting z-index value
 	 * close:			(Boolean:true) If true, closeHTML, escClose and overClose will be used if set.
 	 							If false, none of them will be used.
-	 * closeHTML:		(String:'<a class="modalCloseImg" title="Close"></a>') The HTML for the 
-							default close link. SimpleModal will automatically add the closeClass to this element.
+	 * closeHTML:		(String:'<a class="modalCloseImg" title="Close"></a>') The HTML for the default close link.
+								SimpleModal will automatically add the closeClass to this element.
 	 * closeClass:		(String:'simplemodal-close') The CSS class used to bind to the close event
-	 * escClose:		(Boolean:true) Allow Esc keypress to close the dialog? 
+	 * escClose:		(Boolean:true) Allow Esc keypress to close the dialog?
 	 * overlayClose:	(Boolean:false) Allow click on overlay to close the dialog?
+	 * fixed:			(Boolean:true) If true, the container will use a fixed position. If false, it will use a
+								absolute position (the dialog will scroll with the page)
 	 * position:		(Array:null) Position of container [top, left]. Can be number of pixels or percentage
 	 * persist:			(Boolean:false) Persist the data across modal calls? Only used for existing
 								DOM elements. If true, the data will be maintained across modal calls, if false,
 								the data will be reverted to its original state.
+	 * modal:			(Boolean:true) User will be unable to interact with the page below the modal or tab away from the dialog.
+								If false, the overlay, iframe, and certain events will be disabled allowing the user to interact
+								with the page below the dialog.
 	 * onOpen:			(Function:null) The callback function used in place of SimpleModal's open
 	 * onShow:			(Function:null) The callback function used after the modal dialog has opened
 	 * onClose:			(Function:null) The callback function used in place of SimpleModal's close
@@ -135,8 +195,8 @@
 		containerCss: {},
 		dataId: 'simplemodal-data',
 		dataCss: {},
-		minHeight: 200,
-		minWidth: 300,
+		minHeight: null,
+		minWidth: null,
 		maxHeight: null,
 		maxWidth: null,
 		autoResize: false,
@@ -147,8 +207,10 @@
 		closeClass: 'simplemodal-close',
 		escClose: true,
 		overlayClose: false,
+		fixed: true,
 		position: null,
 		persist: false,
+		modal: true,
 		onOpen: null,
 		onShow: null,
 		onClose: null
@@ -156,14 +218,11 @@
 
 	/*
 	 * Main modal object
+	 * o = options
 	 */
 	$.modal.impl = {
 		/*
-		 * Modal dialog options
-		 */
-		o: null,
-		/*
-		 * Contains the modal dialog elements and is the object passed 
+		 * Contains the modal dialog elements and is the object passed
 		 * back to the callback (onOpen, onShow, onClose) functions
 		 */
 		d: {},
@@ -178,8 +237,8 @@
 				return false;
 			}
 
-			// $.boxModel is undefined if checked earlier
-			ieQuirks = $.browser.msie && !$.boxModel;
+			// $.support.boxModel is undefined if checked earlier
+			browser.ieQuirks = browser.msie && !$.support.boxModel;
 
 			// merge defaults and user options
 			s.o = $.extend({}, $.modal.defaults, options);
@@ -191,13 +250,19 @@
 			s.occb = false;
 
 			// determine how to handle the data based on its type
-			if (typeof data == 'object') {
+			if (typeof data === 'object') {
 				// convert DOM object to a jQuery object
-				data = data instanceof jQuery ? data : $(data);
+				data = data instanceof $ ? data : $(data);
+				s.d.placeholder = false;
 
 				// if the object came from the DOM, keep track of its parent
 				if (data.parent().parent().size() > 0) {
-					s.d.parentNode = data.parent();
+					data.before($('<span></span>')
+						.attr('id', 'simplemodal-placeholder')
+						.css({display: 'none'}));
+
+					s.d.placeholder = true;
+					s.display = data.css('display');
 
 					// persist changes? if not, make a clone of the element
 					if (!s.o.persist) {
@@ -205,7 +270,7 @@
 					}
 				}
 			}
-			else if (typeof data == 'string' || typeof data == 'number') {
+			else if (typeof data === 'string' || typeof data === 'number') {
 				// just insert the data as innerHTML
 				data = $('<div></div>').html(data);
 			}
@@ -237,14 +302,14 @@
 			var s = this;
 
 			// get the window properties
-			w = s.getDimensions();
+			s.getDimensions();
 
 			// add an iframe to prevent select options from bleeding through
-			if (ie6) {
+			if (s.o.modal && browser.ie6) {
 				s.d.iframe = $('<iframe src="javascript:false;"></iframe>')
 					.css($.extend(s.o.iframeCss, {
 						display: 'none',
-						opacity: 0, 
+						opacity: 0,
 						position: 'fixed',
 						height: w[0],
 						width: w[1],
@@ -262,35 +327,35 @@
 				.css($.extend(s.o.overlayCss, {
 					display: 'none',
 					opacity: s.o.opacity / 100,
-					height: w[0],
-					width: w[1],
+					height: s.o.modal ? d[0] : 0,
+					width: s.o.modal ? d[1] : 0,
 					position: 'fixed',
 					left: 0,
 					top: 0,
 					zIndex: s.o.zIndex + 1
 				}))
 				.appendTo(s.o.appendTo);
-		
+
 			// create the container
 			s.d.container = $('<div></div>')
 				.attr('id', s.o.containerId)
 				.addClass('simplemodal-container')
-				.css($.extend(s.o.containerCss, {
-					display: 'none',
-					position: 'fixed', 
-					zIndex: s.o.zIndex + 2
-				}))
+				.css($.extend(
+					{position: s.o.fixed ? 'fixed' : 'absolute'},
+					s.o.containerCss,
+					{display: 'none', zIndex: s.o.zIndex + 2}
+				))
 				.append(s.o.close && s.o.closeHTML
 					? $(s.o.closeHTML).addClass(s.o.closeClass)
 					: '')
 				.appendTo(s.o.appendTo);
-				
+
 			s.d.wrap = $('<div></div>')
 				.attr('tabIndex', -1)
 				.addClass('simplemodal-wrap')
 				.css({height: '100%', outline: 0, width: '100%'})
 				.appendTo(s.d.container);
-				
+
 			// add styling and attributes to the data
 			// append to body to get correct dimensions, then move to wrap
 			s.d.data = data
@@ -306,7 +371,7 @@
 			s.d.data.appendTo(s.d.wrap);
 
 			// fix issues with IE
-			if (ie6 || ieQuirks) {
+			if (browser.ie6 || browser.ieQuirks) {
 				s.fixIE();
 			}
 		},
@@ -321,41 +386,41 @@
 				e.preventDefault();
 				s.close();
 			});
-			
+
 			// bind the overlay click to the close function, if enabled
-			if (s.o.close && s.o.overlayClose) {
+			if (s.o.modal && s.o.close && s.o.overlayClose) {
 				s.d.overlay.bind('click.simplemodal', function (e) {
 					e.preventDefault();
 					s.close();
 				});
 			}
-	
+
 			// bind keydown events
-			$(document).bind('keydown.simplemodal', function (e) {
-				if (s.o.focus && e.keyCode == 9) { // TAB
+			doc.bind('keydown.simplemodal', function (e) {
+				if (s.o.modal && e.keyCode === 9) { // TAB
 					s.watchTab(e);
 				}
-				else if ((s.o.close && s.o.escClose) && e.keyCode == 27) { // ESC
+				else if ((s.o.close && s.o.escClose) && e.keyCode === 27) { // ESC
 					e.preventDefault();
 					s.close();
 				}
 			});
 
 			// update window size
-			$(window).bind('resize.simplemodal', function () {
+			wndw.bind('resize.simplemodal orientationchange.simplemodal', function () {
 				// redetermine the window width/height
-				w = s.getDimensions();
+				s.getDimensions();
 
 				// reposition the dialog
-				s.setContainerDimensions(true);
-	
-				if (ie6 || ieQuirks) {
+				s.o.autoResize ? s.setContainerDimensions() : s.o.autoPosition && s.setPosition();
+
+				if (browser.ie6 || browser.ieQuirks) {
 					s.fixIE();
 				}
-				else {
+				else if (s.o.modal) {
 					// update the iframe & overlay
 					s.d.iframe && s.d.iframe.css({height: w[0], width: w[1]});
-					s.d.overlay.css({height: w[0], width: w[1]});
+					s.d.overlay.css({height: d[0], width: d[1]});
 				}
 			});
 		},
@@ -364,18 +429,18 @@
 		 */
 		unbindEvents: function () {
 			$('.' + this.o.closeClass).unbind('click.simplemodal');
-			$(document).unbind('keydown.simplemodal');
-			$(window).unbind('resize.simplemodal');
+			doc.unbind('keydown.simplemodal');
+			wndw.unbind('.simplemodal');
 			this.d.overlay.unbind('click.simplemodal');
 		},
 		/*
 		 * Fix issues in IE6 and IE7 in quirks mode
 		 */
 		fixIE: function () {
-			var s=this, p = s.o.position;
+			var s = this, p = s.o.position;
 
 			// simulate fixed position - adapted from BlockUI
-			$.each([s.d.iframe || null, s.d.overlay, s.d.container], function (i, el) {
+			$.each([s.d.iframe || null, !s.o.modal ? null : s.d.overlay, s.d.container.css('position') === 'fixed' ? s.d.container : null], function (i, el) {
 				if (el) {
 					var bch = 'document.body.clientHeight', bcw = 'document.body.clientWidth',
 						bsh = 'document.body.scrollHeight', bsl = 'document.body.scrollLeft',
@@ -393,17 +458,17 @@
 					}
 					else {
 						var te, le;
-						if (p && p.constructor == Array) {
-							var top = p[0] 
-								? typeof p[0] == 'number' ? p[0].toString() : p[0].replace(/px/, '')
+						if (p && p.constructor === Array) {
+							var top = p[0]
+								? typeof p[0] === 'number' ? p[0].toString() : p[0].replace(/px/, '')
 								: el.css('top').replace(/px/, '');
-							te = top.indexOf('%') == -1 
+							te = top.indexOf('%') === -1
 								? top + ' + (t = ' + st + ' ? ' + st + ' : ' + bst + ') + "px"'
 								: parseInt(top.replace(/%/, '')) + ' * ((' + ch + ' || ' + bch + ') / 100) + (t = ' + st + ' ? ' + st + ' : ' + bst + ') + "px"';
 
 							if (p[1]) {
-								var left = typeof p[1] == 'number' ? p[1].toString() : p[1].replace(/px/, '');
-								le = left.indexOf('%') == -1 
+								var left = typeof p[1] === 'number' ? p[1].toString() : p[1].replace(/px/, '');
+								le = left.indexOf('%') === -1
 									? left + ' + (t = ' + sl + ' ? ' + sl + ' : ' + bsl + ') + "px"'
 									: parseInt(left.replace(/%/, '')) + ' * ((' + cw + ' || ' + bcw + ') / 100) + (t = ' + sl + ' ? ' + sl + ' : ' + bsl + ') + "px"';
 							}
@@ -420,85 +485,122 @@
 				}
 			});
 		},
+		/*
+		 * Place focus on the first or last visible input
+		 */
 		focus: function (pos) {
-			var s = this, p = pos || 'first';
+			var s = this, p = pos && $.inArray(pos, ['first', 'last']) !== -1 ? pos : 'first';
 
 			// focus on dialog or the first visible/enabled input element
 			var input = $(':input:enabled:visible:' + p, s.d.wrap);
-			input.length > 0 ? input.focus() : s.d.wrap.focus();
+			setTimeout(function () {
+				input.length > 0 ? input.focus() : s.d.wrap.focus();
+			}, 10);
 		},
 		getDimensions: function () {
-			var el = $(window);
+			// fix a jQuery bug with determining the window height - use innerHeight if available
+			var s = this,
+				h = typeof window.innerHeight === 'undefined' ? wndw.height() : window.innerHeight;
 
-			// fix a jQuery/Opera bug with determining the window height
-			var h = $.browser.opera && $.browser.version > '9.5' && $.fn.jquery <= '1.2.6' ? document.documentElement['clientHeight'] :
-				$.browser.opera && $.browser.version < '9.5' && $.fn.jquery > '1.2.6' ? window.innerHeight :
-				el.height();
-
-			return [h, el.width()];
+			d = [doc.height(), doc.width()];
+			w = [h, wndw.width()];
 		},
-		getVal: function (v) {
-			return v == 'auto' ? 0 
-				: v.indexOf('%') > 0 ? v 
-					: parseInt(v.replace(/px/, ''));
+		getVal: function (v, d) {
+			return v ? (typeof v === 'number' ? v
+					: v === 'auto' ? 0
+					: v.indexOf('%') > 0 ? ((parseInt(v.replace(/%/, '')) / 100) * (d === 'h' ? w[0] : w[1]))
+					: parseInt(v.replace(/px/, '')))
+				: null;
 		},
-		setContainerDimensions: function (resize) {
+		/*
+		 * Update the container. Set new dimensions, if provided.
+		 * Focus, if enabled. Re-bind events.
+		 */
+		update: function (height, width) {
 			var s = this;
 
-			if (!resize || (resize && s.o.autoResize)) {
-				// get the dimensions for the container and data
-				var ch = s.getVal(s.d.container.css('height')), cw = s.getVal(s.d.container.css('width')),
-					dh = s.d.data.outerHeight(true), dw = s.d.data.outerWidth(true);
+			// prevent update if dialog does not exist
+			if (!s.d.data) {
+				return false;
+			}
 
-				var mh = s.o.maxHeight && s.o.maxHeight < w[0] ? s.o.maxHeight : w[0],
-					mw = s.o.maxWidth && s.o.maxWidth < w[1] ? s.o.maxWidth : w[1];
+			// reset orig values
+			s.d.origHeight = s.getVal(height, 'h');
+			s.d.origWidth = s.getVal(width, 'w');
 
-				// height
-				if (!ch) {
-					if (!dh) {ch = s.o.minHeight;}
-					else {
-						if (dh > mh) {ch = mh;}
-						else if (dh < s.o.minHeight) {ch = s.o.minHeight;}
-						else {ch = dh;}
-					}
-				}
+			// hide data to prevent screen flicker
+			s.d.data.hide();
+			height && s.d.container.css('height', height);
+			width && s.d.container.css('width', width);
+			s.setContainerDimensions();
+			s.d.data.show();
+			s.o.focus && s.focus();
+
+			// rebind events
+			s.unbindEvents();
+			s.bindEvents();
+		},
+		setContainerDimensions: function () {
+			var s = this,
+				badIE = browser.ie6 || browser.ie7;
+
+			// get the dimensions for the container and data
+			var ch = s.d.origHeight ? s.d.origHeight : browser.opera ? s.d.container.height() : s.getVal(badIE ? s.d.container[0].currentStyle['height'] : s.d.container.css('height'), 'h'),
+				cw = s.d.origWidth ? s.d.origWidth : browser.opera ? s.d.container.width() : s.getVal(badIE ? s.d.container[0].currentStyle['width'] : s.d.container.css('width'), 'w'),
+				dh = s.d.data.outerHeight(true), dw = s.d.data.outerWidth(true);
+
+			s.d.origHeight = s.d.origHeight || ch;
+			s.d.origWidth = s.d.origWidth || cw;
+
+			// mxoh = max option height, mxow = max option width
+			var mxoh = s.o.maxHeight ? s.getVal(s.o.maxHeight, 'h') : null,
+				mxow = s.o.maxWidth ? s.getVal(s.o.maxWidth, 'w') : null,
+				mh = mxoh && mxoh < w[0] ? mxoh : w[0],
+				mw = mxow && mxow < w[1] ? mxow : w[1];
+
+			// moh = min option height
+			var moh = s.o.minHeight ? s.getVal(s.o.minHeight, 'h') : 'auto';
+			if (!ch) {
+				if (!dh) {ch = moh;}
 				else {
-					ch = ch > mh ? mh : ch;
-				}
-
-				// width
-				if (!cw) {
-					if (!dw) {cw = s.o.minWidth;}
-					else {
-						if (dw > mw) {cw = mw;}
-						else if (dw < s.o.minWidth) {cw = s.o.minWidth;}
-						else {cw = dw;}
-					}
-				}
-				else {
-					cw = cw > mw ? mw : cw;
-				}
-
-				s.d.container.css({height: ch, width: cw});
-				if (dh > ch || dw > cw) {
-					s.d.wrap.css({overflow:'auto'});
+					if (dh > mh) {ch = mh;}
+					else if (s.o.minHeight && moh !== 'auto' && dh < moh) {ch = moh;}
+					else {ch = dh;}
 				}
 			}
-			
-			if (s.o.autoPosition) {
-				s.setPosition();
+			else {
+				ch = s.o.autoResize && ch > mh ? mh : ch < moh ? moh : ch;
 			}
+
+			// mow = min option width
+			var mow = s.o.minWidth ? s.getVal(s.o.minWidth, 'w') : 'auto';
+			if (!cw) {
+				if (!dw) {cw = mow;}
+				else {
+					if (dw > mw) {cw = mw;}
+					else if (s.o.minWidth && mow !== 'auto' && dw < mow) {cw = mow;}
+					else {cw = dw;}
+				}
+			}
+			else {
+				cw = s.o.autoResize && cw > mw ? mw : cw < mow ? mow : cw;
+			}
+
+			s.d.container.css({height: ch, width: cw});
+			s.d.wrap.css({overflow: (dh > ch || dw > cw) ? 'auto' : 'visible'});
+			s.o.autoPosition && s.setPosition();
 		},
 		setPosition: function () {
 			var s = this, top, left,
 				hc = (w[0]/2) - (s.d.container.outerHeight(true)/2),
-				vc = (w[1]/2) - (s.d.container.outerWidth(true)/2);
+				vc = (w[1]/2) - (s.d.container.outerWidth(true)/2),
+				st = s.d.container.css('position') !== 'fixed' ? wndw.scrollTop() : 0;
 
-			if (s.o.position && Object.prototype.toString.call(s.o.position) === "[object Array]") {
-				top = s.o.position[0] || hc;
+			if (s.o.position && Object.prototype.toString.call(s.o.position) === '[object Array]') {
+				top = st + (s.o.position[0] || hc);
 				left = s.o.position[1] || vc;
 			} else {
-				top = hc;
+				top = st + hc;
 				left = vc;
 			}
 			s.d.container.css({left: left, top: top});
@@ -511,24 +613,24 @@
 				s.inputs = $(':input:enabled:visible:first, :input:enabled:visible:last', s.d.data[0]);
 
 				// if it's the first or last tabbable element, refocus
-				if ((!e.shiftKey && e.target == s.inputs[s.inputs.length -1]) ||
-						(e.shiftKey && e.target == s.inputs[0]) ||
-						s.inputs.length == 0) {
+				if ((!e.shiftKey && e.target === s.inputs[s.inputs.length -1]) ||
+						(e.shiftKey && e.target === s.inputs[0]) ||
+						s.inputs.length === 0) {
 					e.preventDefault();
 					var pos = e.shiftKey ? 'last' : 'first';
-					setTimeout(function () {s.focus(pos);}, 10);
+					s.focus(pos);
 				}
 			}
 			else {
 				// might be necessary when custom onShow callback is used
 				e.preventDefault();
-				setTimeout(function () {s.focus();}, 10);
+				s.focus();
 			}
 		},
 		/*
 		 * Open the modal dialog elements
-		 * - Note: If you use the onOpen callback, you must "show" the 
-		 *	        overlay and container elements manually 
+		 * - Note: If you use the onOpen callback, you must "show" the
+		 *         overlay and container elements manually
 		 *         (the iframe will be handled by SimpleModal)
 		 */
 		open: function () {
@@ -537,7 +639,7 @@
 			s.d.iframe && s.d.iframe.show();
 
 			if ($.isFunction(s.o.onOpen)) {
-				// execute the onOpen callback 
+				// execute the onOpen callback
 				s.o.onOpen.apply(s, [s.d]);
 			}
 			else {
@@ -546,15 +648,15 @@
 				s.d.container.show();
 				s.d.data.show();
 			}
-			
-			s.focus();
+
+			s.o.focus && s.focus();
 
 			// bind default events
 			s.bindEvents();
 		},
 		/*
 		 * Close the modal dialog
-		 * - Note: If you use an onClose callback, you must remove the 
+		 * - Note: If you use an onClose callback, you must remove the
 		 *         overlay, container and iframe elements manually
 		 *
 		 * @param {boolean} external Indicates whether the call to this
@@ -581,17 +683,18 @@
 			}
 			else {
 				// if the data came from the DOM, put it back
-				if (s.d.parentNode) {
+				if (s.d.placeholder) {
+					var ph = $('#simplemodal-placeholder');
 					// save changes to the data?
 					if (s.o.persist) {
 						// insert the (possibly) modified data back into the DOM
-						s.d.data.hide().appendTo(s.d.parentNode);
+						ph.replaceWith(s.d.data.removeClass('simplemodal-data').css('display', s.display));
 					}
 					else {
-						// remove the current and insert the original, 
+						// remove the current and insert the original,
 						// unmodified data back into the DOM
 						s.d.data.hide().remove();
-						s.d.orig.appendTo(s.d.parentNode);
+						ph.replaceWith(s.d.orig);
 					}
 				}
 				else {
@@ -601,12 +704,13 @@
 
 				// remove the remaining elements
 				s.d.container.hide().remove();
-				s.d.overlay.hide().remove();
+				s.d.overlay.hide();
 				s.d.iframe && s.d.iframe.hide().remove();
+				s.d.overlay.remove();
 
 				// reset the dialog object
 				s.d = {};
 			}
 		}
 	};
-})(jQuery);
+}));
