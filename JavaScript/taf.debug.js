@@ -11,7 +11,11 @@
         $(function () {
             $tafWrap.find('.taf-anchor a').click(function (event) {
                 event.preventDefault();
-                $(this).closest('.taf-wrap').find('.taf-form-wrap').modal({ persist: true, appendTo: '#Form' });
+                $(this).closest('.taf-wrap').find('.taf-form-wrap').modal({
+                    persist: true,
+                    appendTo: '#Form',
+                    closeHTML: $tafWrap.data('closeButtonHtml')
+                });
             });
         });
     };

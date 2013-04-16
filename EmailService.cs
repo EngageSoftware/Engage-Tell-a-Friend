@@ -14,6 +14,7 @@ namespace Engage.Dnn.TellAFriend
     using System.Text;
     using System.Web;
 
+    using DotNetNuke.Entities.Host;
     using DotNetNuke.Entities.Modules;
     using DotNetNuke.Services.Localization;
     using DotNetNuke.Services.Mail;
@@ -47,15 +48,26 @@ namespace Engage.Dnn.TellAFriend
                 var body = Utility.GetStringSetting(settingsControl.Settings, "Body", Localization.GetString("EmailAFriend", localResourceFile));
                 var subject = Utility.GetStringSetting(settingsControl.Settings, "Subject", Localization.GetString("EmailAFriendSubject", localResourceFile));
 
-                if (string.IsNullOrEmpty(from))
-                {
-                    from = portalEmail;
-                }
-
                 body = ReplaceTokens(body, friendName, siteUrl, senderName, message, portalName, senderEmail, true);
                 subject = ReplaceTokens(subject, friendName, siteUrl, senderName, message, portalName, senderEmail, false);
 
-                return Mail.SendMail(from, friendsEmail, carbonCopy, blindCarbonCopy, MailPriority.Normal, subject, MailFormat.Html, Encoding.UTF8, body, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+                return Mail.SendMail(
+                    !string.IsNullOrEmpty(from) ? from : portalEmail,
+                    friendsEmail,
+                    carbonCopy,
+                    blindCarbonCopy,
+                    senderEmail,
+                    MailPriority.Normal,
+                    subject,
+                    MailFormat.Html,
+                    Encoding.UTF8,
+                    body,
+                    new string[0],
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    string.Empty,
+                    Host.EnableSMTPSSL);
             }
         }
 

@@ -8,8 +8,8 @@
     .taf-progress-icon{background:url(images/progress.gif) no-repeat;height:32px;width:32px;margin-left:-210px;margin-top:-32px;float:left;display:none;}
     .taf-submit{padding:10px 0 0 0;font-size:15px;}
     #simplemodal-overlay{background-color:#000;}
-        #simplemodal-container{background-color:#fff; color:#000; border:solid 3px #3c5c6a;width:500px;left:0px;position:relative;overflow:visible;padding:0 20px 30px 20px;}
-            #simplemodal-container a.modalCloseImg{background:url(Images/x.png) no-repeat;width:34px;height:34px;display:inline;z-index:3200;position:absolute;top:-18px;right:-18px;cursor:pointer;}
+        #simplemodal-container{background-color:#fff; color:#000; border:solid 3px #3c5c6a;width:500px;left:0;position:relative;overflow:visible;padding:0 20px 30px 20px;}
+            #simplemodal-container a.modalCloseImg{background:url(Images/x.png) no-repeat;width:34px;height:34px;display:block;z-index:3200;position:absolute;top:-18px;right:-18px;cursor:pointer;}
             #simplemodal-container .Normal {color:#000;}
     .taf-error{color:#f00;font-weight:bold;}
-    .taf-success{color:#54990A;font-weight:bold;}
+    .taf-success, #simplemodal-container .Normal.taf-success{color:#54990A;font-weight:bold;}
