@@ -202,4 +202,7 @@
   <data name="StandardCaptchaLink.Text" xml:space="preserve">
     <value>Generate New Image</value>
   </data>
+  <data name="ModalCloseButton.Text" xml:space="preserve">
+    <value>&lt;a class="modalCloseImg" title="Close"&gt;&lt;/a&gt;</value>
+  </data>
 </root>

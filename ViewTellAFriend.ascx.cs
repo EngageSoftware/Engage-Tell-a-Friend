@@ -122,6 +122,7 @@ namespace Engage.Dnn.TellAFriend
                 }
 
                 this.SetupCaptchas();
+                this.ModuleWrap.Attributes["data-close-button-html"] = Localization.GetString("ModalCloseButton.Text", this.LocalResourceFile);
                 this.SubmitButton.ToolTip = Localization.GetString("SubmitButtonToolTip.Text", this.LocalResourceFile);
                 this.MessageRow.Visible = this.ShowMessage;
                 this.ModalAnchorPanel.Visible = this.ShowInModal;
